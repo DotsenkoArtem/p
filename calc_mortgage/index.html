@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>noUi</title>
+	<link rel="stylesheet" href="css/nouislider.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+	<div class="incoming-data">
+		<div class="range-block realty-cost">
+			<h3>Стоимость недвижимости</h3>
+			<div class="slider-wrap">
+				<div class="min-range"></div>
+				<div class="range-slider" id="realty-cost-range"></div>
+				<div class="max-range"></div>
+			</div>
+			<div class="output">
+				<input type="number" id="realty-cost" class="range__value" value="300000"><span>РУБ</span>
+			</div>
+		</div>
+		
+		
+		<div class="range-block initial-fee">
+			<h3>Первоначальный взнос</h3>
+			<div class="slider-wrap">
+				<div class="min-range"></div>
+				<div class="range-slider" id="initial-fee-range"></div>
+				<div class="max-range"></div>
+			</div>
+			<div class="output">
+				<input type="number" id="initial-fee" class="range__value" value="100000"><span>РУБ</span>
+			</div>
+		</div>
+		
+		
+		<div class="range-block credit-term">
+			<h3>Срок кредита</h3>
+			<div class="slider-wrap">
+				<div class="min-range"></div>
+				<div class="range-slider" id="credit-term-range"></div>
+				<div class="max-range"></div>
+			</div>
+			<div class="output">
+				<input type="number" id="credit-term" class="range__value" value="12"><span>РУБ</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="change-bank">
+			<div class="bank active" data-name="alpha">
+				<span class="bank__name">Альфа-банк</span>
+				<span class="bank__percent"></span>
+			</div>
+			<div class="bank" data-name="sber">
+				<span class="bank__name">Сбер</span>
+				<span class="bank__percent"></span>
+			</div>
+			<div class="bank" data-name="pochta">
+				<span class="bank__name">Почта-банк</span>
+				<span class="bank__percent"></span>
+			</div>
+			<div class="bank" data-name="tinkoff">
+				<span class="bank__name">Тинькофф-банк</span>
+				<span class="bank__percent"></span>
+			</div>
+		</div>
+
+		<div class="output-data">
+			<div class="credit-sum">
+				<h4>Сумма кредита</h4>
+				<div class="output">
+					<input type="text" id="credit-sum" class="range__value" value="0"><span>РУБ</span>
+				</div>
+			</div>
+			<div class="monthly-payment">
+				<h4>Ежемесячный платеж</h4>
+				<div class="output">
+					<input type="text" id="monthly-payment" class="range__value" value="0"><span>РУБ</span>
+				</div>
+			</div>
+			<div class="advisable-income">
+				<h4>Рекомендуемый доход</h4>
+				<div class="output">
+					<input type="text" id="advisable-income" class="range__value" value="0"><span>РУБ</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="js/nouislider.js"></script>
+	<script src="js/script.js"></script>
+
+</body>
+</html>

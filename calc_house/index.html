@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Рассчитайте стоимость строительства вашего дома с учетом скидки</h1>
+
+		<div class="calc">
+<!-- ПЕРВАЯ СТРОКА -->
+			<div class="row row_input">
+				<div class="input-field">
+					<div class="label-input">Площадь (м2)</div>
+					<input class="input_number" id="square" type="number" value="300" step=".1">
+				</div>
+
+
+				<div class="input-field">
+					<div class="label-input">Фундамент</div>
+					<div class="select">
+						<div class="option-wrap">
+							<div class="option option_checked">Выбрать фундамент</div>
+							<span class="angle-bg"><span class="angle"></span></span>
+						</div>
+						<div class="option-box">
+							<ul id="foundation"></ul>
+							<!-- 								<li class="option">Выбрать фундамент 1</li>
+															<li class="option">Выбрать фундамент 2</li>
+															<li class="option">Выбрать фундамент 3</li> -->
+						</div>
+					</div>
+				</div>
+
+
+				<div class="input-field">
+					<div class="label-input">Стены</div>
+					<div class="select">
+						<div class="option-wrap">
+							<div class="option option_checked">Выбрать Cтены</div>
+							<span class="angle-bg"><span class="angle"></span></span>
+						</div>
+						<div class="option-box">
+							<ul id="walls"></ul>
+							<!-- 								<li class="option">Выбрать стены 1</li>
+															<li class="option">Выбрать стены 2</li>
+															<li class="option">Выбрать стены 3</li> -->
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- ВТОРАЯ СТРОКА -->
+			<div class="row row_input">
+				<div class="input-field">
+					<div class="label-input">Перекрытия</div>
+					<div class="select">
+						<div class="option-wrap">
+							<div class="option option_checked">Выбрать Перекрытия</div>
+							<span class="angle-bg"><span class="angle"></span></span>
+						</div>
+						<div class="option-box">
+							<ul id="overlap"></ul>
+<!-- 							<li class="option">Выбрать перекрытия 1</li>
+							<li class="option">Выбрать перекрытия 2</li>
+							<li class="option">Выбрать перекрытия 3</li> -->
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="label-input">Кровля</div>
+					<div class="select">
+						<div class="option-wrap">
+							<div class="option option_checked">Выбрать Кровлю</div>
+							<span class="angle-bg"><span class="angle"></span></span>
+						</div>
+						<div class="option-box">
+							<ul id="roof"></ul>
+<!-- 							<li class="option">Выбрать кровлю 1</li>
+							<li class="option">Выбрать кровлю 2</li>
+							<li class="option">Выбрать кровлю 3</li> -->
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="label-input">Фасад</div>
+					<div class="select">
+						<div class="option-wrap">
+							<div class="option option_checked">Выбрать Фасад</div>
+							<span class="angle-bg"><span class="angle"></span></span>
+						</div>
+						<div class="option-box">
+							<ul id="frontage"></ul>
+<!-- 							<li class="option">Выбрать фасад 1</li>
+							<li class="option">Выбрать фасад 2</li>
+							<li class="option">Выбрать фасад 3</li> -->
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- ТРЕТЬЯ СТРОКА -->
+			<div class="row checkbox_input">
+
+				<div class="input-field input-field_checkbox">
+					<label class="label-checkbox">
+						<input type="checkbox" class="input_checkbox" value="700" id="windows">
+						<span>Окна</span>
+					</label>
+				</div>
+				
+				<div class="input-field input-field_checkbox">
+					<label class="label-checkbox">
+						<input type="checkbox" class="input_checkbox" value="1700" id="communications">
+						<span>Коммуникации</span>
+					</label>
+				</div>
+				
+				<div class="input-field input-field_checkbox">
+					<label class="label-checkbox">
+						<input type="radio" class="input_checkbox" value="6515" id="roughFinish" name="finish">
+						<span>Черновая отделка</span>
+					</label>
+				</div>
+				
+				<div class="input-field input-field_checkbox">
+					<label class="label-checkbox">
+						<input type="radio" class="input_checkbox" value="3541" id="fineFinish" name="finish">
+						<span>Чистовая отделка</span>
+					</label>
+				</div>
+			</div>
+
+<!-- ЧЕТВЕРТАЯ СТРОКА -->
+			
+			<div class="row data_output">
+				<div class="total-summ">
+					<div class="total-summ__label">Приблизительная стоимость</div>
+					<div class="total-summ__value" id="total-summ__value">0 <span>Руб</span></div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+	
+
+
+	<script src="script.js"></script>
+</body>
+</html>

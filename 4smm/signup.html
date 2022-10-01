@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>4SMM - Регистрация</title>
+	<meta name="description" content="регистация нового пользователя"/>
+	<meta name="robots" content="index, nofollow"/>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/png">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<div class="wrapper signup">
+		<header class="header signup-header">
+			<div class="container header__container">
+				<div class="header__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="header__item top-menu_mobile">
+					<div class="top-menu-wrapper">
+						<ul class="top-menu">
+							<li class="top-menu__item"><a href="./index.html#service-section">Услуги</a></li>
+							<li class="top-menu__item"><a href="./discounts.html">Скидки</a></li>
+							<li class="top-menu__item"><a href="./help.html">Помощь</a></li>
+							<li class="top-menu__item"><a href="./index.html#contacts-section">Контакты</a></li>
+						</ul>
+						<div class="top-menu__footer mobile">
+							<a href="./login.html" class="login-link">Вход</a>
+							<a href="tel:79687971277">+7 968 797 12 77</a>
+							<a href="mailto:4smm@support.ru">4smm@support.ru</a>
+						</div>
+					</div>
+					<div class="top-menu-close">
+						<div class="top-menu-close__item"></div>
+						<div class="top-menu-close__item"></div>
+					</div>
+				</nav>
+				<div class="top-menu-overl"></div>
+				<div class="header__item login-wrapper">
+                    <span class="login-link">Уже есть аккаунт?</span>
+					<a href="./login.html" class="btn btn_prim btn_sm">Вход</a>
+				</div>
+				<div class="header__item top-menu-toggler-wrap">
+					<div class="top-menu-toggler">
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+            <div class="container login-container">
+                <div class="login-title">
+                    <h1>Регистрация</h1>
+                </div>
+                <form action="#" id="login-form" name="loginForm" method="POST" class="form">
+					<div class="form__group form__group_control">
+						<input type="email" class="form__control" required name="userName" id="userName" >
+						<label for="userName" class="form__label form__label_control">Введите email</label>
+					</div>
+					<div class="form__group form__group_control form__group_pass">
+						<input type="password" class="form__control" required name="userPass" id="userPass" >
+						<label for="userPass" class="form__label form__label_control">Введите пароль</label>
+						<div class="show-pass"></div>
+					</div>
+					<div class="form__group form__group_control form__group_pass form__group_pass-confirm">
+						<input type="password" class="form__control" required name="userPassReplay" id="userPassReplay" >
+						<label for="userPassReplay" class="form__label form__label_control">Повторите пароль</label>
+						<div class="show-pass"></div>
+					</div>
+					<div class="fieldset fieldset_check">
+						<div class="form__group form__group_check">
+							<input type="checkbox" class="form__check" name="userCheck" id="userCheck" >
+							<label for="userCheck" class="form__label form__label_check">Я даю согласие на обработку  моих персональных данных</label>
+						</div>
+					</div>
+					<div class="form__submit-wrap">
+						<input type="submit" value="Регистрация" class="btn btn_prim form__submit">
+					</div>
+                </form>
+            </div>
+		</main>
+		<footer class="footer">
+			<div class="container footer__container">
+				<div class="footer__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="footer__item footer-menu">
+					<div class="footer-menu__part footer-menu__part_left">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОЛЬЗОВАТЕЛЮ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./reviews.html">Отзывы</a></li>
+									<li class="footer-menu__item"><a href="./help.html">Вопрос - ответ</a></li>
+									<li class="footer-menu__item"><a href="#">Способы оплаты</a></li>
+									<li class="footer-menu__item"><a href="#">Блог</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">О НАС</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./service-rules.html">Правила сервиса</a></li>
+									<li class="footer-menu__item"><a href="./public-offer.html">Публичная оферта</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer-menu__part footer-menu__part_right">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОМОЩЬ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="#">База знаний</a></li>
+									<li class="footer-menu__item"><a href="#">Служба поддержки</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block footer-menu__block_last">
+							<div class="block-inner">
+								<div class="footer-menu__caption">БОНУСЫ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./discounts.html">Акции и скидки</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="footer__border"></div>
+			<div class="container footer__bottom">
+				<div class="copyright">
+					<span>2021. Все права защищены</span>
+					<a href="./policy.html">Политика конфиденциальности</a>
+				</div>
+				<div class="site-author">Создание сайта <a href="mailto:@anya_ammm">@anya_ammm</a></div>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/main.js"></script>
+
+    <script>
+		"use strict";
+
+		var formGroupPass = document.querySelectorAll('.form__group_pass');
+
+		var _loop = function _loop(i) {
+		var showPass = formGroupPass[i].querySelector('.show-pass');
+		var passInput = formGroupPass[i].querySelector('input[type="password"]');
+		showPass.addEventListener('click', function () {
+			if (passInput.type == 'password') {
+			passInput.type = 'text';
+			showPass.classList.add('shown');
+			} else {
+			passInput.type = 'password';
+			showPass.classList.remove('shown');
+			}
+		});
+		};
+
+		for (var i = 0; i < formGroupPass.length; i++) {
+		_loop(i);
+		} // ДОБАВЛЕНИЕ-УДАЛЕНИЕ ФОКУСА НА ТЕКСТОВЫЕ ИНПУТЫ
+
+
+		var forms = document.forms;
+
+		var _loop2 = function _loop2(_i) {
+		var form = forms[_i];
+		var submitBtn = form.querySelector('[type="submit"]');
+		var userPass = form.userPass;
+		var userPassConfirm = form.userPassReplay;
+		var showPassConfirm = userPassConfirm.parentElement.querySelector('.show-pass');
+
+		for (var j = 0; j < form.elements.length; j++) {
+			if (form.elements[j].classList.contains('form__control')) {
+			(function () {
+				var ElementInput = form.elements[j];
+				ElementInput.addEventListener('focus', addFocus);
+				ElementInput.addEventListener('input', function () {
+				if (userPassConfirm.value) {
+					userPassConfirm.parentElement.classList.remove('error');
+					userPassConfirm.parentElement.classList.add('valid');
+				}
+
+				if (ElementInput.value) {
+					ElementInput.parentElement.classList.remove('focused');
+					ElementInput.parentElement.classList.add('valid');
+				} else {
+					ElementInput.parentElement.classList.remove('valid');
+				}
+				});
+				ElementInput.addEventListener('blur', removeFocus);
+			})();
+			}
+		}
+
+		function addFocus() {
+			this.parentElement.classList.add('focused');
+		}
+
+		function removeFocus() {
+			this.parentElement.classList.remove('focused');
+		}
+
+		submitBtn.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			if (!userPass.value || !userPassConfirm.value) {
+			alert("Поля формы не заполнены!");
+			return;
+			}
+
+			if (userPass.value !== userPassConfirm.value) {
+			showError();
+			} else {
+			alert('Успешно! Форма не отправляется.');
+			window.location = './user-profile.html';
+			}
+		});
+
+		function showError() {
+			setTimeout(function () {
+			userPassConfirm.parentElement.classList.remove('valid');
+			userPassConfirm.parentElement.classList.add('error');
+			userPassConfirm.type = 'text';
+			showPassConfirm.classList.add('shown');
+			alert('Демонстрация ошибки. Форма не отправляется.');
+			}, 1000);
+		}
+		};
+
+		for (var _i = 0; _i < forms.length; _i++) {
+		_loop2(_i);
+		}
+    </script>
+</body>
+</html>

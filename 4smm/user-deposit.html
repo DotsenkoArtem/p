@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>4SMM - Личный кабинет пользователя. Пополнить баланс</title>
+	<meta name="description" content="Личный кабинет пользователя. Пополнить баланс"/>
+	<meta name="robots" content="index, nofollow"/>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/png">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<div class="wrapper user">
+		<header class="header">
+			<div class="container header__container">
+				<div class="header__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="header__item top-menu_mobile">
+					<div class="top-menu-wrapper">
+						<ul class="top-menu">
+							<li class="top-menu__item"><a href="./index.html#service-section">Услуги</a></li>
+							<li class="top-menu__item"><a href="./discounts.html">Скидки</a></li>
+							<li class="top-menu__item"><a href="./help.html">Помощь</a></li>
+							<li class="top-menu__item"><a href="./index.html#contacts-section">Контакты</a></li>
+						</ul>
+						<div class="top-menu__footer mobile">
+							<a href="./login.html" class="login-link">Вход</a>
+							<a href="tel:79687971277">+7 968 797 12 77</a>
+							<a href="mailto:4smm@support.ru">4smm@support.ru</a>
+						</div>
+					</div>
+					<div class="top-menu-close">
+						<div class="top-menu-close__item"></div>
+						<div class="top-menu-close__item"></div>
+					</div>
+				</nav>
+				<div class="top-menu-overl"></div>
+				<div class="header__item login-wrapper">
+					<a href="#">0 ₽</a>
+					<a href="./" class="logout-link">Выход</a>
+					<div class="user-menu__toggler"></div>
+				</div>
+				<div class="header__item top-menu-toggler-wrap">
+					<div class="top-menu-toggler">
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+        <div class="container dashboard">
+            <aside class="dashboard-card sidebar user-menu-block">
+                <div class="user-menu-block__inner">
+					<div class="user-card">
+						<div class="user-avatar">
+							<a href="#"><img src="./img/avatar-bg.svg" alt="Аватар пользователя"></a>
+						</div>
+						<div class="user-name">Антон Уманский</div>
+					</div>
+					<nav>
+						<ul class="user-menu">
+							<li class="user-menu__item"><a href="./user-profile.html">Профиль</a></li>
+							<li class="user-menu__item"><a href="./user-new-order.html">Новый заказ</a></li>
+							<li class="user-menu__item user-menu__item_current"><a href="#">Пополнить баланс</a></li>
+							<li class="user-menu__item"><a href="./user-my-orders.html">Мои заказы</a></li>
+							<li class="user-menu__item"><a href="./user-order-history.html">История операций</a></li>
+							<li class="user-menu__item"><a href="./user-discounts.html">Скидочная система</a></li>
+							<li class="user-menu__item"><a href="./user-support.html">Поддержка</a></li>
+							<li class="user-menu__item"><a href="./user-settings.html">Настройка профиля</a></li>
+						</ul>
+					</nav>
+					<div class="sidebar__footer"><a href="./">Выход</a></div>
+					<div class="user-menu-close">
+						<div class="user-menu-close__item"></div>
+						<div class="user-menu-close__item"></div>
+					</div>
+				</div>
+            </aside>
+			<div class="user-menu-overl"></div>
+            <main class="main deposit">
+                <div class="main-inner deposit-inner">
+                    <nav class="breadcrumb">
+                        <ul>
+                            <li class="breadcrumb__item"><a href="#">Личный кабинет</a></li>
+                            <li class="breadcrumb__item breadcrumb__item_current">Пополнить баланс</li>
+                        </ul>
+                    </nav>
+					<div class="deposit-form-wrapper">
+						<form action="#" class="deposit-form" id="deposit-form" name="depositForm" method="POST">
+							<div class="fieldset deposit-type">
+								<div class="deposit-form__label">Выберите способ оплаты</div>
+								<div class="dropdown deposit-form__select">
+									<div class="dropdown_checked">
+										<span class="dropdown_checked-value">Способ оплаты</span><span class="angle-bg"><span class="angle"></span></span>
+									</div>
+									<div class="dropdown-box">
+										<ul>
+											<li class="dropdown__item" data-name="Глянцевая">Способ 1</li>
+											<li class="dropdown__item" data-name="Сатиновая">Способ 2</li>
+											<li class="dropdown__item" data-name="Тканевая">Способ 3</li>
+										</ul>
+									</div>
+								</div>
+								<input type="hidden" value="" name="depositType">
+							</div>
+							<div class="fieldset deposit-summ">
+								<div class="form-group">
+									<div class="deposit-form__label">Сумма в рублях</div>
+									<input type="number" class="deposit__control" min="0" name="depositSumm" value="1000">
+								</div>
+								<div class="form-group deposit-summ__radio">
+									<div class="deposit-summ__radio-btn" data-summ="600">600₽</div>
+									<div class="deposit-summ__radio-btn" data-summ="1000">1 000₽</div>
+									<div class="deposit-summ__radio-btn" data-summ="3000">3 000₽</div>
+									<div class="deposit-summ__radio-btn" data-summ="5000">5 000₽</div>
+								</div>
+							</div>
+							<div class="fieldset deposit-promocode">
+								<div class="form-group">
+									<div class="deposit-form__label">Промокод</div>
+									<input type="text" class="deposit__control" name="deposit-promocode">
+								</div>
+								<div class="apply-btn">Применить</div>
+							</div>
+							<div class="deposit__submit-wrap">
+								<input type="submit" class="btn btn_prim order__submit modal-trigger" value="Пополнить" name="depositFormSubmit">
+							</div>
+						</form>
+					</div>
+                </div>
+            </main>
+        </div>
+		<footer class="footer">
+			<div class="container footer__container">
+				<div class="footer__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="footer__item footer-menu">
+					<div class="footer-menu__part footer-menu__part_left">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОЛЬЗОВАТЕЛЮ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./reviews.html">Отзывы</a></li>
+									<li class="footer-menu__item"><a href="./help.html">Вопрос - ответ</a></li>
+									<li class="footer-menu__item"><a href="#">Способы оплаты</a></li>
+									<li class="footer-menu__item"><a href="#">Блог</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">О НАС</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./service-rules.html">Правила сервиса</a></li>
+									<li class="footer-menu__item"><a href="./public-offer.html">Публичная оферта</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer-menu__part footer-menu__part_right">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОМОЩЬ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="#">База знаний</a></li>
+									<li class="footer-menu__item"><a href="#">Служба поддержки</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block footer-menu__block_last">
+							<div class="block-inner">
+								<div class="footer-menu__caption">БОНУСЫ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./discounts.html">Акции и скидки</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="footer__border"></div>
+			<div class="container footer__bottom">
+				<div class="copyright">
+					<span>2021. Все права защищены</span>
+					<a href="./policy.html">Политика конфиденциальности</a>
+				</div>
+				<div class="site-author">Создание сайта <a href="mailto:@anya_ammm">@anya_ammm</a></div>
+			</div>
+		</footer>
+	</div>
+	<!-- M O D A L -->
+	<div class="modal" id="depositModal">
+		<div class="modal__content">
+			<div class="modal__header">
+				<div class="modal__title">Баланс успешно пополнен</div>
+				<button class="modal__close">
+					<span class="modal__close__item"></span>
+					<span class="modal__close__item"></span>
+				</button>
+			</div>
+			<div class="modal__body">
+				<p>Деньги поступят на счет в течение нескольких минут</p>
+			</div>
+			<div class="modal__footer">
+				<a href="./user-new-order.html" class="btn btn_prim">Перейти к оформлению заказа</a>
+			</div>
+		</div>
+		<div class="modal__overlay modal__close"></div>
+	</div>
+
+	<script src="js/main.js"></script>
+
+	<!-- PROFILE-MENU-SETTINGS -->
+	<script>
+		"use strict";
+
+		var userMenuToggle = document.querySelector('.user-menu__toggler'),
+			userMenuCloseBtn = document.querySelector('.user-menu-close'),
+			userMenu = document.querySelector('.user-menu-block'),
+			userMenuOverl = document.querySelector('.user-menu-overl');
+		userMenuToggle.addEventListener('click', function () {
+		userMenu.classList.toggle('open');
+		document.body.classList.toggle('scroll-hidden');
+		userMenuOverl.classList.toggle('open');
+		});
+		userMenuOverl.addEventListener('click', userMenuClose);
+		userMenuCloseBtn.addEventListener('click', userMenuClose);
+
+		function userMenuClose() {
+		userMenu.classList.remove('open');
+		document.body.classList.remove('scroll-hidden');
+		userMenuOverl.classList.remove('open');
+		}
+	</script>
+
+	<script>
+		"use strict";
+
+		var depositForm = document.forms.depositForm;
+		var radioBtns = document.querySelectorAll('.deposit-summ__radio-btn');
+		var depositSummInput = depositForm.depositSumm;
+		var depositType = depositForm.depositType;
+		var depositFormSubmit = depositForm.depositFormSubmit;
+
+		for (var i = 0; i < radioBtns.length; i++) {
+		var radioBtn = radioBtns[i];
+		radioBtn.addEventListener('click', function () {
+			depositSummInput.value = this.dataset.summ;
+		});
+		}
+	</script>
+	<!-- SELECT - SETTINGS -->
+	<script>
+		"use strict";
+
+		var dropdownChecked = document.querySelector('.dropdown_checked'),
+			dropdownBox = document.querySelector('.dropdown-box'),
+			angle = dropdownChecked.querySelector('.angle');
+		var wrapper = document.querySelector('.wrapper'); // ПОЛУЧЕНИЕ МАССИВА ВСЕХ ЭЛЕМЕНТОВ SELECT
+
+		var dropdownItems = document.querySelectorAll('.dropdown__item'); // ПОЛУЧЕНИЕ ЗНАЧЕНИЯ ВЫБРАННОГО SELECT
+
+		var dropdownCheckedValue = document.querySelector('.dropdown_checked-value');
+		dropdownChecked.addEventListener('click', function (e) {
+		dropdownItemsHandle();
+		e.stopPropagation();
+		});
+
+		function dropdownItemsHandle() {
+		dropdownBox.classList.add('shown');
+		angle.classList.add('up');
+		dropdownChecked.classList.add('not-bordered');
+		chekDropdown();
+		wrapper.addEventListener('click', function () {
+			dropdownBox.classList.remove('shown');
+			angle.classList.remove('up');
+			dropdownChecked.classList.remove('not-bordered');
+		});
+		}
+
+		function chekDropdown() {
+		var _loop = function _loop(_i) {
+			var dropdownItem = dropdownItems[_i];
+			dropdownItem.addEventListener('click', function () {
+			dropdownCheckedValue.innerHTML = dropdownItem.innerHTML;
+			dropdownChecked.classList.remove('not-bordered');
+			});
+		};
+
+		for (var _i = 0; _i < dropdownItems.length; _i++) {
+			_loop(_i);
+		}
+		}
+	</script>
+	<!-- MODAL-SETTINGS -->
+	<script>
+		"use strict";
+
+		depositFormSubmit.addEventListener('click', function (event) {
+		event.preventDefault();
+		alert('Форма не отправляется. Демонстрация модального окна.');
+		openModalById('#depositModal');
+		});
+		var modalOverlay = document.querySelector(".modal__overlay"),
+			closeButtons = document.querySelectorAll(".modal__close");
+
+		for (var _i2 = 0; _i2 < closeButtons.length; _i2++) {
+		closeButtons[_i2].addEventListener('click', function () {
+			closeModal('#depositModal');
+		});
+		}
+
+		function openModalById(modalId) {
+		var modal = document.querySelector(modalId);
+		modal.classList.remove('closed');
+		modal.classList.add('open');
+		document.body.classList.add('scroll-hidden');
+		}
+
+		function closeModal(modalId) {
+		var modal = document.querySelector(modalId);
+		modal.classList.remove('open');
+		modal.classList.add('closed');
+		document.body.classList.remove('scroll-hidden');
+		}
+	</script>
+</body>
+</html>

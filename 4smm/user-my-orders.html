@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>4SMM - Личный кабинет пользователя. Мои заказы</title>
+	<meta name="description" content="Личный кабинет пользователя. Мои заказы"/>
+	<meta name="robots" content="index, nofollow"/>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/png">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<div class="wrapper user">
+		<header class="header">
+			<div class="container header__container">
+				<div class="header__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="header__item top-menu_mobile">
+					<div class="top-menu-wrapper">
+						<ul class="top-menu">
+							<li class="top-menu__item"><a href="./index.html#service-section">Услуги</a></li>
+							<li class="top-menu__item"><a href="./discounts.html">Скидки</a></li>
+							<li class="top-menu__item"><a href="./help.html">Помощь</a></li>
+							<li class="top-menu__item"><a href="./index.html#contacts-section">Контакты</a></li>
+						</ul>
+						<div class="top-menu__footer mobile">
+							<a href="./login.html" class="login-link">Вход</a>
+							<a href="tel:79687971277">+7 968 797 12 77</a>
+							<a href="mailto:4smm@support.ru">4smm@support.ru</a>
+						</div>
+					</div>
+					<div class="top-menu-close">
+						<div class="top-menu-close__item"></div>
+						<div class="top-menu-close__item"></div>
+					</div>
+				</nav>
+				<div class="top-menu-overl"></div>
+				<div class="header__item login-wrapper">
+					<a href="#">0 ₽</a>
+					<a href="./" class="logout-link">Выход</a>
+					<div class="user-menu__toggler"></div>
+				</div>
+				<div class="header__item top-menu-toggler-wrap">
+					<div class="top-menu-toggler">
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+						<div class="top-menu-toggler__item"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+        <div class="container dashboard">
+            <aside class="dashboard-card sidebar user-menu-block">
+                <div class="user-menu-block__inner">
+					<div class="user-card">
+						<div class="user-avatar">
+							<a href="#"><img src="./img/avatar-bg.svg" alt="Аватар пользователя"></a>
+						</div>
+						<div class="user-name">Антон Уманский</div>
+					</div>
+					<nav>
+						<ul class="user-menu">
+							<li class="user-menu__item"><a href="./user-profile.html">Профиль</a></li>
+							<li class="user-menu__item"><a href="./user-new-order.html">Новый заказ</a></li>
+							<li class="user-menu__item"><a href="./user-deposit.html">Пополнить баланс</a></li>
+							<li class="user-menu__item user-menu__item_current"><a href="#">Мои заказы</a></li>
+							<li class="user-menu__item"><a href="./user-order-history.html">История операций</a></li>
+							<li class="user-menu__item"><a href="./user-discounts.html">Скидочная система</a></li>
+							<li class="user-menu__item"><a href="./user-support.html">Поддержка</a></li>
+							<li class="user-menu__item"><a href="./user-settings.html">Настройка профиля</a></li>
+						</ul>
+					</nav>
+					<div class="sidebar__footer"><a href="./">Выход</a></div>
+					<div class="user-menu-close">
+						<div class="user-menu-close__item"></div>
+						<div class="user-menu-close__item"></div>
+					</div>
+				</div>
+            </aside>
+			<div class="user-menu-overl"></div>
+            <main class="main my-orders">
+                <div class="main-inner my-orders-inner">
+                    <nav class="breadcrumb">
+                        <ul>
+                            <li class="breadcrumb__item"><a href="#">Личный кабинет</a></li>
+                            <li class="breadcrumb__item breadcrumb__item_current">Мои заказы</li>
+                        </ul>
+                    </nav>
+                    <div class="my-orders__content">
+                        <div class="my-orders__filter">
+                            <div class="dropdown order-select order-select_type">
+                                <div class="dropdown_checked">
+                                    <span class="dropdown_checked-value">Все заказы</span><span class="angle-bg"><span class="angle"></span></span>
+                                </div>
+                                <div class="dropdown-box">
+                                    <ul>
+                                        <li class="dropdown__item" data-name="Глянцевая">Заказ 1</li>
+                                        <li class="dropdown__item" data-name="Сатиновая">Заказ 2</li>
+                                        <li class="dropdown__item" data-name="Тканевая">Заказ 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown order-select order-select_state">
+                                <div class="dropdown_checked">
+                                    <span class="dropdown_checked-value">Любой статус</span><span class="angle-bg"><span class="angle"></span></span>
+                                </div>
+                                <div class="dropdown-box">
+                                    <ul>
+                                        <li class="dropdown__item" data-name="Глянцевая">Статус 1</li>
+                                        <li class="dropdown__item" data-name="Сатиновая">Статус 2</li>
+                                        <li class="dropdown__item" data-name="Тканевая">Статус 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <form action="#" class="search-form order-search" id="order-search-form" name="order-search-form" method="POST">
+                                <div class="form__group form__group_search">
+                                    <input type="search" class="form__control" name="search" id="search" >
+                                    <label for="search" class="form__label form__label_control form__label_search">Поиск по ID или ссылке</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="dashboard-card dashboard-card-table">
+                            <div class="dashboard-card__title card-table__title">ПОСЛЕДНИЕ ЗАКАЗЫ</div>
+                            <div class="dashboard-table-wrapper">
+                                <table class="dashboard-table order">
+                                    <thead>
+                                        <tr class="dashboard-table__row">
+                                            <th class="dashboard-table__id">ID</th>
+                                            <th class="dashboard-table__date-time">Дата и время</th>
+                                            <th class="dashboard-table__name">Заказ</th>
+                                            <th class="dashboard-table__amount">Сумма</th>
+                                            <th class="dashboard-table__state">Статус</th>
+                                            <th class="dashboard-table__note">Примечание</th>
+                                            <th class="dashboard-table__autorenew-cell"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="dashboard-table__row">
+                                            <td class="dashboard-table__id">350</td>
+                                            <td class="dashboard-table__date-time"><span class="date">23.03.21</span><span class="time">13:55</span></td>
+                                            <td class="dashboard-table__name">Накрутка живых подписчиков в Инстаграм 500К/день</td>
+                                            <td class="dashboard-table__amount">3 000₽</td>
+                                            <td class="dashboard-table__state">Завершен</td>
+                                            <td class="dashboard-table__note"></td>
+                                            <td class="dashboard-table__autorenew-cell"><div class="dashboard-table__autorenew animated"></div></td>
+                                        </tr>
+                                        <tr class="dashboard-table__row">
+                                            <td class="dashboard-table__id">350</td>
+                                            <td class="dashboard-table__date-time"><span class="date">23.03.21</span><span class="time">13:55</span></td>
+                                            <td class="dashboard-table__name">Накрутка живых подписчиков в Инстаграм 500К/день</td>
+                                            <td class="dashboard-table__amount">3 000₽</td>
+                                            <td class="dashboard-table__state">Завершен</td>
+                                            <td class="dashboard-table__note"></td>
+                                            <td class="dashboard-table__autorenew-cell"><div class="dashboard-table__autorenew animated"></div></td>
+                                        </tr>
+                                        <tr class="dashboard-table__row">
+                                            <td class="dashboard-table__id">350</td>
+                                            <td class="dashboard-table__date-time"><span class="date">23.03.21</span><span class="time">13:55</span></td>
+                                            <td class="dashboard-table__name">Накрутка живых подписчиков в Инстаграм 500К/день</td>
+                                            <td class="dashboard-table__amount">3 000₽</td>
+                                            <td class="dashboard-table__state">Завершен</td>
+                                            <td class="dashboard-table__note"></td>
+                                            <td class="dashboard-table__autorenew-cell"><div class="dashboard-table__autorenew animated"></div></td>
+                                        </tr>
+                                        <tr class="dashboard-table__row">
+                                            <td class="dashboard-table__id">350</td>
+                                            <td class="dashboard-table__date-time"><span class="date">23.03.21</span><span class="time">13:55</span></td>
+                                            <td class="dashboard-table__name">Накрутка живых подписчиков в Инстаграм 500К/день</td>
+                                            <td class="dashboard-table__amount">3 000₽</td>
+                                            <td class="dashboard-table__state">Завершен</td>
+                                            <td class="dashboard-table__note"></td>
+                                            <td class="dashboard-table__autorenew-cell"><div class="dashboard-table__autorenew animated"></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+		<footer class="footer">
+			<div class="container footer__container">
+				<div class="footer__item logo">
+					<a href="./"><img src="./img/logo.svg" alt="Логотип"></a>
+				</div>
+				<nav class="footer__item footer-menu">
+					<div class="footer-menu__part footer-menu__part_left">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОЛЬЗОВАТЕЛЮ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./reviews.html">Отзывы</a></li>
+									<li class="footer-menu__item"><a href="./help.html">Вопрос - ответ</a></li>
+									<li class="footer-menu__item"><a href="#">Способы оплаты</a></li>
+									<li class="footer-menu__item"><a href="#">Блог</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">О НАС</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./service-rules.html">Правила сервиса</a></li>
+									<li class="footer-menu__item"><a href="./public-offer.html">Публичная оферта</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer-menu__part footer-menu__part_right">
+						<div class="footer-menu__block">
+							<div class="block-inner">
+								<div class="footer-menu__caption">ПОМОЩЬ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="#">База знаний</a></li>
+									<li class="footer-menu__item"><a href="#">Служба поддержки</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-menu__block footer-menu__block_last">
+							<div class="block-inner">
+								<div class="footer-menu__caption">БОНУСЫ</div>
+								<ul>
+									<li class="footer-menu__item"><a href="./discounts.html">Акции и скидки</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="footer__border"></div>
+			<div class="container footer__bottom">
+				<div class="copyright">
+					<span>2021. Все права защищены</span>
+					<a href="./policy.html">Политика конфиденциальности</a>
+				</div>
+				<div class="site-author">Создание сайта <a href="mailto:@anya_ammm">@anya_ammm</a></div>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/main.js"></script>
+    <!-- PROFILE-MENU-SETTINGS -->
+    <script>
+        "use strict";
+
+        var userMenuToggle = document.querySelector('.user-menu__toggler'),
+            userMenuCloseBtn = document.querySelector('.user-menu-close'),
+            userMenu = document.querySelector('.user-menu-block'),
+            userMenuOverl = document.querySelector('.user-menu-overl');
+        userMenuToggle.addEventListener('click', function () {
+        userMenu.classList.toggle('open');
+        document.body.classList.toggle('scroll-hidden');
+        userMenuOverl.classList.toggle('open');
+        });
+        userMenuOverl.addEventListener('click', userMenuClose);
+        userMenuCloseBtn.addEventListener('click', userMenuClose);
+
+        function userMenuClose() {
+        userMenu.classList.remove('open');
+        document.body.classList.remove('scroll-hidden');
+        userMenuOverl.classList.remove('open');
+        }
+    </script>
+    <!-- SELECT - SETTINGS -->
+    <script>
+        "use strict";
+
+        var dropdowns = document.querySelectorAll('.dropdown'),
+            wrapper = document.querySelector('.wrapper');
+
+        var _loop = function _loop(i) {
+        var dropdownChecked = dropdowns[i].querySelector('.dropdown_checked'),
+            dropdownBox = dropdowns[i].querySelector('.dropdown-box'),
+            angle = dropdownChecked.querySelector('.angle'); // ПОЛУЧЕНИЕ МАССИВА ВСЕХ ЭЛЕМЕНТОВ SELECT
+
+        var dropdownItems = dropdowns[i].querySelectorAll('.dropdown__item'); // ПОЛУЧЕНИЕ ЗНАЧЕНИЯ ВЫБРАННОГО SELECT
+
+        var dropdownCheckedValue = dropdowns[i].querySelector('.dropdown_checked-value');
+        dropdownChecked.addEventListener('click', function (e) {
+            for (var _j = 0; _j < dropdowns.length; _j++) {
+            var _dropdownChecked = dropdowns[_j].querySelector('.dropdown_checked'),
+                _dropdownBox = dropdowns[_j].querySelector('.dropdown-box'),
+                _angle = _dropdownChecked.querySelector('.angle');
+
+            _dropdownBox.classList.remove('shown');
+
+            _angle.classList.remove('up');
+            }
+
+            dropdownItemsHandle();
+            e.stopPropagation();
+        });
+
+        function dropdownItemsHandle() {
+            dropdownBox.classList.add('shown');
+            angle.classList.add('up');
+            dropdownChecked.classList.add('not-bordered');
+            chekDropdown();
+            wrapper.addEventListener('click', function () {
+            dropdownBox.classList.remove('shown');
+            angle.classList.remove('up');
+            dropdownChecked.classList.remove('not-bordered');
+            });
+        }
+
+        function chekDropdown() {
+            var _loop2 = function _loop2(_i2) {
+            var dropdownItem = dropdownItems[_i2];
+            dropdownItem.addEventListener('click', function () {
+                dropdownCheckedValue.innerHTML = dropdownItem.innerHTML;
+                dropdownChecked.classList.remove('not-bordered');
+            });
+            };
+
+            for (var _i2 = 0; _i2 < dropdownItems.length; _i2++) {
+            _loop2(_i2);
+            }
+        }
+        };
+
+        for (var i = 0; i < dropdowns.length; i++) {
+        _loop(i);
+        } 
+    </script>
+    <!-- FORM-SETTINGS -->
+    <script>
+        // ДОБАВЛЕНИЕ-УДАЛЕНИЕ ФОКУСА НА ТЕКСТОВЫЕ ИНПУТЫ
+        "use strict";
+
+        var forms = document.forms;
+
+        for (var _i = 0; _i < forms.length; _i++) {
+        var addFocus = function addFocus() {
+            this.parentElement.classList.add('focused');
+        };
+
+        var removeFocus = function removeFocus() {
+            this.parentElement.classList.remove('focused');
+        };
+
+        var form = forms[_i];
+        var submitBtn = form.querySelector('[type="submit"]');
+
+        for (var j = 0; j < form.elements.length; j++) {
+            if (form.elements[j].classList.contains('form__control')) {
+            (function () {
+                var ElementInput = form.elements[j];
+                ElementInput.addEventListener('focus', addFocus);
+                ElementInput.addEventListener('input', function () {
+                if (ElementInput.value) {
+                    ElementInput.parentElement.classList.remove('focused');
+                    ElementInput.parentElement.classList.add('valid');
+                } else {
+                    ElementInput.parentElement.classList.remove('valid');
+                }
+                });
+                ElementInput.addEventListener('blur', removeFocus);
+            })();
+            }
+        }
+        }
+    </script>
+</body>
+</html>

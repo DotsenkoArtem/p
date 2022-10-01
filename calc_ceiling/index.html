@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/nouislider.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Узнайте стоимость натяжных потолков  с монтажем уже сейчас</h1>
+		<p>Мы не скрываем стоимость м<sup>2</sup>, поскольку предлагаем Вам доступные цены и прозрачную стоимость</p>
+		<div class="calc">
+			<div class="inpt-data">
+
+				<div class="range-block sqr">
+					<div class="range-wrap">
+						<label for="sqr">Общая площадь, м<sup>2</sup>:</label>
+						<div class="range-inpt" id="sqr-range"></div>
+					</div>
+					<input type="number" class="digit-inpt sqr__inpt" id="sqr" step="1">
+				</div>
+
+				<div class="range-block lamps">
+					<div class="range-wrap">
+						<label for="lamps">Количество светильников:</label>
+						<div class="range-inpt" id="lamps-range"></div>
+					</div>
+					<input type="number" class="digit-inpt lamps__inpt" id="lamps" step="1">
+				</div>
+
+				<div class="txtr-block">
+					<span>Фактура: </span>
+					<div class="dropdown">
+						<div class="txtr_checked"><span class="txtr_checked-value">Глянцевая (800р/м<sup>2</sup>)</span><span class="angle-bg"><span class="angle"></span></span></div>
+						<div class="dropdown-box">
+							<ul>
+								<li class="dropdown__item" data-name="Глянцевая">Глянцевая (800р/м<sup>2</sup>)</li>
+								<li class="dropdown__item" data-name="Сатиновая">Сатиновая (700р/м<sup>2</sup>)</li>
+								<li class="dropdown__item" data-name="Тканевая">Тканевая (1500р/м<sup>2</sup>)</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="outpt-data">
+				<span>Итого:</span>
+				<span class="total-cost" id="total-cost">000<span class="rub">Руб</span></span>
+				<span>Материал + установка</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<script src="js/nouislider.js"></script>
+	<script src="js/calc.js"></script>
+</body>
+</html>

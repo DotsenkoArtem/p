@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Высокопроизводительный бетонный завод</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="slick/slick.css">
+	<link rel="stylesheet" href="slick/slick-theme.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="logo-wrap">
+				<picture>
+					<source srcset="img/logo/лого.webp" type="image/webp">
+					<img src="img/logo/лого.png" class="logo" alt="logo">
+				</picture>
+				<div class="slogan">
+					<span>Производим бетон как для себя.</span>
+					<span>Гордимся качеством.</span>
+				</div>
+			</div>
+			<address class="address1">
+					<div class="address__item">
+						<a href="tel:+78652398654" class="address__link phone-link">8865 239-8654</a>
+					</div>
+					<div class="address__item">
+						<a href="mailto:euro@beton.net" class="address__link mail-link"><span>euro</span>@beton.net</a>
+					</div>
+			</address>
+			<address class="address2">
+				<div class="address__item">
+					<a href="#" class="address__link map-link">Крым, ул.Бутная, 178</a>
+				</div>
+				<div class="address__item">
+					<span class="timetable">Пн-Пт 10<span class="small-sup">00</span> - 18<span class="small-sup">00</span></span>
+				</div>
+			</address>
+			<div class="commun">
+				<div class="commun__item">
+					<button class="btn-orange commun-btn modal-trigger">Заказать звонок</button>
+				</div>
+				<div class="commun__item mess">
+					<a href="https://wa.me/78652398654?text=Здравствуйте.%20Я%20заинтересован%20в%20ваших%20услугах." class="mess-link"><img src="img/icons/whatsapp.png" alt="whatsapp"></a>
+					<a href="viber://chat?number=%2B375292005818" class="mess-link"><img src="img/icons/viber.png" alt="viber"></a>
+				</div>
+			</div>
+			<div class="nav-toggle__wrap">
+				<a class="nav-toggle" onclick="navToggle()">
+					<span class="nav-toggle__item"></span>
+					<span class="nav-toggle__item"></span>
+					<span class="nav-toggle__item"></span>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<div class="nav-wrap">
+				<ul class="nav" id="menu">
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">О КОМПАНИИ</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">БЕТОН</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">РАСТВОР</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">ЦЕНЫ</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">ДОСТАВКА</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">БЕТОНОНАСОС</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">ИНФОРМАЦИЯ</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+					<li class="nav__item dropdown" onclick="navToggle()">
+						<a href="#" class="nav__link">КОНТАКТЫ</a>
+						<ul class="dropdown-box">
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+							<li class="dropdown__item"><a href="#" class="nav__link">О КОМПАНИИ</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="nav__search">
+					<form action="#" class="nav__search__form" method="POST">
+						<div class="nav__search__input-wrap">
+							<input type="search" id="search" class="nav__search__input" placeholder="Введите текст...">
+						</div>
+						<img src="img/icons/search.png" class="nav__search__img" alt="search">
+						<button class="btn-search" type="submit" id="btnsss"></button>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+
+	<main>
+		<section class="offer">
+			<div class="container">
+				<h1 class="offer__heading">БЕТОННЫЙ ЗАВОД ПОВЫШЕННОЙ МОЩНОСТИ</h1>
+				<p class="offer__text">Производство качественного бетона по цене <span>от 3 100 р./м3</span></p>
+				<form action="file.php" method="POST" class="feedback-form offer__form">
+					<div class="form-group">
+						<div class="input-wrap">
+							<input type="text" id="user_name1" placeholder="Ваше имя*" required>
+						</div>
+						<div class="input-wrap">
+							<input type="text" id="user_phone1" placeholder="Телефон*" required>
+						</div>
+					</div>
+					<div class="input-wrap">
+						<input type="submit" class="btn-orange" value="ЗАКАЗАТЬ">
+					</div>
+					<div class="form-group form-consent">
+						<input type="checkbox" id="consent1" required>
+						<label for="consent1">Соглашаюсь на <span>обработку персональных данных</span></label>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<section class="advantages">
+			<div class="container advantages__container">
+				<h2 class="advantages__heading">Наши преимущества</h2>
+				<div class="advantages__box">
+					<div class="advantages__item">
+						<img src="img/advantages/1.png" alt="Мощность производства" class="advantages__item__img">
+						<h3 class="advantages__item__heading">Мощность производства</h3>
+						<p class="advantages__item__text">Контроль качества.</p>
+						<p class="advantages__item__text">Лучшая логистика.</p>
+						<p class="advantages__item__text">Лучший завод.</p>
+					</div>
+					<div class="advantages__item">
+						<img src="img/advantages/2.png" alt="Надёжный производитель" class="advantages__item__img">
+						<h3 class="advantages__item__heading">Надёжный производитель</h3>
+						<p class="advantages__item__text">Контроль качества.</p>
+						<p class="advantages__item__text">Лучшая логистика.</p>
+						<p class="advantages__item__text">Лучший завод.</p>
+					</div>
+					<div class="advantages__item">
+						<img src="img/advantages/3.png" alt="Удобная логистика" class="advantages__item__img">
+						<h3 class="advantages__item__heading">Удобная логистика</h3>
+						<p class="advantages__item__text">Контроль качества.</p>
+						<p class="advantages__item__text">Лучшая логистика.</p>
+						<p class="advantages__item__text">Лучший завод.</p>
+					</div>
+					<div class="advantages__item">
+						<img src="img/advantages/4.png" alt="Гарантия качества" class="advantages__item__img">
+						<h3 class="advantages__item__heading">Гарантия качества</h3>
+						<p class="advantages__item__text">Контроль качества.</p>
+						<p class="advantages__item__text">Лучшая логистика.</p>
+						<p class="advantages__item__text">Лучший завод.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="product">
+			<div class="container product__container">
+				<h2 class="product__heading">Наша продукция</h2>
+				<div class="product__tabs">
+				    <input id="product__tab1" type="radio" name="tabs" checked>
+				    <label for="product__tab1" title="Вкладка 1" class="product__tab1">Бетон</label>
+				 
+				    <input id="product__tab2" type="radio" name="tabs">
+				    <label for="product__tab2" title="Вкладка 2" class="product__tab2">Раствор</label>
+				    <div id="content-product__tab1" class="tab-section">
+				        <div class="section-inner">
+				        	<table class="product__table product__beton">
+				        		<thead class="thead-mob">
+				        			<tr>
+				        				<th>Наименование / Цена для физ. / юр.лиц </th>
+				        			</tr>
+				        		</thead>
+				        		<thead class="thead-desk">
+				        			<tr>
+				        				<th>Наименование</th>
+				        				<th>Цена для физ.лиц</th>
+				        				<th >Цена для юр.лиц</th>
+				        				<th></th>
+				        			</tr>
+				        		</thead>
+				        		<tbody>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>
+				        			<tr>
+			        					<td>В7,5 (М100) F50-F75 W4</td>
+			        					<td>2 050 руб</td>
+			        					<td>2 050 руб</td>
+			        					<td>
+			        						<button class="btn-green">заказать</button>
+			        					</td>
+			        				</tr>	
+				        		</tbody>
+				        	</table>
+				        </div>
+				    </div>  
+				    <div id="content-product__tab2" class="tab-section">
+				       <div class="section-inner">
+	       		        	<table class="product__table product__beton">
+	       		        		<thead class="thead-mob">
+	       		        			<tr>
+	       		        				<th>Наименование / Цена для физ. / юр.лиц </th>
+	       		        			</tr>
+	       		        		</thead>
+	       		        		<thead class="thead-desk">
+	       		        			<tr>
+	       		        				<th>Наименование</th>
+	       		        				<th>Цена для физ.лиц</th>
+	       		        				<th >Цена для юр.лиц</th>
+	       		        				<th></th>
+	       		        			</tr>
+	       		        		</thead>
+	       		        		<tbody>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>
+	       		        			<tr>
+	       	        					<td>В7,5 (М100) F50-F75 W4</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>2 050 руб</td>
+	       	        					<td>
+	       	        						<button class="btn-green">заказать</button>
+	       	        					</td>
+	       	        				</tr>	
+	       		        		</tbody>
+	       		        	</table>
+				       </div>
+				    </div> 			       
+				</div>
+				<a href="#" class="btn-orange dwnld-price" download>скачать прайс</a>
+			</div>
+		</section>
+
+		<section class="about">
+			<div class="container about__container">
+				<h2 class="about__heading">О компании</h2>
+				<div class="about__production">
+					<h3 class="about__production__heading">Производство бетона.</h3>
+					<p class="about__production__text">Одной из наиболее интенсивно развивающихся отраслей в нашей стране является строительство. Ежегодно в Москве и Московской области возводится множество объектов жилого и производственного назначения, коммунальной инфраструктуры и т. п. При строительстве современных сооружений бетон составляет не менее 40 % от всех строительных материалов. Обычно он используется при устройстве фундамента, несущего колонно-ригельного каркаса, монолитных перекрытий и других ответственных конструкций зданий. В таких условиях значительно возрастает спрос на качественный промышленный бетон всех марок.</p>
+					<p class="about__production__text">Производственное объединение "Комбинат ЖБИ №4" осуществляет выпуск бетона любых марок от М100 до М500, а так же железобетонных изделий: фундаментных блоков, плит перекрытия, лестничных маршей и т.п. На нашем производстве используется новейшее оборудование, которое позволяет осуществлять мониторинг процесса на каждом этапе.</p>
+				</div>
+				<div class="feedstock">
+					<div class="feedstock__item">
+						<div class="feedstock__img-box">
+							<img src="img/about/cement.png" alt="Цемент Новороссийский" class="feedstock__img">
+							<div class="feedstock__img-point">01</div>
+							<div class="feedstock__img-footer-wrap">
+								<div class="feedstock__img-footer"></div>
+							</div>
+						</div>
+						<h4 class="feedstock__heading">Цемент Новороссийский</h4>
+						<p class="feedstock__text">Контроль качества.</p>
+						<p class="feedstock__text">Лучшая логистика.</p>
+						<p class="feedstock__text">Лучший завод.</p>
+					</div>
+					<div class="feedstock__item">
+						<div class="feedstock__img-box">
+							<img src="img/about/sand.png" alt="" class="feedstock__img">
+							<div class="feedstock__img-point">02</div>
+							<div class="feedstock__img-footer-wrap">
+								<div class="feedstock__img-footer"></div>
+							</div>
+						</div>
+						<h4 class="feedstock__heading">Песок морской</h4>
+						<p class="feedstock__text">Контроль качества.</p>
+						<p class="feedstock__text">Лучшая логистика.</p>
+						<p class="feedstock__text">Лучший завод.</p>
+					</div>
+					<div class="feedstock__item">
+						<div class="feedstock__img-box">
+							<img src="img/about/gravel.png" alt="" class="feedstock__img">
+							<div class="feedstock__img-point">03</div>
+							<div class="feedstock__img-footer-wrap">
+								<div class="feedstock__img-footer"></div>
+							</div>
+						</div>
+						<h4 class="feedstock__heading">Щебень гравийный</h4>
+						<p class="feedstock__text">Контроль качества.</p>
+						<p class="feedstock__text">Лучшая логистика.</p>
+						<p class="feedstock__text">Лучший завод.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="video-box">
+			<div class="container video__container" id="video__container">
+				<iframe src="https://www.youtube.com/embed/paADu56O_K0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+
+
+		<div class="cert">
+			<div class="cert__slider">
+				<div class="cert__slider__item"><img src="img/advantages/1s.png" alt="сертификат1"></div>
+				<div class="cert__slider__item"><img src="img/advantages/2s.png" alt="сертификат2"></div>
+				<div class="cert__slider__item"><img src="img/advantages/3s.png" alt="сертификат3"></div>
+				<div class="cert__slider__item"><img src="img/advantages/4s.png" alt="сертификат4"></div>
+				<div class="cert__slider__item"><img src="img/advantages/1s.png" alt="сертификат5"></div>
+				<div class="cert__slider__item"><img src="img/advantages/2s.png" alt="сертификат6"></div>
+			</div>
+		</div>
+
+		<section class="consult">
+			<div class="container consult__container">
+				<h3 class="consult__heading"><!-- НЕ ЗНАЕТЕ КАКОЙ БЕТОН ВАМ ПОДХОДИТ?  -->
+					ЗАКАЖИТЕ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ ТЕХНОЛОГА!
+				</h3>
+				<form action="file.php" method="POST" class="feedback-form consult__form">
+						<div class="input-wrap">
+							<input type="text" id="user_name2" placeholder="Ваше имя*" required>
+						</div>
+						<div class="input-wrap">
+							<input type="text" id="user_phone2" placeholder="Телефон*" required>
+						</div>
+						<div class="form-group">
+							<div class="input-wrap">
+								<input type="submit" class="btn-orange" value="ЗАКАЗАТЬ">
+							</div>
+							<div class="input-wrap form-consent">
+								<input type="checkbox" id="consent2" required>
+								<label for="consent2">Соглашаюсь на <span>обработку персональных данных</span></label>
+							</div>
+						</div>
+				</form>
+			</div>
+		</section>
+
+		<section class="rent">
+			<div class="container rent__container">
+				<h2>Аренда  бетононасоса</h2>
+				<div class="rent__img">
+					<picture>
+						<!-- <source srcset="img/logo/лого.webp" type="image/webp"> -->
+						<source srcset="img/rent/concrete-pump_comp.png">
+						<img src="img/rent/concrete-pump_comp.png" class="logo" alt="logo">
+					</picture>
+				</div>
+				<div class="rent__descr">
+					<h2 class="rent__heading">Аренда  бетононасоса</h2>
+					<p class="rent__text bold">Длина рукава от 18 до 52 метров.</p>
+					<p class="rent__text bold">от 5000рублей/час.</p>
+					<p class="rent__text">минимальный заказ от 3х часов.</p>
+					<a href="#" class="btn-orange rent__link">подробнее</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="prices">
+			<div class="container prices__container">
+				<div class="prices__descr">
+					<h2 class="prices__heading">Условия и цены доставки миксерами</h2>
+					<div class="prices__box">
+						<div class="prices__item">
+							<h3 class="prices__item__heading">Доставка <span>по городу</span></h3>
+							<p class="day">круглосуточно</p>
+							<p>Контроль качества.</p>
+							<p>Лучшая логистика.</p>
+							<p>Лучший завод.</p>
+						</div>
+						<div class="prices__item">
+							<h3 class="prices__item__heading">Доставка <span>за город</span></h3>
+							<p class="day">круглосуточно</p>
+							<p>Контроль качества.</p>
+							<p>Лучшая логистика.</p>
+							<p>Лучший завод.</p>
+						</div>
+					</div>
+				</div>
+				<div class="prices__img">
+					<picture>
+						<!-- <source srcset="img/logo/лого.webp" type="image/webp"> -->
+						<source srcset="img/prices/concrete_truck.png">
+						<img src="img/prices/concrete_truck.png" class="logo" alt="logo">
+					</picture>
+				</div>
+				<div class="prices__box copy">
+					<div class="prices__item">
+						<h3 class="prices__item__heading">Доставка <span>по городу</span></h3>
+						<p class="day">круглосуточно</p>
+						<p>Контроль качества.</p>
+						<p>Лучшая логистика.</p>
+						<p>Лучший завод.</p>
+					</div>
+					<div class="prices__item">
+						<h3 class="prices__item__heading">Доставка <span>за город</span></h3>
+						<p class="day">круглосуточно</p>
+						<p>Контроль качества.</p>
+						<p>Лучшая логистика.</p>
+						<p>Лучший завод.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="map">
+			<script async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A95f96dbd1b6db3c526f570e7eaa2a4d2618faebe16df99bb6e3ef508cede6692&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+			<div class="container map__container">
+				<div class="map__areas">
+					<div class="map__areas__item">
+						<a href="#" class="map__areas__link">Симферопольский район</a>
+						<a href="#" class="map__areas__link">Красногвардейский район</a>
+						<a href="#" class="map__areas__link">Армянский район</a>
+					</div>
+					<div class="map__areas__item">
+						<a href="#" class="map__areas__link">Бахчисарайский район</a>
+						<a href="#" class="map__areas__link">Красноперекопский район</a>
+						<a href="#" class="map__areas__link">Джанкойский район</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container footer__container">
+			<div class="footer__box">
+				<div class="footer__item logo-wrap">
+					<picture>
+						<source srcset="img/logo/лого.webp" type="image/webp">
+						<img src="img/logo/лого.png" class="logo" alt="logo">
+					</picture>
+					<p class="logo-text">
+						Добро пожаловать в наш чудесный мир. Мы искренне надеемся, что каждый пользователь нашего сайта найдет именно то, что ищет. Благодаря расширенным функциям активации учетной записи и новым виджетам входа в систему вы, безусловно, получите отличный опыт использования нашей веб-страницы.
+					</p>
+					<div class="footer-btn-wrap">
+						<button class="btn-orange footer-btn f-modal-trigger">Заказать бетон</button>
+					</div>
+				</div>
+
+				<div class="footer__item">
+					<div class="goods-link-wrap">
+						<a href="#" class="goods-link">бетон</a>
+						<a href="#" class="goods-link">раствор</a>
+						<a href="#" class="goods-link">цены</a>
+						<a href="#" class="goods-link">доставка</a>
+						<a href="#" class="goods-link">бетононасос</a>
+					</div>
+					<address class="footer__address">
+						<a href="tel:+78652398654" class="address__link phone-link">8865 239-8654</a>
+						<a href="mailto:euro@beton.net" class="address__link mail-link"><span>euro</span>@beton.net</a>
+						<span class="address__link map-link">Крым,<br> ул.Бутная, 178</span>
+						<a href="#" class="address__link scheme-link">схема проезда</a>
+						<span class="timetable">Пн-Пт 10<span class="small-sup">00</span> - 18<span class="small-sup">00</span></span>
+						<div class="commun__item mess">
+							<a href="https://wa.me/78652398654?text=Здравствуйте.%20Я%20заинтересован%20в%20ваших%20услугах." class="mess-link"><img src="img/icons/whatsapp.png" alt="whatsapp"></a>
+							<a href="viber://chat?number=%2B375292005818" class="mess-link"><img src="img/icons/viber.png" alt="viber"></a>
+						</div>
+					</address>
+				</div>
+
+				<div class="footer__item footer-order">
+					<h3 class="footer-order__heading">Заказать бетон</h3>
+					<form action="file.php" method="POST" class="feedback-form footer__form">
+						<input type="text" id="user_name3" placeholder="Ваше имя*" required>	
+						<input type="text" id="user_phone3" placeholder="Телефон*" required>
+						<textarea id="user_mess3" rows="3" cols="15" placeholder="Сообщение"></textarea>
+						<div class="form-group">
+							<div class="input-wrap">
+								<input type="submit" class="btn-orange" value="ЗАКАЗАТЬ">
+							</div>
+							<div class="input-wrap form-consent">
+								<input type="checkbox" id="consent3" required>
+								<label for="consent3">Соглашаюсь на <span>обработку персональных данных</span></label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<p class="copy">© 2020 Gagara Group. Политику конфеденциальности. Пользовательское соглашение</p>
+		</div>
+	</footer>
+
+
+
+	<!-- ===========МОДАЛЬНЫЕ ОКНА(О)========== -->
+	<div class="modal">
+		<div class="modal__content">
+			<div class="modal__header">
+				<h3 class="modal__heading">Заказать звонок</h3>
+				<button class="modal__close">
+					<span class="modal__close__item"></span>
+					<span class="modal__close__item"></span>
+				</button>
+			</div>
+			<div class="modal__body">
+				<form action="file.php" method="POST" class="feedback-form modal__form form-reset">					
+					<input type="text" id="user_name4" placeholder="Ваше имя*" required>
+					<input type="text" id="user_phone4" placeholder="+7(___)___-__-__*" required>
+					<div class="form-group">
+						<div class="input-wrap">
+							<input type="submit" class="btn-orange" value="ЗАКАЗАТЬ">
+						</div>
+						<div class="input-wrap form-consent">
+							<input type="checkbox" id="consent4" required>
+							<label for="consent4">Соглашаюсь на <span>обработку персональных данных</span></label>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal__footer">Не введено имя получателя звонка.</div>
+		</div>
+		<div class="modal__overlay"></div>
+	</div>
+
+	<div class="f-modal">
+		<div class="f-modal__content">
+			<div class="modal__header">
+				<h3 class="modal__heading">Заказать бетон</h3>
+				<button class="modal__close">
+					<span class="modal__close__item"></span>
+					<span class="modal__close__item"></span>
+				</button>
+			</div>
+			<div class="modal__body">
+				<form action="file.php" method="POST" class="feedback-form modal__form footer__form f-form-reset">
+					<input type="text" id="user_name5" placeholder="Ваше имя*" required>	
+					<input type="text" id="user_phone5" placeholder="Телефон*" required>
+					<textarea id="user_mess4" rows="3" cols="15" placeholder="Сообщение"></textarea>
+					<div class="form-group">
+						<div class="input-wrap">
+							<input type="submit" class="btn-orange" value="ЗАКАЗАТЬ">
+						</div>
+						<div class="input-wrap form-consent">
+							<input type="checkbox" id="consent5" required>
+							<label for="consent5">Соглашаюсь на <span>обработку персональных данных</span></label>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal__footer">Не введено имя получателя звонка.</div>
+		</div>
+		<div class="f-modal__overlay"></div>
+	</div>
+
+	<!-- ===========СКРИПТЫ========== -->
+
+	<!-- ===========JQUERY========== -->
+	<script src="jquery/jquery-3.5.0.min.js"></script>
+	<script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+	
+	<!-- ===========UP-BUTTON========== -->
+	<script src="sksmatt-UItoTop-jQuery-Plugin-f97c324/js/easing.js"></script>
+	<script src="sksmatt-UItoTop-jQuery-Plugin-f97c324/js/jquery.ui.totop.js"></script>
+
+	<!-- ===========SLIDER========== -->
+	<script src="slick/slick.min.js"></script>
+
+	<!-- ===========MAIN========== -->
+	<script src="js/main.js"></script>
+	<!-- <script src="js/main3.js"></script> -->
+</body>
+</html>

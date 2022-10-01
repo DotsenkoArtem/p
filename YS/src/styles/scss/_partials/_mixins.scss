@@ -1,0 +1,37 @@
+@mixin headerShadowMobile ($offset-x: 0, $offset-y: 10px, $blur: 10px, $color: rgba(146, 171, 234, 0.1)) {
+    box-shadow: $offset-x $offset-y $blur $color;
+}
+
+@mixin btnPrimatyBg () {
+    background: linear-gradient(180deg, #37AAFD 0%, #1C84E3 100%);
+}
+@mixin btnPrimatyShadow () {
+    box-shadow: 0px 4px 0px -1px #1A6EBB, 0px 40px 60px -10px rgba(126, 176, 240, 0.5), inset 0px 4px 8px 4px rgba(255, 255, 255, 0.12);
+}
+
+@mixin btnPrimatyBgHover () {
+    background: linear-gradient(180deg, #54B7FF 0%, #2A93F4 100%);
+}
+
+@mixin btnPrimatyBgActive () {
+    background: #5BB8FF;;
+}
+
+@mixin btnFileHover () {
+    background: linear-gradient(180deg, #54B7FF 0%, #2A93F4 100%);
+    box-shadow: 0px 4px 0px -1px #1A6EBB, 0px 40px 60px -10px rgba(126, 176, 240, 0.5), inset 0px 4px 8px 4px rgba(255, 255, 255, 0.12);
+}
+
+@mixin btnFileActive () {
+    background: #5BB8FF;
+    box-shadow: 0px 4px 0px -1px #1A6EBB, 0px 40px 60px -10px rgba(126, 176, 240, 0.5), inset 0px 4px 8px 4px rgba(255, 255, 255, 0.12);
+}
+
+@mixin formSectionInnerShadow() {
+    box-shadow: 0px 10px 10px rgba(146, 171, 234, 0.12);
+}
+
+@mixin formSectionInnerShadowAfter() {
+    box-shadow: 0px 10px 10px rgba(146, 171, 234, 0.12), 0px 30px 80px rgba(146, 171, 234, 0.15);
+}
+

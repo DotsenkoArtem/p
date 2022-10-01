@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Авианна - туристическое агенство</title>
+  <meta name="description" content="Содержимое мета-тега Description"/>
+  <meta name="robots" content="index, nofollow"/>
+
+
+
+  <script defer src="js/preloader.js"></script>
+  <link rel="preload" as="style" href="css/style.css">
+
+  <link rel="preconnect" href="https://api-maps.yandex.ru/2.1/?apikey=d3ab6b1f-34ef-4668-bcab-867e95405303&lang=ru_RU">
+  <link rel="dns-prefetch" href="https://api-maps.yandex.ru/2.1/?apikey=d3ab6b1f-34ef-4668-bcab-867e95405303&lang=ru_RU">
+
+  <link rel="stylesheet" href="slick/slick.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <!-- PRELOADER -->
+  <div class="loader">
+  <div class="l_main">
+    <div class="l_square"><span></span><span></span><span></span></div>
+    <div class="l_square"><span></span><span></span><span></span></div>
+    <div class="l_square"><span></span><span></span><span></span></div>
+    <div class="l_square"><span></span><span></span><span></span></div>
+  </div>
+  </div>
+  <!-- END PRELOADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top__row">
+          <div class="header__phone">
+            <span>Туристам: </span><a href="tel:+79314145861">+7 (931) 414-58-61</a>
+          </div>
+          <div class="header__phone">
+            <span>Агенствам: </span><a href="tel:+78314145861">+7 (831) 414-58-61</a>
+          </div>
+          <div class="log-block mob">
+            <a href="#">Вход</a>
+            <div class="sep"></div>
+            <a href="#">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="header">
+      <div class="container">
+        <div class="header__row">
+          <div class="logo header__logo">
+            <a href="#">
+              <img src="img/logo.svg" alt="">
+              <span class="logo__slog">18 лет работаем для Вас</span>
+            </a>
+          </div>
+          <div class="contacts-block">
+            <div class="contacts header__contacts">
+              <span class="contacts__name">Отдел продаж путевок:</span>
+              <a class="contacts__mail" href="mailto:mail@mail.ru">mail@mail.ru</a>
+              <div class="social">
+                <a class="social__link" href="https://msngr.link/tg/user_name"><img src="img/icons/telegram.svg" alt=""></a>
+                <a class="social__link" href="https://msngr.link/wa/79530054770"><img src="img/icons/whatsapp.svg" alt=""></a>
+                <a class="social__link" href="https://msngr.link/vi/79530054770"><img src="img/icons/viber.svg" alt=""></a>
+                <a class="social__link" href="https://msngr.link/sk/artemdoc111"><img src="img/icons/ms_skype.svg" alt=""></a>
+              </div>
+            </div>
+            <div class="contacts header__contacts">
+              <span class="contacts__name">Руководитель:</span>
+              <a class="contacts__mail" href="mailto:mail@mail.ru">mail@mail.ru</a>
+              <div class="social">
+                <a class="social__link" target="_blank" href="https://ru-ru.facebook.com/"><img src="img/icons/Facebook.svg" alt=""></a>
+                <a class="social__link" target="_blank" href="https://ok.ru/"><img src="img/icons/OK.svg" alt=""></a>
+                <a class="social__link" target="_blank" href="https://vk.com/"><img src="img/icons/vk.svg" alt=""></a>
+                <a class="social__link" target="_blank" href="https://www.instagram.com/?hl=ru"><img src="img/icons/instagram.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+          <div class="log-block-wrap">
+            <div class="header__pay">
+              <a href="#" class="btn btn_round btn_sec">Перейти к оплате</a>
+            </div>
+            <div class="log-block">
+              <a href="#">Вход</a>
+              <div class="sep"></div>
+              <a href="#">Регистрация</a>
+            </div>
+          </div>
+          <span class="cb-btn"><img src="img/icons/phone.svg" alt="Заказать обратный звонок"></span>
+          <div class="menu-toggle-wrap">
+            <div class="menu-toggle">
+              <span class="menu-toggle__item"></span>
+              <span class="menu-toggle__item"></span>
+              <span class="menu-toggle__item"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  
+  <nav class="top-nav">
+    <div class="container top-nav__container" >
+      <div class="header-top__row mob">
+        <div class="header__phone">
+          <span>Туристам: </span><a href="tel:+79314145861">+7 (931) 414-58-61</a>
+        </div>
+        <div class="header__phone">
+          <span>Агенствам: </span><a href="tel:+78314145861">+7 (831) 414-58-61</a>
+        </div>
+      </div>
+      <ul class="top-menu">
+        <li class="top-menu__item"><a href="#">Главная</a></li>
+        <li class="top-menu__item dropdown">
+          <a href="#">Каталог туров</a>
+          <div class="dropdown-box">
+            <div class="tour-box">
+              <div class="tour-box__item tour-cat">
+                <div class="tour__list">
+                  <span class="tour-cat__name">Туры:</span>
+                  <ul>
+                    <li><a href="#">Экскурсионные</a></li>
+                    <li><a href="#">По России</a></li>
+                    <li><a href="#">Заграницу</a></li>
+                  </ul>
+                </div>
+                <div class="tour__list">
+                  <span class="tour-cat__name">Автобусные туры:</span>
+                  <ul>
+                    <li><a href="#">Краснодарский Край</a></li>
+                    <li><a href="#">Абхазию</a></li>
+                    <li><a href="#">Крым</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tour-box__item tour-thumb-box">
+                <a href="#" class="tour-thumb">
+                  <img src="img/thumbs/sanator.jpg" alt="Санатории и пансионаты">
+                  <span class="tour__title">Санатории и пансионаты</span>
+                </a>
+                <a href="#" class="tour-thumb">
+                  <img src="img/thumbs/cruise.jpg" alt="Круизы">
+                  <span class="tour__title">Круизы</span>
+                </a>
+                <a href="#" class="tour-thumb">
+                  <img src="img/thumbs/ch-camps.jpg" alt="Детские лагеря">
+                  <span class="tour__title">Детские лагеря</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="top-menu__item dropdown">
+          <a href="#">Агенствам</a>
+          <div class="dropdown-box">
+            <ul>
+              <li class="dropdown__item"><a href="#">Отправления</a></li>
+              <li class="dropdown__item"><a href="#">Способы оплаты</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="top-menu__item"><a href="#">О компании</a></li>
+        <li class="top-menu__item"><a href="#">Способы оплаты</a></li>
+        <li class="top-menu__item"><a href="#">Контакты</a></li>
+        <li class="top-menu__item mob"><a href="#">Физлицам</a></li>
+        <li class="top-menu__item"><a href="#">Расписание автобусов</a></li>
+      </ul>
+      <div class="header__pay mob">
+        <a href="#" class="btn btn_round btn_sec">Перейти к оплате</a>
+      </div>
+      <div class="contacts-block mob">
+        <div class="contacts header__contacts">
+          <span class="contacts__name">Отдел продаж путевок:</span>
+          <a class="contacts__mail" href="mailto:mail@mail.ru">mail@mail.ru</a>
+          <div class="social">
+            <a class="social__link" href="https://msngr.link/tg/user_name"><img src="img/icons/telegram.svg" alt=""></a>
+            <a class="social__link" href="https://msngr.link/wa/79530054770"><img src="img/icons/whatsapp.svg" alt=""></a>
+            <a class="social__link" href="https://msngr.link/vi/79530054770"><img src="img/icons/viber.svg" alt=""></a>
+            <a class="social__link" href="https://msngr.link/sk/artemdoc111"><img src="img/icons/ms_skype.svg" alt=""></a>
+          </div>
+        </div>
+        <div class="contacts header__contacts">
+          <span class="contacts__name">Руководитель:</span>
+          <a class="contacts__mail" href="mailto:mail@mail.ru">mail@mail.ru</a>
+          <div class="social">
+            <a class="social__link" target="_blank" href="https://ru-ru.facebook.com/"><img src="img/icons/Facebook.svg" alt=""></a>
+            <a class="social__link" target="_blank" href="https://ok.ru/"><img src="img/icons/OK.svg" alt=""></a>
+            <a class="social__link" target="_blank" href="https://vk.com/"><img src="img/icons/vk.svg" alt=""></a>
+            <a class="social__link" target="_blank" href="https://www.instagram.com/?hl=ru"><img src="img/icons/instagram.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="top-menu-overl"></div>
+  </nav>
+  
+  
+  <main>
+
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb__item"><a href="#">Главная</a></li>
+          <li class="breadcrumb__item"><a href="#">Туры</a></li>
+          <li class="breadcrumb__item current">Люкс стандарт 2 комнаты</li>
+        </ol>
+      </nav>
+    </div>
+  
+    <div class="container">
+      <div class="main-tour">
+<!-- ГЛАВНЫЙ СЛАЙДЕР -->
+        <div class="main-gallery">
+          <!-- <div class="swiper-wrapper"> -->
+            <div class="slick-slide-1">
+              <div class="b-lazy main-gallery__img" data-src="img/m1.jpg" data-src-small="img/480/m1.jpg"></div>
+            </div>
+            <div class="slick-slide-2">
+              <div class="b-lazy main-gallery__img" data-src="img/m2.jpg" data-src-small="img/480/m2.jpg"></div>
+            </div>
+            <div class="slick-slide-3">
+              <div class="b-lazy main-gallery__img" data-src="img/m3.jpg" data-src-small="img/480/m3.jpg"></div>
+            </div>
+            <div class="slick-slide-4">
+              <div class="b-lazy main-gallery__img" data-src="img/m4.jpg" data-src-small="img/480/m4.jpg"></div>
+            </div>
+            <div class="slick-slide-5">
+              <div class="b-lazy main-gallery__img" data-src="img/m5.jpg" data-src-small="img/480/m5.jpg"></div>
+            </div>
+            <div class="slick-slide-6">
+              <div class="b-lazy main-gallery__img" data-src="img/m6.jpg" data-src-small="img/480/m6.jpg"></div>
+            </div>
+
+
+        </div>
+        <!-- СЛАЙДЕР С ПРЕВЬЮШКАМИ -->
+        <div class="main-gallery__thumbs">
+
+            <div><img src="img/m1-1.jpg" alt="thumb"></div>
+            <div><img src="img/m2-1.jpg" alt="thumb"></div>
+            <div><img src="img/m3-3.jpg" alt="thumb"></div>
+            <div><img src="img/m4-1.jpg" alt="thumb"></div>
+            <div><img src="img/m5-1.jpg" alt="thumb"></div>
+            <div><img src="img/m6-1.jpg" alt="thumb"></div>
+
+        </div>
+  
+        <div class="main-tour__content">
+          <div class="main-tour__reviews">
+            <p><span class="reviews-count">1</span>отзыв (<span class="reviews-middle">4.7</span>)</p>
+          </div>
+          <div class="main-tour__title">
+            <h1>Тур поездка Йошкар-ола 5 дней</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="tour-start mob">
+
+        <div class="tour-start__date">
+          <div class="tour-start__title">Даты старта тура:</div>
+          <div class="date-select">
+            <div class="option_checked"><span class="option_checked-value">1 января октября 2021</span><span class="angle-bg"><span class="angle"></span></span></div>
+            <div class="option-box">
+              <ul>
+                <li class="option">1 января октября 2021</li>
+                <li class="option">2 января октября 2021</li>
+                <li class="option">3 января октября 2021</li>
+              </ul>
+            </div>
+            <div class="option-box-overl"></div>
+          </div>
+        </div>
+        
+        <div class="tour-duration">
+          <div class="tour-duration__title">Продолжительность:</div>
+          <div class="tour-duration__body">
+            <span class="day">4 дня</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="container main-content-wrap">
+      <div class="main-content">
+  
+<!-- СТАНЦИЯ М19 -->
+        <div class="hotel-card cont-resize closed">
+          <div class="hotel-card__header">
+            <div class="hotel__descr">
+              <div class="hotel__descr-inner">
+                <div class="stars stars_s4"></div>
+                <h3>Станция М19</h3>
+                <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                <div class="hotel__meal"><span>Питание:</span> Завтрак (“шведский стол”)</div>
+                <div class="hotel__services"></div>
+              </div>
+            </div>
+  
+            <div class="hotel__price">
+              <div class="price">32 200<span class="rub">₽</span><span class="rub-ms"></span></div>
+              <div class="credit-card">
+                <img src="img/icons/mir-ttl.svg" class="title" alt="мир">
+                <p><span>28 000<span class="rub">₽</span><span class="rub-ms">P</span></span> по карте МИР с учётом кэшбэка</p>
+              </div>
+            </div>
+            <div class="hotel__action">
+              <span class="btn-resize closed">Список всех отелей</span>
+              <span class="btn-resize opened mob">Скрыть список</span>
+              <button class="btn btn_round btn_prim btn_book">Бронировать</button>
+              <div class="hotel__services mob"></div>
+            </div>
+          </div>
+  
+          <div class="hotel-card__body">
+            <div class="hotel__day-box">
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+                    <div class="tltp-overlay"></div>
+                  </div>
+                </div>
+
+
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <!-- СТАНЦИЯ М19 ТЕНЬ -->
+              <div class="hotel-card__shadow"></div>
+            </div>
+          </div>
+  
+          <div class="hotel-card__footer">
+            <span class="btn-resize opened">Скрыть список</span>
+          </div>
+        </div>
+        
+
+<!-- СТАНЦИЯ М19 -->
+        <div class="hotel-card cont-resize closed">
+          <div class="hotel-card__header">
+            <div class="hotel__descr">
+              <div class="hotel__descr-inner">
+                <div class="stars stars_s3"></div>
+                <h3>Станция М19</h3>
+                <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                <div class="hotel__meal"><span>Питание:</span> Завтрак (“шведский стол”)</div>
+                <div class="hotel__services"></div>
+              </div>
+            </div>
+  
+            <div class="hotel__price">
+              <div class="price">24 200<span class="rub">₽</span><span class="rub-ms"></span></div>
+              <div class="credit-card">
+                <img src="img/icons/mir-ttl.svg" class="title" alt="мир">
+                <p><span>20 000<span class="rub">₽</span><span class="rub-ms">P</span> по карте МИР с учётом кэшбэка</span></p>
+              </div>
+            </div>
+            <div class="hotel__action">
+              <span class="btn-resize closed">Список всех отелей</span>
+              <span class="btn-resize opened mob">Скрыть список</span>
+              <button class="btn btn_round btn_prim btn_book">Бронировать</button>
+              <div class="hotel__services mob"></div>
+            </div>
+          </div>
+  
+          <div class="hotel-card__body">
+            <div class="hotel__day-box">
+              
+
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="hotel__day">
+                  <div class="hotel__day__title">
+                    <a href="#" class="wrap">
+                      <p>Первый день</p>
+                      <h4>Станция М19</h4>
+                    </a>
+                    <span class="info"></span>
+                    <!-- ПОДСКАЗКА -->
+                    <div class="hotel__day-tltp">
+                      <div class="hotel__descr">
+                        <div class="hotel__descr-inner">
+                          <h3>Станция М19</h3>
+                          <div class="hotel__conf">Моментальное подтверждение</div>
+                          <div class="hotel__places"><span>Номер:</span> 2-мест.</div>
+                          <div class="hotel__meal"><span>Питание:</span> Шведский стол</div>
+                          <div class="hotel__services"></div>
+                        </div>
+                      </div>
+                      <!-- КАРТА -->
+                      <div class="map-block">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="hotel-card__shadow"></div>
+            </div>
+          </div>
+  
+          <div class="hotel-card__footer">
+            <span class="btn-resize opened">Скрыть список</span>
+          </div>
+        </div>
+  
+  
+<!-- ЭКСКУРСИОННЫЕ ТУРЫ -->
+        <div class="exc-tours">
+          <div class="exc-tours__header">
+            <div class="exc-tours__title">
+              <h3>Экскурсионные туры</h3>
+            </div>
+            <div class="tour-duration">
+              <div class="tour-duration__title">Продолжительность:</div>
+              <div class="tour-duration__body">
+                <span class="day">5 дней</span>
+                <span class="night">4 ночи</span>
+              </div>
+            </div>
+          </div>
+          <div class="exc-tours__col">
+            <!-- ФОРМА -->
+            <form class="form" action="#" method="POST">
+                          
+              <div class="form-block">
+                <div class="form-block__title">Даты старта тура:</div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="start1" name="start">
+                  <label class="form__radio-label" for="start1">1 января 2020</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="start2" name="start">
+                  <label class="form__radio-label" for="start2">2 января 2020</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="start3" name="start">
+                  <label class="form__radio-label" for="start3">3 января 2020</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="start4" name="start">
+                  <label class="form__radio-label" for="start4">4 января 2020</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="start5" name="start">
+                  <label class="form__radio-label" for="start5">5 января 2020</label>
+                </div>
+              </div>
+              
+              <div class="form-block b-after-col">
+                <div class="form-block__title">Города посадки:</div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="town1" name="town">
+                  <label class="form__radio-label" for="town1"><span class="time">18:15</span>г. Заволжье, ТЦ Европа</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="town2" name="town">
+                  <label class="form__radio-label" for="town2"><span class="time">18:45</span>г. Балахна, автостанция</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="town3" name="town">
+                  <label class="form__radio-label" for="town3"><span class="time">20:00</span>г. Дзержинск, Северные ворота</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="town4" name="town">
+                  <label class="form__radio-label" for="town4"><span class="time">21:00</span>г. Н.Новгород, площадь Ленина,памятник Ленину</label>
+                </div>
+                <div class="form-group">
+                  <input class="form__radio-input" type="radio" id="town5" name="town">
+                  <label class="form__radio-label" for="town5"><span class="time">22:00</span>г. Бор, ТЦ «Зеркало</label>
+                </div>
+              </div>
+            </form>
+            
+            <!-- КАРТА -->
+            <div class="map-block">
+              <div id="map"></div>
+            </div>
+            
+    
+            <div class="exc-tours__list">
+              <span>Экскурсионные программы:</span>
+              <ul>
+                <li>Осмотр замка</li>
+                <li>Нерест рыб</li>
+                <li>Обзорная площадка</li>
+              </ul>
+            </div>
+            <div class="exc-tours__list">
+              <span>В стоимость включено:</span>
+              <ul>
+                <li class="meal">Питание</li>
+                <li class="tickets">Входные билеты</li>
+                <li class="guide">Cопровождающий</li>
+              </ul>
+            </div>
+            <div class="exc-tours__list">
+              <span>Дополнительно оплачивается:</span>
+              <ul>
+                <li>новогодний банкет</li>
+                <li>экскурсия на смотровую</li>
+                <li>новогодний подароков</li>
+                <li>музей сыра</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+
+<!-- ПРОГРАММА ТУРА -->
+        <div class="tour-progr">
+          <h2>Программа тура</h2>
+  
+        <!-- ПРОГРАММА ТУРА - ДЕНЬ 1 -->
+          <div class="progr-day">
+            <div class="progr-day__title">
+              <p><span>День 1</span>Г. Горно-Алтайск - с. Акташа</p>
+            </div>
+            <div class="progr-day__content">
+              <div class="line-mark"></div>
+              <div class="wrap">
+                <p>Встреча туристов в г. Барнаул: в аэропорту с 05:00 до 07:00, на ж/д вокзале с 07:00 до 09:00. Время в пути 4-5 часов.</p>
+                <p>Встреча в аэропорту г. Горно-Алтайска по прилету самолета.</p>
+                <p>Туристам, прибывающим на «Таежник» из г. Новосибирск, рекомендуем рейс в 22:15 в день предшествующий началу маршрута. Время в пути около 9 часов.</p>
+                <p>Сбор группы на туркомплексе «Таежник» до 13.00.</p>
+                <p>Переезд до базовой стоянке в урочище «Сугойна». Размещение в теплом деревянном доме.</p>
+                <p>Для желающих прогулка по зимнему лесу. Баня. Вечер знакомств.</p>
+                <p><i>Протяженность: авто — 60 км</i></p>
+  
+<!-- СЛАЙДЕР ПРОГРАММА ТУРА ДЕНЬ 1 -->
+<!-- FANCY BOX -->
+                
+                <div class="day-gallery-d1-wrap">
+                  <div class="day-gallery-d1">
+                  
+                      <!-- СЛАЙДЫ -->
+                      <div class="swiper-slide swiper-slide-1"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m1.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-2"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m2.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-3"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m3.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-1"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m4.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-2"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m5.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-3"><a class="fancy-gal-link" data-fancybox="gallery-1" href="img/m6.jpg"></a></div>
+
+                
+                    
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+
+<!-- ПРОГРАММА ТУРА - ДЕНЬ 2 -->
+          <div class="progr-day">
+            <div class="progr-day__title">
+              <p><span>День 2</span>Каракольские озера и в долину реки Сугойне</p>
+            </div>
+            <div class="progr-day__content">
+              <div class="line-mark"></div>
+              <div class="wrap">
+                <p>Встреча туристов в г. Барнаул: в аэропорту с 05:00 до 07:00, на ж/д вокзале с 07:00 до 09:00. Время в пути 4-5 часов.</p>
+                <p>Встреча в аэропорту г. Горно-Алтайска по прилету самолета.</p>
+                <p>Туристам, прибывающим на «Таежник» из г. Новосибирск, рекомендуем рейс в 22:15 в день предшествующий началу маршрута. Время в пути около 9 часов.</p>
+                <p>Сбор группы на туркомплексе «Таежник» до 13.00.</p>
+                <p>Переезд до базовой стоянке в урочище «Сугойна». Размещение в теплом деревянном доме.</p>
+                <p>Для желающих прогулка по зимнему лесу. Баня. Вечер знакомств.</p>
+                <p><i>Протяженность: авто — 60 км</i></p>
+  
+<!-- СЛАЙДЕР ПРОГРАММА ТУРА ДЕНЬ 1 -->
+<!-- FANCY BOX -->
+                <div class="day-gallery-d2-wrap">
+                  <div class="day-gallery-d2">
+
+                      <div class="swiper-slide swiper-slide-1"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m1.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-2"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m2.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-3"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m3.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-1"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m4.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-2"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m5.jpg"></a></div>
+                      <div class="swiper-slide swiper-slide-3"><a class="fancy-gal-link" data-fancybox="gallery-2" href="img/m6.jpg"></a></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+<!-- ОТЗЫВЫ -->
+        <div class="reviews">
+          <div class="reviews__header">
+            <h2>Отзывы</h2>
+            <button class="btn btn_round btn_prim reviews__btn">Написать отзыв</button>
+          </div>
+          <div class="reviews__body">
+            <!-- Отзыв 1 -->
+            <div class="reviews__item">
+              <div class="reviews__title">
+                <div class="author">Андрей Андреев</div>
+                <div class="stars stars_s5"></div>
+              </div>
+              <div class="reviews__content">
+                Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Ducimus accusantium cumque quis nobis quidem reiciendis delectus, nisi saepe autem deleniti similique sunt necessitatibus sint possimus repudiandae inventore provident facilis praesentium illum debitis ea obcaecati. Debitis distinctio odit expedita temporibus recusandae esse animi, eos voluptate similique dolorem cumque reiciendis fugit nulla perspiciatis, consequuntur qui repellat eius, consequatur. Nihil quidem, ut iure earum repellat optio non accusamus minus ullam velit cum et, sit magnam consequuntur in blanditiis veritatis? Ea ipsam architecto voluptas facilis magni ex vel minima voluptatum autem accusamus maiores placeat cupiditate nobis, quia. Dolore impedit, error quam assumenda obcaecati optio dolores, deserunt doloremque saepe distinctio quis. Temporibus ab iusto minima tenetur. Eos veritatis, sint, minima officia vel voluptate voluptatibus odio voluptatem non fugiat labore, itaque assumenda nam magni quasi? Beatae, a blanditiis nostrum alias voluptate velit assumenda ipsa accusantium perferendis aperiam ut explicabo distinctio vitae enim libero magni ab voluptatibus.
+                <div class="reviews__content-shadow"></div>
+              </div>
+              <div class="reviews__link-wrap">
+                <span class="reviews__link reviews__link-open">Читать полностью</span>
+                <span class="reviews__link reviews__link-close hidden">Скрыть</span>
+              </div>
+            </div>
+  
+            <!-- Отзыв 2 -->
+            <div class="reviews__item">
+              <div class="reviews__title">
+                <div class="author">Андрей Малахов</div>
+                <div class="stars stars_s5"></div>
+              </div>
+              <div class="reviews__content">
+                Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Ducimus accusantium cumque quis nobis quidem reiciendis delectus, nisi saepe autem deleniti similique sunt necessitatibus sint possimus repudiandae inventore provident facilis praesentium illum debitis ea obcaecati. Debitis distinctio odit expedita temporibus recusandae esse animi, eos voluptate similique dolorem cumque reiciendis fugit nulla perspiciatis, consequuntur qui repellat eius, consequatur. Nihil quidem, ut iure earum repellat optio non accusamus minus ullam velit cum et, sit magnam consequuntur in blanditiis veritatis? Ea ipsam architecto voluptas facilis magni ex vel minima voluptatum autem accusamus maiores placeat cupiditate nobis, quia. Dolore impedit, error quam assumenda obcaecati optio dolores, deserunt doloremque saepe distinctio quis. Temporibus ab iusto minima tenetur. Eos veritatis, sint, minima officia vel voluptate voluptatibus odio voluptatem non fugiat labore, itaque assumenda nam magni quasi? Beatae, a blanditiis nostrum alias voluptate velit assumenda ipsa accusantium perferendis aperiam ut explicabo distinctio vitae enim libero magni ab voluptatibus.
+                <div class="reviews__content-shadow"></div>
+              </div>
+              <div class="reviews__link-wrap">
+                <span class="reviews__link reviews__link-open">Читать полностью</span>
+                <span class="reviews__link reviews__link-close hidden">Скрыть</span>
+              </div>
+            </div>
+  
+          </div>
+          <div class="reviews__footer">
+          </div>
+        </div>
+      </div>
+  
+  
+  
+<!-- ЭКСКУРСИОНЫЫЕ ТУРЫ - КАК ПОДЛОЖКА ДЛЯ АБСОЛЮТНО ПОЗИЦИОНИРУЕМОГО БЛОКА "Экскурсионные туры"-->
+      <aside class="sidebar">
+        Экскурсионные туры
+      </aside>
+    </div>
+  
+  
+    <div class="container">
+<!-- ПРОСМОТРЕННЫЕ ТУРЫ -->
+      <div class="browsed-tours">
+        <div class="browsed-tours__title">
+          <h2>Туры которые вы просматривали</h2>
+        </div>
+      
+        <div class="browsed-tours__gallery-wrap">
+          <!-- СЛАЙДЕР ПРОСМОТРЕННЫЕ ТУРЫ-->
+          <div class="browsed-tours__gallery">
+      
+
+  <!-- СЛАЙД -->
+              <div class="slick-slide">
+                <a href="#">
+                  <div class="slick-slide__img">
+                    <picture>
+                      <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                      <img src="img/compr-img/Rectangle411-min.jpg" alt="Тур поездка Йошкар-ола">
+                    </picture>
+                  </div>
+                </a>
+                <div class="browsed-tours__content">
+                  <div class="browsed-tours__title">
+                    <h4>Тур поездка Йошкар-ола 5 дней</h4>
+                  </div>
+                  <div class="browsed-tours__reviews">
+                    <p><span class="reviews-count">1</span>отзыв (<span class="reviews-middle">4.7</span>)</p>
+                  </div>
+                </div>
+              </div>
+
+  <!-- СЛАЙД -->
+              <div class="slick-slide">
+                <a href="#">
+                  <div class="slick-slide__img">
+                    <picture>
+                      <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                      <img src="img/compr-img/15.jpg" alt="Тур поездка Йошкар-ола">
+                    </picture>
+                  </div>
+                </a>
+                <div class="browsed-tours__content">
+                  <div class="browsed-tours__title">
+                    <h4>Тур поездка Йошкар-ола 5 дней</h4>
+                  </div>
+                  <div class="browsed-tours__reviews">
+                    <p><span class="reviews-count">1</span>отзыв (<span class="reviews-middle">4.7</span>)</p>
+                  </div>
+                </div>
+              </div>
+              
+  <!-- СЛАЙД -->
+              <div class="slick-slide">
+                <a href="#">
+                  <div class="slick-slide__img">
+                    <picture>
+                      <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                      <img src="img/compr-img/17.jpg" alt="Тур поездка Йошкар-ола">
+                    </picture>
+                  </div>
+                </a>
+                <div class="browsed-tours__content">
+                  <div class="browsed-tours__title">
+                    <h4>Тур поездка Йошкар-ола 5 дней</h4>
+                  </div>
+                  <div class="browsed-tours__reviews">
+                    <p><span class="reviews-count">1</span>отзыв (<span class="reviews-middle">4.7</span>)</p>
+                  </div>
+                </div>
+              </div>
+
+  <!-- СЛАЙД -->
+              <div class="slick-slide">
+                <a href="#">
+                  <div class="slick-slide__img">
+                    <picture>
+                      <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                      <img src="img/compr-img/22.jpg" alt="Тур поездка Йошкар-ола">
+                    </picture>
+                  </div>
+                </a>
+                <div class="browsed-tours__content">
+                  <div class="browsed-tours__title">
+                    <h4>Тур поездка Йошкар-ола 5 дней</h4>
+                  </div>
+                  <div class="browsed-tours__reviews">
+                    <p><span class="reviews-count">1</span>отзыв (<span class="reviews-middle">4.7</span>)</p>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+  
+<!-- ПОХОЖИЕ ТУРЫ -->
+      <div class="similar-tours">
+        <div class="similar-tours__title">
+          <h2>Похожие туры</h2>
+        </div>
+  
+        <div class="similar-tours__gallery-wrap">
+<!-- СЛАЙДЕР -->
+          <div class="similar-tours__gallery">
+
+  
+              <div class="swiper-slide">
+                <div class="swiper-slide__img">
+                  <picture>
+                    <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                    <img src="img/compr-img/group156-min.jpg" alt="Тур поездка Йошкар-ола">
+                  </picture>
+                </div>
+                <a href="#">
+                  <div class="similar-tours__content">
+                    <div class="similar-tours__title">
+                      <h4>Зимняя сказка Алтая. Конный тур</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+  
+              <div class="swiper-slide">
+                <div class="swiper-slide__img">
+                  <picture>
+                    <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                    <img src="img/compr-img/group157-min.jpg" alt="Тур поездка Йошкар-ола">
+                  </picture>
+                </div>
+                <a href="#">
+                  <div class="similar-tours__content">
+                    <div class="similar-tours__title">
+                      <h4>Зимняя сказка Алтая. Конный тур</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+  
+              <div class="swiper-slide">
+                <div class="swiper-slide__img">
+                  <picture>
+                    <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                    <img src="img/compr-img/group158-min.jpg" alt="Тур поездка Йошкар-ола">
+                  </picture>
+                </div>
+                <a href="#">
+                  <div class="similar-tours__content">
+                    <div class="similar-tours__title">
+                      <h4>Зимняя сказка Алтая. Конный тур</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+  
+              <div class="swiper-slide">
+                <div class="swiper-slide__img">
+                  <picture>
+                    <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                    <img src="img/compr-img/group200-min.jpg" alt="Тур поездка Йошкар-ола">
+                  </picture>
+                </div>
+                <a href="#">
+                  <div class="similar-tours__content">
+                    <div class="similar-tours__title">
+                      <h4>Зимняя сказка Алтая. Конный тур</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+           
+              <div class="swiper-slide">
+                <div class="swiper-slide__img">
+                  <picture>
+                    <!-- <source srcset="img/features/coin.png" type="image/webp"> -->
+                    <!-- <img src="img/thumbs/sim-tour-4.jpg" alt="Тур поездка Йошкар-ола"> -->
+                    <img src="img/compr-img/group156-min.jpg" alt="Тур поездка Йошкар-ола">
+                  </picture>
+                </div>
+                <a href="#">
+                  <div class="similar-tours__content">
+                    <div class="similar-tours__title">
+                      <h4>Зимняя сказка Алтая. Конный тур</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+  <footer>
+  </footer>
+
+
+<!-- МОДАЛЬНОЕ ОКНО "ЗАКАЗАТЬ ЗВОНОК" -->
+<div class="modal" id="cb-modal">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h4>Заказать звонок</h4>
+    </div>
+    <div class="modal__body">
+      <form action="#" method="POST" class="cb-form" id="cb-form">
+        <div class="form__group">
+          <input type="text" class="form__control form__control_req" id="user-phone" name="user-phone" placeholder="+7 (___) - ___-__-__">
+          <label for="user-phone" class="form__label"></label>
+        </div>
+        <div class="form__group">
+          <input type="submit" class="btn btn-sec form__submit" value="Заказать">
+        </div>
+      </form>
+    </div>
+    <div class="modal-close modal-close-btn">
+      <span class="modal-close-btn__item"></span>
+      <span class="modal-close-btn__item"></span>
+    </div>
+
+  </div>
+  <div class="modal__overlay modal-close"></div>
+</div>
+<!--  <script defer src="js/preloader.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer src="slick/slick.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <!-- <script defer src="js/jquery.fancybox.min.js"></script> -->
+
+  <script defer src="js/main.js"></script>
+
+
+
+  <script>
+    setTimeout(function(){
+      var elem3 = document.createElement('script');
+      elem3.src = 'js/blazy.js';
+      document.body.appendChild(elem3);
+    }, 2000);
+  </script>
+  <script>
+    setTimeout(function(){
+      var elem = document.createElement('script');
+      elem.src = 'https://api-maps.yandex.ru/2.1/?apikey=d3ab6b1f-34ef-4668-bcab-867e95405303&lang=ru_RU';
+      document.body.appendChild(elem);
+    }, 3000);
+  </script>
+  <script>
+    setTimeout(function(){
+      var elem1 = document.createElement('script');
+      elem1.src = 'js/map.js';
+      document.body.appendChild(elem1);
+    }, 3500);
+  </script>
+</body>
+</html>
