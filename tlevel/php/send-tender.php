@@ -101,5 +101,5 @@ try {
 }
 
 // Отображение результата
-echo json_encode(["result" => $result, "resultfile" => $rfile, "status" => $status, "myuploads['size']" => $myuploads['size'], "attachmentSize" => $attachmentSize]);
+echo json_encode(["result" => $result, "status" => $status]);
 ?>
