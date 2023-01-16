@@ -1,0 +1,204 @@
+%svg-common {
+	background: url("sprite.svg") no-repeat;
+}
+
+.svg-arr-left {
+	@extend %svg-common;
+	background-position: 0 0;
+}
+
+.svg-arr-left-dims {
+	width: 8px;
+	height: 16px;
+}
+
+.svg-arrow-down {
+	@extend %svg-common;
+	background-position: 0 3.076923076923077%;
+}
+
+.svg-arrow-down-dims {
+	width: 9px;
+	height: 5px;
+}
+
+.svg-d-quotes {
+	@extend %svg-common;
+	background-position: 0 4.158415841584159%;
+}
+
+.svg-d-quotes-dims {
+	width: 30px;
+	height: 20px;
+}
+
+.svg-fast {
+	@extend %svg-common;
+	background-position: 0 8.668076109936575%;
+}
+
+.svg-fast-dims {
+	width: 60px;
+	height: 52px;
+}
+
+.svg-flash {
+	@extend %svg-common;
+	background-position: 0 20.04310344827586%;
+}
+
+.svg-flash-dims {
+	width: 48px;
+	height: 61px;
+}
+
+.svg-laptop {
+	@extend %svg-common;
+	background-position: 0 32.55813953488372%;
+}
+
+.svg-laptop-dims {
+	width: 60px;
+	height: 52px;
+}
+
+.svg-location {
+	@extend %svg-common;
+	background-position: 0 40.79207920792079%;
+}
+
+.svg-location-dims {
+	width: 20px;
+	height: 20px;
+}
+
+.svg-mail {
+	@extend %svg-common;
+	background-position: 0 44.75247524752475%;
+}
+
+.svg-mail-dims {
+	width: 20px;
+	height: 20px;
+}
+
+.svg-ov-play-white {
+	@extend %svg-common;
+	background-position: 0 49.298597194388776%;
+}
+
+.svg-ov-play-white-dims {
+	width: 18px;
+	height: 26px;
+}
+
+.svg-partn-line-round {
+	@extend %svg-common;
+	background-position: 0 55.28455284552845%;
+}
+
+.svg-partn-line-round-dims {
+	width: 24px;
+	height: 33px;
+}
+
+.svg-pdf {
+	@extend %svg-common;
+	background-position: 0 61.61616161616162%;
+}
+
+.svg-pdf-dims {
+	width: 24px;
+	height: 30px;
+}
+
+.svg-pdf-white {
+	@extend %svg-common;
+	background-position: 0 67.67676767676768%;
+}
+
+.svg-pdf-white-dims {
+	width: 24px;
+	height: 30px;
+}
+
+.svg-phone {
+	@extend %svg-common;
+	background-position: 0 71.56862745098039%;
+}
+
+.svg-phone-dims {
+	width: 16px;
+	height: 15px;
+}
+
+.svg-play {
+	@extend %svg-common;
+	background-position: 0 75.54671968190856%;
+}
+
+.svg-play-dims {
+	width: 32px;
+	height: 22px;
+}
+
+.svg-play-transp {
+	@extend %svg-common;
+	background-position: 0 79.92047713717695%;
+}
+
+.svg-play-transp-dims {
+	width: 33px;
+	height: 22px;
+}
+
+.svg-soc-inst {
+	@extend %svg-common;
+	background-position: 0 84.63073852295409%;
+}
+
+.svg-soc-inst-dims {
+	width: 24px;
+	height: 24px;
+}
+
+.svg-soc-inst-320 {
+	@extend %svg-common;
+	background-position: 0 88.7128712871287%;
+}
+
+.svg-soc-inst-320-dims {
+	width: 20px;
+	height: 20px;
+}
+
+.svg-soc-yt {
+	@extend %svg-common;
+	background-position: 0 93.04174950298211%;
+}
+
+.svg-soc-yt-dims {
+	width: 30px;
+	height: 22px;
+}
+
+.svg-soc-yt-320 {
+	@extend %svg-common;
+	background-position: 0 96.64694280078895%;
+}
+
+.svg-soc-yt-320-dims {
+	width: 26px;
+	height: 18px;
+}
+
+.svg-user {
+	@extend %svg-common;
+	background-position: 0 100%;
+}
+
+.svg-user-dims {
+	width: 16px;
+	height: 17px;
+}
+

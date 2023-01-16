@@ -1,0 +1,43 @@
+ДОСТУПЫ BITRIX yota
+https://b24-mo5oqs.bitrix24.ru/
+yota-system@mail.ru
+ua9NunD*rw*4%X@
+
+
+ССЫЛКА НА МАКЕТ
+	https://www.figma.com/file/CBrdcq2ABu9duRBw2j6bB7/YS-final?node-id=101%3A194		
+
+		ШРИФТЫ
+- Raleway		400			normal
+- Raleway		500			normal
+- Raleway		600			normal
+- Raleway		700			normal
+
+
+		РАЗМЕРЫ ШРИФТОВ
+			деск			таблет			моб			line-height
+меню		15/17,6
+
+н1			38/45,6 		27/30			19/21		1.2
+
+h2			36/50 			26/36			22/30		1.4
+
+h3			26/36			24/34			18/25		1.4
+
+body		16/25.6 		16/25.6 		15/24		1.6
+
+
+
+4893 4705 1315 2196
+
+УЗНАЛ 
+- интересное свойство	-	font-feature-settings: 'pnum' on, 'lnum' on;
+
+
+ДОСТУПЫ К ПОЧТЕ
+логин						-	ys-send@mail.ru
+пароль						-	&5Evd46/JS}
+пароль для отправки smtp	-	Q3P68hiHpLqYW3vqT7Yc
+тел длявосстановления
+доступен с 28.03.22			-	мой
+почта резервная				-	doclko31
