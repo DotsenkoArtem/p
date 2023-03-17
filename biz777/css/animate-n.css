@@ -1,0 +1,266 @@
+
+
+
+.block1-sky-lg {
+  position: absolute;
+  top: 0;
+  left: -60px;
+  z-index: 45;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* .block1-sky-lg.transform-on-scroll{
+
+} */
+
+.block1-roket {
+  z-index: 40;
+  transform-origin: 50% 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.block1-gear {
+  position: absolute;
+  top: 292px;
+  left: 145px;
+  z-index: 35;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.block1-gear.transform-on-scroll {
+  transform-origin: -350% -300%;
+}
+
+.block1-sheet-globe {
+  position: absolute;
+  top: 0px;
+  left: -75px;
+  z-index: 30;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+.block1-sheet-globe.transform-on-scroll {
+  transform-origin: -50% -10%;
+}
+
+.block1-clock-lamp {
+  position: absolute;
+  top: 0px;
+  left: -75px;
+  z-index: 25;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+.block1-clock-lamp.transform-on-scroll {
+  transform-origin: -50% -10%;
+}
+
+.block1-segment {
+  position: absolute;
+  top: 65px;
+  left: 415px;
+  z-index: 20;
+  transform-origin: -100% -100%;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+.block1-segment.transform-on-scroll {
+  transform-origin: -2000% 50%;
+}
+
+.block1-sky-md-top {
+  position: absolute;
+  top: 0px;
+  left: -75px;
+  z-index: 15;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+.block1-sky-md {
+  position: absolute;
+  top: 0px;
+  left: -75px;
+  z-index: 10;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+.block1-sky-sm {
+  position: absolute;
+  top: 0px;
+  left: -75px;
+  z-index: 5;
+  opacity: 0;  
+  visibility: hidden;
+}
+
+
+
+
+
+
+.block1__right.smooth-entry .block1-sky-lg{
+  animation: scaleIn 1000ms 1500ms ease-out none, fadeIn 1000ms 1500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-roket{
+  animation: rotateInRight 1000ms ease-out none, fadeIn 1000ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-gear{
+  transform-origin: 400% -300%;
+  animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-sheet-globe{
+  transform-origin: 0 50%;
+  animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-clock-lamp{
+  transform-origin: 0 50%;
+  animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-segment{
+  transform-origin: -800% 400%;
+  animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-sky-md-top{
+  animation: scaleIn 1000ms 1500ms ease-out none, fadeIn 1000ms 1500ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-sky-md{
+  animation: scaleIn 1000ms 1650ms ease-out none, fadeIn 1000ms 1650ms ease-out forwards;
+  visibility: visible;
+}
+
+.block1__right.smooth-entry .block1-sky-sm{
+  animation: scaleIn 1000ms 1650ms ease-out none, fadeIn 1000ms 1650ms ease-out forwards;
+  visibility: visible;
+}
+
+
+
+.animation-paused{
+  animation-play-state: paused;
+}
+
+@keyframes rotateInRight {
+  from{
+    transform: rotate(-90deg) scale(.5);
+  }
+  to{
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes scaleIn {
+  from{
+    transform: scale(.5);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+
+
+.block1__right.animated .block1-sky-lg,
+.block1__right.animated .block1-sky-md-top{
+  animation: moveHorizontalLeft 12000ms ease-in-out infinite forwards;
+  opacity: 1;
+}
+
+.block1__right.animated .block1-sky-md,
+.block1__right.animated .block1-sky-sm{
+  animation: moveHorizontalRight 20000ms ease-in-out infinite;
+  opacity: 1;
+}
+
+.block1__right.animated .block1-gear{
+  animation: rotateRight 16000ms linear infinite;
+  transform-origin: center;
+  opacity: 1;
+}
+
+.block1__right.animated .block1-segment{
+  animation: rotateRight 40000ms linear infinite reverse;
+  transform-origin: center;
+  opacity: 1;
+}
+
+.block1__right.animated .block1-sheet-globe{
+  animation: globeTranslate 2000ms linear forwards, orbit 16000ms 2000ms linear infinite;
+  transform-origin: center center;
+  opacity: 1;
+}
+
+@keyframes moveHorizontalLeft {
+  0%{
+    transform: translate(0, 0)
+  }
+  50%{
+    transform: translate(-15%, 5%)
+  }
+  100%{
+    transform: translate(0, 0)
+  }
+}
+
+@keyframes moveHorizontalRight {
+  0%{
+    transform: translateX(0)
+  }
+  50%{
+    transform: translateX(10%)
+  }
+  100%{
+    transform: translateX(0%)
+  }
+}
+
+@keyframes rotateRight {
+  0%{
+    transform: rotate(0deg)
+  }
+  100%{
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes orbit {
+  from { 	transform: rotate(0deg) translateX(10px) rotate(0deg); }
+	to   {  transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@keyframes globeTranslate {
+  from{
+    transform: translateX(0px);
+  }
+  to{
+    transform: translateX(10px)
+  }
+}
