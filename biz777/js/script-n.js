@@ -9,8 +9,8 @@ const gear = document.querySelector('.block1-gear')
 movingBlockItems.push(gear)
 const sheetGlobe = document.querySelector('.block1-sheet-globe')
 movingBlockItems.push(sheetGlobe)
-const clockLamp = document.querySelector('.block1-clock-lamp')
-movingBlockItems.push(clockLamp)
+// const clockLamp = document.querySelector('.block1-clock-lamp')
+// movingBlockItems.push(clockLamp)
 const segment = document.querySelector('.block1-segment')
 movingBlockItems.push(segment)
 const skyMdTop = document.querySelector('.block1-sky-md-top')
@@ -30,6 +30,9 @@ for(let item of movingBlockItems) {
 const rocket = document.querySelector('.block1-roket')
 animationBlockItems.push(rocket)
 
+const clockLamp = document.querySelector('.block1-clock-lamp')
+animationBlockItems.push(clockLamp)
+
 
 
 
@@ -39,6 +42,8 @@ const INITIAL_ANIMATION_BLOCK_COORDS = animationBlock.getBoundingClientRect()
 const INITIAL_ANIMATION_BLOCK_TOP = INITIAL_ANIMATION_BLOCK_COORDS.top
 // Точка по оси Y, по достижению которой при скролле страницы все анимации блока останавливаются
 const ANIMATION_SCROLL_STOP_POINT = 0
+// Значение по достижению которого при скролле страницы все анимации блока начинаются (отступ блока от верхнего края окна)
+const ANIMATION_SCROLL_START_POINT = 200
 // Максимальная величина поворота ракеты при скролле, в градусах
 const ROCKET_SCROLL_MAX_ROTATE_VALUE = 60
 
@@ -69,17 +74,6 @@ window.addEventListener('load', function() {
   // Добавление класса с анимациями после появления блока
   setTimeout(function() {
     animationBlock.classList.add('animated')
-
-
-
-/*     setTimeout(function() {
-      // console.log('skyLg: ', skyLg.getAnimations())
-      console.log('skyLg: ', skyLg.getAnimations())
-    }, 500) */
-
-
-
-
   }, 2650)
 
 
@@ -90,8 +84,10 @@ window.addEventListener('load', function() {
   let isRunnig = true
 
   window.addEventListener('scroll', function() {
-    console.log('window.pageYOffset: ', window.pageYOffset);
-    if(window.pageYOffset > 100) {
+    currentAnimationBlockTop = animationBlock.getBoundingClientRect().top
+    // console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
+    rocket.style.transition = '0.1s'
+    if(currentAnimationBlockTop < ANIMATION_SCROLL_START_POINT) {
 
     // animationBlockItems.forEach(item => item.style.animationPlayState = 'paused') :
     // animationBlockItems.forEach(item => item.style.animationPlayState = '')
@@ -120,6 +116,8 @@ window.addEventListener('load', function() {
 
         rocket.style.visibility = `visible`
         rocket.style.opacity = `1`
+        clockLamp.style.visibility = `visible`
+        clockLamp.style.opacity = `1`
         
         animationBlock.classList.remove('smooth-entry')
         animationBlock.classList.remove('animated')
@@ -144,11 +142,10 @@ window.addEventListener('load', function() {
 
 
     
-    currentAnimationBlockTop = animationBlock.getBoundingClientRect().top
-    rocket.style.transition = '0.1s'
 
-    if(currentAnimationBlockTop >= ANIMATION_SCROLL_STOP_POINT) {
-      let scrollProgress = (INITIAL_ANIMATION_BLOCK_TOP - currentAnimationBlockTop)/(INITIAL_ANIMATION_BLOCK_TOP - ANIMATION_SCROLL_STOP_POINT)
+
+    if(currentAnimationBlockTop >= ANIMATION_SCROLL_STOP_POINT && currentAnimationBlockTop < ANIMATION_SCROLL_START_POINT) {
+      let scrollProgress = (ANIMATION_SCROLL_START_POINT - currentAnimationBlockTop)/(ANIMATION_SCROLL_START_POINT - ANIMATION_SCROLL_STOP_POINT)
 
       rocket.style.transform = `rotate(${ROCKET_SCROLL_MAX_ROTATE_VALUE * scrollProgress}deg)`
       
@@ -176,7 +173,7 @@ window.addEventListener('load', function() {
 
       function translateСlouds(...elem) {
         elem.forEach(function(item) {
-          item.style.transform = `translateY(${75 * scrollProgress}px)`
+          item.style.transform = `translateY(${50 * scrollProgress}px)`
         })
       }
       hideDetails(gear, sheetGlobe, clockLamp, segment)
