@@ -1,9 +1,8 @@
-
+// Получение блока анимации
 const animationBlock = document.querySelector('.block1__right')
+// Массив динамических (которые двигаются после появления блока) элементов блока анимации 
 let movingBlockItems = []
-
-const rocket = document.querySelector('.block1-roket')
-
+// Получение динамических элементов блока анимации и запись в соответствующий массив
 const skyLg = document.querySelector('.block1-sky-lg')
 movingBlockItems.push(skyLg)
 const gear = document.querySelector('.block1-gear')
@@ -21,27 +20,27 @@ movingBlockItems.push(skyMd)
 const skySm = document.querySelector('.block1-sky-sm')
 movingBlockItems.push(skySm)
 
+// Массив, содержащий все элементы блока независимо от их поведения после появления блока
 let animationBlockItems = []
+// Наполнение массива [animationBlockItems] элементами
 for(let item of movingBlockItems) {
   animationBlockItems.push(item)
 }
-
+// Добавление статичного элемента 'ракета'
+const rocket = document.querySelector('.block1-roket')
 animationBlockItems.push(rocket)
 
 
 
 
-
+// Начальные координаты блока анимации
 const INITIAL_ANIMATION_BLOCK_COORDS = animationBlock.getBoundingClientRect()
+// Начальный отступ блока анимации по оси Y от внерхней границы окна
 const INITIAL_ANIMATION_BLOCK_TOP = INITIAL_ANIMATION_BLOCK_COORDS.top
-
-
-const ANIMATION_STOP_POINT = 0
-
-
-// Переменные блоков при прокрутке
-rocketScrollAnimationValue = 60
-// rocketScrollAnimatiotnStep = 
+// Точка по оси Y, по достижению которой при скролле страницы все анимации блока останавливаются
+const ANIMATION_SCROLL_STOP_POINT = 0
+// Максимальная величина поворота ракеты при скролле, в градусах
+const ROCKET_SCROLL_MAX_ROTATE_VALUE = 60
 
 
 
@@ -65,39 +64,57 @@ rocketScrollAnimationValue = 60
 window.addEventListener('load', function() {
 
 
-  // Появление блока с анимациями
+  // Появление блока с анимациями после загрузки
   animationBlock.classList.add('smooth-entry')
-
+  // Добавление класса с анимациями после появления блока
   setTimeout(function() {
     animationBlock.classList.add('animated')
+
+
+
+/*     setTimeout(function() {
+      // console.log('skyLg: ', skyLg.getAnimations())
+      console.log('skyLg: ', skyLg.getAnimations())
+    }, 500) */
+
+
+
+
   }, 2650)
 
 
 
-
-  let animationBlockCoordsTop
-
+  // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
+  let currentAnimationBlockTop
+  // Флаг определяет состояния проигрывания анимации (приигрывается / на паузе)
   let isRunnig = true
+
   window.addEventListener('scroll', function() {
-    // Отмена анимаций блоков
-    if(window.pageYOffset > 0) {
+    console.log('window.pageYOffset: ', window.pageYOffset);
+    if(window.pageYOffset > 100) {
 
     // animationBlockItems.forEach(item => item.style.animationPlayState = 'paused') :
     // animationBlockItems.forEach(item => item.style.animationPlayState = '')
     if(isRunnig) {
-      // animationBlockItems.forEach(item => item.style.animationPlayState = 'paused')
+      movingBlockItems.forEach(item => item.style.animationPlayState = 'paused')
 
       freezeElem(movingBlockItems)
+
+
+      
+
+
+
+
+
       function freezeElem(elemsArr) {
         elemsArr.forEach(function(elem) {
-          let computedStyles = getComputedStyle(elem)
-          elem.style.left = `${computedStyles.left}`
-          elem.style.top = `${computedStyles.top}`
+          let animationBlockCoords = animationBlock.getBoundingClientRect()
+          let elemCoords = elem.getBoundingClientRect()
+          elem.style.left = `${elemCoords.left - animationBlockCoords.left}px`
+          elem.style.top = `${elemCoords.top - animationBlockCoords.top}px`
           elem.style.visibility = `visible`
           elem.style.opacity = `1`
-  
-  
-
           // elem => elem.style.animationPlayState = ''
         })
 
@@ -116,6 +133,7 @@ window.addEventListener('load', function() {
 
   } else {
     animationBlock.classList.add('animated')
+    movingBlockItems.forEach(item => item.style.animationPlayState = '')
 
 
 
@@ -126,13 +144,13 @@ window.addEventListener('load', function() {
 
 
     
-    animationBlockCoordsTop = animationBlock.getBoundingClientRect().top
+    currentAnimationBlockTop = animationBlock.getBoundingClientRect().top
     rocket.style.transition = '0.1s'
 
-    if(animationBlockCoordsTop >= ANIMATION_STOP_POINT) {
-      let scrollProgress = (INITIAL_ANIMATION_BLOCK_TOP - animationBlockCoordsTop)/(INITIAL_ANIMATION_BLOCK_TOP - ANIMATION_STOP_POINT)
+    if(currentAnimationBlockTop >= ANIMATION_SCROLL_STOP_POINT) {
+      let scrollProgress = (INITIAL_ANIMATION_BLOCK_TOP - currentAnimationBlockTop)/(INITIAL_ANIMATION_BLOCK_TOP - ANIMATION_SCROLL_STOP_POINT)
 
-      rocket.style.transform = `rotate(${rocketScrollAnimationValue * scrollProgress}deg)`
+      rocket.style.transform = `rotate(${ROCKET_SCROLL_MAX_ROTATE_VALUE * scrollProgress}deg)`
       
 
       
