@@ -2,9 +2,10 @@
 
 
 .block1-sky-lg {
+  width: 265px;
   position: absolute;
-  top: 0;
-  left: -60px;
+  top: 210px;
+  left: -110px;
   z-index: 45;
   opacity: 0;
   visibility: hidden;
@@ -15,6 +16,9 @@
 } */
 
 .block1-roket {
+  width: 490px;
+  top: -70px;
+  right: 35px;
   z-index: 40;
   transform-origin: 50% 0;
   opacity: 0;
@@ -23,8 +27,8 @@
 
 .block1-gear {
   position: absolute;
-  top: 292px;
-  left: 145px;
+  top: 258px;
+  left: 163px;
   z-index: 35;
   opacity: 0;
   visibility: hidden;
@@ -34,20 +38,21 @@
   transform-origin: -350% -300%;
 }
 
-.block1-sheet-globe {
+.block1-sheet-clock-globe {
+  width: 190px;
   position: absolute;
-  top: 0px;
-  left: -75px;
+  top: 105px;
+  right: 5px;
   z-index: 30;
   opacity: 0;  
   visibility: hidden;
 }
 
-.block1-sheet-globe.transform-on-scroll {
+.block1-sheet-clock-globe.transform-on-scroll {
   transform-origin: -50% -10%;
 }
 
-.block1-clock-lamp {
+/* .block1-clock-lamp {
   position: absolute;
   top: 0px;
   left: -75px;
@@ -58,9 +63,9 @@
 
 .block1-clock-lamp.transform-on-scroll {
   transform-origin: -50% -10%;
-}
+} */
 
-.block1-segment {
+/* .block1-segment {
   position: absolute;
   top: 65px;
   left: 415px;
@@ -68,38 +73,40 @@
   transform-origin: -100% -100%;
   opacity: 0;  
   visibility: hidden;
-}
+} */
 
-.block1-segment.transform-on-scroll {
+/* .block1-segment.transform-on-scroll {
   transform-origin: -2000% 50%;
-}
+} */
 
 .block1-sky-md-top {
+  width: 160px;
   position: absolute;
-  top: 0px;
-  left: -75px;
+  top: -45px;
+  right: 158px;
   z-index: 15;
   opacity: 0;  
   visibility: hidden;
 }
 
 .block1-sky-md {
+  width: 450px;
   position: absolute;
-  top: 0px;
-  left: -75px;
+  top: -10px;
+  left: 15px;
   z-index: 10;
   opacity: 0;  
   visibility: hidden;
 }
 
-.block1-sky-sm {
+/* .block1-sky-sm {
   position: absolute;
   top: 0px;
   left: -75px;
   z-index: 5;
   opacity: 0;  
   visibility: hidden;
-}
+} */
 
 
 
@@ -122,23 +129,23 @@
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-sheet-globe{
+.block1__right.smooth-entry .block1-sheet-clock-globe{
   transform-origin: 0 50%;
   animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-clock-lamp{
+/* .block1__right.smooth-entry .block1-clock-lamp{
   transform-origin: 0 50%;
   animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
   visibility: visible;
-}
+} */
 
-.block1__right.smooth-entry .block1-segment{
+/* .block1__right.smooth-entry .block1-segment{
   transform-origin: -800% 400%;
   animation: scaleIn 1000ms 500ms ease-out none, fadeIn 1000ms 500ms ease-out forwards;
   visibility: visible;
-}
+} */
 
 .block1__right.smooth-entry .block1-sky-md-top{
   animation: scaleIn 1000ms 1500ms ease-out none, fadeIn 1000ms 1500ms ease-out forwards;
@@ -150,10 +157,10 @@
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-sky-sm{
+/* .block1__right.smooth-entry .block1-sky-sm{
   animation: scaleIn 1000ms 1650ms ease-out none, fadeIn 1000ms 1650ms ease-out forwards;
   visibility: visible;
-}
+} */
 
 
 
@@ -188,17 +195,13 @@
 
 
 
-.block1__right.animated .block1-sky-lg,
+/* .block1__right.animated .block1-sky-lg,
 .block1__right.animated .block1-sky-md-top{
   animation: moveHorizontalLeft 12000ms ease-in-out infinite forwards;
   opacity: 1;
 }
 
-.block1__right.animated .block1-sky-md,
-.block1__right.animated .block1-sky-sm{
-  animation: moveHorizontalRight 20000ms ease-in-out infinite;
-  opacity: 1;
-}
+
 
 .block1__right.animated .block1-gear{
   animation: rotateRight 16000ms linear infinite;
@@ -206,17 +209,18 @@
   opacity: 1;
 }
 
-.block1__right.animated .block1-segment{
-  animation: rotateRight 40000ms linear infinite reverse;
-  transform-origin: center;
-  opacity: 1;
-}
 
-.block1__right.animated .block1-sheet-globe{
+
+.block1__right.animated .block1-sheet-clock-globe{
   animation: globeTranslate 2000ms linear forwards, orbit 16000ms 2000ms linear infinite;
   transform-origin: center center;
   opacity: 1;
-}
+} */
+
+
+
+
+
 
 @keyframes moveHorizontalLeft {
   0%{
@@ -264,3 +268,21 @@
     transform: translateX(10px)
   }
 }
+
+
+/* .block1__right.animated .block1-sky-md,
+.block1__right.animated .block1-sky-sm{
+  animation: moveHorizontalRight 20000ms ease-in-out infinite;
+  opacity: 1;
+} 
+
+.block1__right.animated .block1-segment{
+  animation: rotateRight 40000ms linear infinite reverse;
+  transform-origin: center;
+  opacity: 1;
+}
+
+
+
+
+*/

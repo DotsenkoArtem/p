@@ -7,18 +7,18 @@ const skyLg = document.querySelector(".block1-sky-lg");
 movingBlockItems.push(skyLg);
 const gear = document.querySelector(".block1-gear");
 movingBlockItems.push(gear);
-const sheetGlobe = document.querySelector(".block1-sheet-globe");
-movingBlockItems.push(sheetGlobe);
+const sheetClockGlobe = document.querySelector(".block1-sheet-clock-globe");
+movingBlockItems.push(sheetClockGlobe);
 const clockLamp = document.querySelector(".block1-clock-lamp");
 movingBlockItems.push(clockLamp);
-const segment = document.querySelector(".block1-segment");
-movingBlockItems.push(segment);
+// const segment = document.querySelector(".block1-segment");
+// movingBlockItems.push(segment);
 const skyMdTop = document.querySelector(".block1-sky-md-top");
 movingBlockItems.push(skyMdTop);
 const skyMd = document.querySelector(".block1-sky-md");
 movingBlockItems.push(skyMd);
-const skySm = document.querySelector(".block1-sky-sm");
-movingBlockItems.push(skySm);
+// const skySm = document.querySelector(".block1-sky-sm");
+// movingBlockItems.push(skySm);
 
 // Массив, содержащий все элементы блока независимо от их поведения после появления блока
 let animationBlockItems = [];
@@ -110,8 +110,10 @@ window.addEventListener("load", function () {
         item.classList.add("transform-on-scroll");
         item.style.transition = '.3s'
       });
-      hideDetails(gear, sheetGlobe, clockLamp, segment);
-      translateСlouds(skyLg, skyMdTop, skyMd, skySm);
+      // hideDetails(gear, sheetClockGlobe, clockLamp, segment);
+      hideDetails(gear, sheetClockGlobe, clockLamp);
+      // translateСlouds(skyLg, skyMdTop, skyMd, skySm);
+      translateСlouds(skyLg, skyMdTop, skyMd);
       // Прячем детальки
       function hideDetails(...elem) {
         elem.forEach(function (item) {
