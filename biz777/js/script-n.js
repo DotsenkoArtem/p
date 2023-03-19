@@ -51,7 +51,7 @@ window.addEventListener("load", function () {
   // Добавление класса с анимациями после появления блока
   setTimeout(function () {
     animationBlock.classList.add("animated");
-  }, 2650);
+  }, 1000);
 
   // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
   let currentAnimationBlockTop;
