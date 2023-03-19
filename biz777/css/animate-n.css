@@ -1,4 +1,9 @@
-
+:root{
+  --block1-right-heigh: 310px;
+}
+.block1__right{
+  min-height: var(--block1-right-heigh);
+}
 .block1-sky-lg {
   width: 265px;
   position: absolute;
@@ -68,36 +73,36 @@
 
 .block1__right.smooth-entry .block1-sky-lg{
   transform-origin: 0% 0%;
-  animation: skyScaleIn 1000ms ease-out none, fadeIn 1000ms ease-out forwards;
+  animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
   visibility: visible;
 }
 
 .block1__right.smooth-entry .block1-roket{
-  animation: rotateInRight 1000ms ease-out none, fadeIn 650ms ease-out forwards;
+  animation: rotateInRight 1000ms ease none, fadeIn 650ms ease forwards;
   visibility: visible;
 }
 
 .block1__right.smooth-entry .block1-gear{
   transform-origin: 500% -320%;
-  animation: scaleIn 1000ms ease-out none, fadeIn 650ms 350ms ease-out forwards;
+  animation: scaleIn 1000ms ease none, fadeIn 650ms 350ms ease forwards;
   visibility: visible;
 }
 
 .block1__right.smooth-entry .block1-sheet-clock-globe{
   transform-origin: 0% 25%;
-  animation: scaleIn 1000ms ease-out none, fadeIn 650ms 350ms ease-out forwards;
+  animation: scaleIn 1000ms ease none, fadeIn 650ms 350ms ease forwards;
   visibility: visible;
 }
 
 .block1__right.smooth-entry .block1-sky-md-top{
   transform-origin: 0% 50%;
-  animation: skyScaleIn 1000ms ease-out none, fadeIn 1000ms ease-out forwards;
+  animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
   visibility: visible;
 }
 
 .block1__right.smooth-entry .block1-sky-md{
   transform-origin: -10% 100%;
-  animation: skyScaleIn 1000ms ease-out none, fadeIn 1000ms ease-out forwards;
+  animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
   visibility: visible;
 }
 
@@ -134,8 +139,6 @@
   }
 }
 
-
-
 .block1__right.animated .block1-sky-lg,
 .block1__right.animated .block1-sky-md-top{
   animation: moveHorizontalRight 4000ms ease-in-out infinite forwards;
@@ -147,26 +150,17 @@
   opacity: 1;
 }
 
-
-
 .block1__right.animated .block1-gear{
   animation: rotateRight 7000ms linear infinite;
   transform-origin: center;
   opacity: 1;
 }
 
-
-
 .block1__right.animated .block1-sheet-clock-globe{
   animation: globeTranslate 1000ms linear forwards, orbit 5000ms 1000ms linear infinite;
   transform-origin: center center;
   opacity: 1;
 }
-
-
-
-
-
 
 @keyframes moveHorizontalRight {
   0%{
@@ -215,30 +209,166 @@
   }
 }
 
-
-/* .block1__right.animated .block1-sky-md,
-.block1__right.animated .block1-sky-sm{
-  animation: moveHorizontalRight 20000ms ease-in-out infinite;
-  opacity: 1;
-} 
-
-.block1__right.animated .block1-segment{
-  animation: rotateRight 40000ms linear infinite reverse;
-  transform-origin: center;
-  opacity: 1;
-}
-
-
-
-
-*/
-
-
 @media (max-width: 991.98px) {
   .block1__right.pc {
     display: block;
+    margin-top: 150px;
+    height: 400px;
   }
   .block1__right.mob {
     display: none;
+  }
+  .block1-roket{
+    left: calc(50% - 190px)
+  }
+
+  .block1-gear {
+    left: calc(50% - 25px)
+  }
+
+  .block1-sheet-clock-globe {
+    left: calc(50% + 150px)
+  }
+
+  .block1-sky-lg {
+    left: calc(50% - 325px)
+  }
+
+  .block1-sky-md {
+    left: calc(50% - 150px)
+  }
+
+  .block1-sky-md-top {
+    left: calc(50% - 0px)
+  }
+}
+
+@media (max-width: 767.98px) {
+  .block1__right.pc {
+    margin-top: 100px;
+    height: 330px;
+  }
+  .block1-roket{
+    width: 400px;
+  }
+
+  .block1-gear {
+    width: 50px;
+    left: calc(50% - 45px);
+    top: 205px;
+  }
+
+  .block1-sheet-clock-globe {
+    width: 140px;
+    top: 90px;
+    left: calc(50% + 110px)
+  }
+
+  .block1-sky-lg {
+    width: 200px;
+    top: 155px;
+    left: calc(50% - 290px)
+  }
+
+  .block1-sky-md {
+    width: 360px;
+    top: -30px;
+    left: calc(50% - 175px)
+  }
+
+  .block1-sky-md-top {
+    width: 130px;
+    top: -60px;
+    left: calc(50% - 20px)
+  }
+}
+
+@media (max-width: 414.98px) {
+  :root{
+    --height-ratio-414: .65;
+    --width-ratio-414: .55;
+  }
+  .block1__right.pc {
+    height: auto;
+    min-height: calc(var(--block1-right-heigh) * var(--height-ratio-414));
+  }
+  .block1-roket{
+    width: calc(490px * var( --width-ratio-414));
+    left: calc(50% - 135px)
+  }
+
+  .block1-gear {
+    width: calc(61px * var( --width-ratio-414));
+    left: calc(50% - 45px);
+    top: 110px;
+  }
+
+  .block1-sheet-clock-globe {
+    width: calc(190px * var( --width-ratio-414));
+    top: 29px;
+    left: calc(50% + 70px)
+  }
+
+  .block1-sky-lg {
+    width: calc(265px * var( --width-ratio-414));
+    top: 85px;
+    left: calc(50% - 220px)
+  }
+
+  .block1-sky-md {
+    width: calc(450px * var( --width-ratio-414));
+    top: -45px;
+    left: calc(50% - 138px)
+  }
+
+  .block1-sky-md-top {
+    width: calc(160px * var( --width-ratio-414));
+    top: -65px;
+    left: calc(50% - 20px)
+  }
+}
+
+@media (max-width: 359.98px) {
+  :root{
+    --height-ratio-414: .5;
+    --width-ratio-414: .4;
+  }
+  .block1__right.pc {
+    height: auto;
+    min-height: calc(var(--block1-right-heigh) * var(--height-ratio-414));
+  }
+  .block1-roket{
+    width: calc(490px * var( --width-ratio-414));
+    left: calc(50% - 95px)
+  }
+
+  .block1-gear {
+    width: calc(61px * var( --width-ratio-414));
+    left: calc(50% - 30px);
+    top: 60px;
+  }
+
+  .block1-sheet-clock-globe {
+    width: calc(190px * var( --width-ratio-414));
+    top: 2px;
+    left: calc(50% + 60px)
+  }
+
+  .block1-sky-lg {
+    width: calc(265px * var( --width-ratio-414));
+    top: 40px;
+    left: calc(50% - 160px)
+  }
+
+  .block1-sky-md {
+    width: calc(450px * var( --width-ratio-414));
+    top: -55px;
+    left: calc(50% - 95px)
+  }
+
+  .block1-sky-md-top {
+    width: calc(160px * var( --width-ratio-414));
+    top: -65px;
+    left: calc(50% - 20px)
   }
 }
