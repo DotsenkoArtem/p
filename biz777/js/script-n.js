@@ -9,8 +9,8 @@ const gear = document.querySelector(".block1-gear");
 movingBlockItems.push(gear);
 const sheetClockGlobe = document.querySelector(".block1-sheet-clock-globe");
 movingBlockItems.push(sheetClockGlobe);
-const clockLamp = document.querySelector(".block1-clock-lamp");
-movingBlockItems.push(clockLamp);
+// const clockLamp = document.querySelector(".block1-clock-lamp");
+// movingBlockItems.push(clockLamp);
 // const segment = document.querySelector(".block1-segment");
 // movingBlockItems.push(segment);
 const skyMdTop = document.querySelector(".block1-sky-md-top");
@@ -111,7 +111,7 @@ window.addEventListener("load", function () {
         item.style.transition = '.3s'
       });
       // hideDetails(gear, sheetClockGlobe, clockLamp, segment);
-      hideDetails(gear, sheetClockGlobe, clockLamp);
+      hideDetails(gear, sheetClockGlobe);
       // translateСlouds(skyLg, skyMdTop, skyMd, skySm);
       translateСlouds(skyLg, skyMdTop, skyMd);
       // Прячем детальки
