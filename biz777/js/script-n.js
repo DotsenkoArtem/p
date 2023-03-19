@@ -108,7 +108,7 @@ window.addEventListener("load", function () {
       // Метод для кждого блока .transform-on-scroll устанавливает точку трансформации через css
       movingBlockItems.forEach(function (item) {
         item.classList.add("transform-on-scroll");
-        item.style.transition = '.3s'
+        item.style.transition = '.5s'
       });
       // hideDetails(gear, sheetClockGlobe, clockLamp, segment);
       hideDetails(gear, sheetClockGlobe);
@@ -117,14 +117,19 @@ window.addEventListener("load", function () {
       // Прячем детальки
       function hideDetails(...elem) {
         elem.forEach(function (item) {
-          item.style.transform = `scale(${1 - 0.5 * scrollProgress})`;
+          item.style.transform = `scale(${1 - 0.8 * scrollProgress})`
+          item.style.opacity = `${1 - 1 * scrollProgress}`;
         });
       }
       // Опускаем облака
       function translateСlouds(...elem) {
-        elem.forEach(function (item) {
-          item.style.transform = `translateY(${75 * scrollProgress}px)`;
-        });
+        // elem.forEach(function (item) {
+        //   item.style.transform = `translate(${75 * scrollProgress}px, ${50 * scrollProgress}px)`;
+        // });
+        skyLg.style.transform = `translate(${75 * scrollProgress}px, ${25 * scrollProgress}px)`;
+        skyMdTop.style.transform = `translate(${-25 * scrollProgress}px, ${35 * scrollProgress}px)`;
+        skyMd.style.transform = `translate(${25 * scrollProgress}px, ${30 * scrollProgress}px)`;
+
       }
     }
 

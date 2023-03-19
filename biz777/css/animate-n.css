@@ -1,19 +1,13 @@
 
-
-
 .block1-sky-lg {
   width: 265px;
   position: absolute;
-  top: 210px;
-  left: -110px;
+  top: 205px;
+  left: -140px;
   z-index: 45;
   opacity: 0;
   visibility: hidden;
 }
-
-/* .block1-sky-lg.transform-on-scroll{
-
-} */
 
 .block1-roket {
   width: 490px;
@@ -35,7 +29,7 @@
 }
 
 .block1-gear.transform-on-scroll {
-  transform-origin: -350% -300%;
+  transform-origin: 100% -600%;
 }
 
 .block1-sheet-clock-globe {
@@ -49,7 +43,7 @@
 }
 
 .block1-sheet-clock-globe.transform-on-scroll {
-  transform-origin: -50% -10%;
+  transform-origin: -150% -50%;
 }
 
 .block1-sky-md-top {
@@ -142,16 +136,21 @@
 
 
 
-/* .block1__right.animated .block1-sky-lg,
+.block1__right.animated .block1-sky-lg,
 .block1__right.animated .block1-sky-md-top{
-  animation: moveHorizontalLeft 12000ms ease-in-out infinite forwards;
+  animation: moveHorizontalRight 4000ms ease-in-out infinite forwards;
+  opacity: 1;
+}
+
+.block1__right.animated .block1-sky-md{
+  animation: moveHorizontalLeft 4000ms ease-in-out infinite forwards;
   opacity: 1;
 }
 
 
 
 .block1__right.animated .block1-gear{
-  animation: rotateRight 16000ms linear infinite;
+  animation: rotateRight 7000ms linear infinite;
   transform-origin: center;
   opacity: 1;
 }
@@ -159,34 +158,34 @@
 
 
 .block1__right.animated .block1-sheet-clock-globe{
-  animation: globeTranslate 2000ms linear forwards, orbit 16000ms 2000ms linear infinite;
+  animation: globeTranslate 1000ms linear forwards, orbit 5000ms 1000ms linear infinite;
   transform-origin: center center;
   opacity: 1;
-} */
+}
 
 
 
 
 
 
-@keyframes moveHorizontalLeft {
+@keyframes moveHorizontalRight {
   0%{
     transform: translate(0, 0)
   }
   50%{
-    transform: translate(-15%, 5%)
+    transform: translate(26%, -5%)
   }
   100%{
     transform: translate(0, 0)
   }
 }
 
-@keyframes moveHorizontalRight {
+@keyframes moveHorizontalLeft {
   0%{
     transform: translateX(0)
   }
   50%{
-    transform: translateX(10%)
+    transform: translateX(-10%)
   }
   100%{
     transform: translateX(0%)
@@ -233,3 +232,13 @@
 
 
 */
+
+
+@media (max-width: 991.98px) {
+  .block1__right.pc {
+    display: block;
+  }
+  .block1__right.mob {
+    display: none;
+  }
+}
