@@ -72,12 +72,12 @@ function rocketBlockAnimate() {
       currentAnimationBlockTop = animationBlock.getBoundingClientRect().top;
       rocket.style.transition = "0.3s";
 
-      if (window.pageYOffset > ANIMATION_START_Y_OFFSET) {
+      if (currentAnimationBlockTop < ANIMATION_START_POINT) {
         if (isRunnig) {
-          movingBlockItems.forEach((item) => {
-            // item.style.animationPlayState = 'paused'
+          // movingBlockItems.forEach((item) => {
+            // item.style.animationPlayState = "paused";
             // item.style.transition = '0'
-          });
+          // });
 
           freezeElem(movingBlockItems);
           isRunnig = false;
@@ -99,62 +99,70 @@ function rocketBlockAnimate() {
             animationBlock.classList.remove("animated");
           }
         }
-      } else {
+
+        // if (
+        //   currentAnimationBlockTop > ANIMATION_STOP_POINT &&
+        //   currentAnimationBlockTop < ANIMATION_START_POINT
+        // ) {
+        if (
+          currentAnimationBlockTop > ANIMATION_STOP_POINT
+        ) {
+          let scrollProgress =
+            (ANIMATION_START_POINT - currentAnimationBlockTop) /
+            ANIMATION_RANGE_VALUE;
+          rocket.style.transform = `rotate(${
+            ROCKET_SCROLL_MAX_ROTATE_VALUE * scrollProgress
+          }deg)`;
+
+          // Для каждого блока устанавливается точка трансформации через css с помощью класса .transform-on-scroll
+          movingBlockItems.forEach(function (item) {
+            item.classList.add("transform-on-scroll");
+            item.style.transition = ".5s";
+          });
+          // Скрытие деталей при скролле
+          hideDetails(gear, sheetClockGlobe);
+          // И двигаем облака
+          translateСlouds();
+
+          function hideDetails(...elem) {
+            elem.forEach(function (item) {
+              item.style.transform = `scale(${1 - 0.8 * scrollProgress})`;
+              item.style.opacity = `${1 - 1 * scrollProgress}`;
+            });
+          }
+
+          function translateСlouds() {
+            skyLg.style.transform = `translate(${75 * scrollProgress}px, ${
+              25 * scrollProgress
+            }px)`;
+            skyMdTop.style.transform = `translate(${-25 * scrollProgress}px, ${
+              35 * scrollProgress
+            }px)`;
+            skyMd.style.transform = `translate(${25 * scrollProgress}px, ${
+              30 * scrollProgress
+            }px)`;
+          }
+        }
+
+      } else if(
+        currentAnimationBlockTop <= ANIMATION_STOP_POINT ||
+        currentAnimationBlockTop >= ANIMATION_START_POINT
+      ) {
         // movingBlockItems.forEach((item) => {
         //   item.style.animationPlayState = ''
         // })
+
+        // Дополнительно обеспечивает адекватное положение при нервном-резком скролле
+        if (currentAnimationBlockTop >= ANIMATION_START_POINT) {
+          rocket.style.transform = `rotate(0deg)`;
+          animationBlockItems.forEach((item) => (item.style.transform = ``));
+        }
+        if (currentAnimationBlockTop <= ANIMATION_STOP_POINT) {
+          rocket.style.transform = `rotate(${ROCKET_SCROLL_MAX_ROTATE_VALUE}deg)`;
+        }
+
         animationBlock.classList.add("animated");
         isRunnig = true;
-      }
-
-      if (
-        currentAnimationBlockTop > ANIMATION_STOP_POINT &&
-        currentAnimationBlockTop < ANIMATION_START_POINT
-      ) {
-        let scrollProgress =
-          (ANIMATION_START_POINT - currentAnimationBlockTop) /
-          ANIMATION_RANGE_VALUE;
-        rocket.style.transform = `rotate(${
-          ROCKET_SCROLL_MAX_ROTATE_VALUE * scrollProgress
-        }deg)`;
-
-        // Для каждого блока устанавливается точка трансформации через css с помощью класса .transform-on-scroll
-        movingBlockItems.forEach(function (item) {
-          item.classList.add("transform-on-scroll");
-          item.style.transition = ".5s";
-        });
-        // Скрытие деталей при скролле
-        hideDetails(gear, sheetClockGlobe);
-        // И двигаем облака
-        translateСlouds();
-
-        function hideDetails(...elem) {
-          elem.forEach(function (item) {
-            item.style.transform = `scale(${1 - 0.8 * scrollProgress})`;
-            item.style.opacity = `${1 - 1 * scrollProgress}`;
-          });
-        }
-
-        function translateСlouds() {
-          skyLg.style.transform = `translate(${75 * scrollProgress}px, ${
-            25 * scrollProgress
-          }px)`;
-          skyMdTop.style.transform = `translate(${-25 * scrollProgress}px, ${
-            35 * scrollProgress
-          }px)`;
-          skyMd.style.transform = `translate(${25 * scrollProgress}px, ${
-            30 * scrollProgress
-          }px)`;
-        }
-      }
-
-      // Дополнительно обеспечивает адекватное положение при нервном-резком скролле
-      if (window.pageYOffset <= ANIMATION_STOP_POINT) {
-        rocket.style.transform = `rotate(0deg)`;
-        animationBlockItems.forEach((item) => (item.style.transform = ``));
-      }
-      if (window.pageYOffset >= INITIAL_ANIMATION_BLOCK_TOP) {
-        rocket.style.transform = `rotate(${ROCKET_SCROLL_MAX_ROTATE_VALUE}deg)`;
       }
     });
   });
