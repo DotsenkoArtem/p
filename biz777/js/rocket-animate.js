@@ -155,7 +155,10 @@ function rocketBlockAnimate() {
         // Дополнительно обеспечивает адекватное положение при нервном-резком скролле
         if (currentAnimationBlockTop >= ANIMATION_START_POINT) {
           rocket.style.transform = `rotate(0deg)`;
-          animationBlockItems.forEach((item) => (item.style.transform = ``));
+          animationBlockItems.forEach((item) => {
+            item.style.transform = ``
+            item.style.opacity = `1`
+          });
         }
         if (currentAnimationBlockTop <= ANIMATION_STOP_POINT) {
           rocket.style.transform = `rotate(${ROCKET_SCROLL_MAX_ROTATE_VALUE}deg)`;

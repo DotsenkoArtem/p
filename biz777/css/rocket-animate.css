@@ -6,8 +6,8 @@
 }
 
 .block1-roket {
-  width: 490px;
-  top: -70px;
+  width: 494px;
+  top: -69px;
   right: 35px;
   z-index: 40;
   transform-origin: 75% 50%;
@@ -17,8 +17,8 @@
 
 .block1-gear {
   position: absolute;
-  top: 258px;
-  left: 163px;
+  top: 257px;
+  left: 161px;
   z-index: 35;
   opacity: 0;
   visibility: hidden;
@@ -31,7 +31,7 @@
 .block1-sheet-clock-globe {
   width: 190px;
   position: absolute;
-  top: 105px;
+  top: 95px;
   right: 5px;
   z-index: 30;
   opacity: 0;  
@@ -43,10 +43,10 @@
 }
 
 .block1-sky-lg {
-  width: 265px;
+  width: 250px;
   position: absolute;
-  top: 205px;
-  left: -140px;
+  top: 208px;
+  left: -116px;
   z-index: 45;
   opacity: 0;
   visibility: hidden;
@@ -55,8 +55,8 @@
 .block1-sky-md-top {
   width: 160px;
   position: absolute;
-  top: -45px;
-  right: 158px;
+  top: -47px;
+  right: 166px;
   z-index: 15;
   opacity: 0;  
   visibility: hidden;
@@ -141,13 +141,15 @@
 }
 
 .block1__right.animated .block1-sky-lg,
-.block1__right.animated .block1-sky-md-top{
-  animation: moveHorizontalRight 4000ms ease-in-out infinite forwards;
+.block1__right.animated .block1-sky-md-top
+{
+  animation: moveHorizontalRight 4000ms linear infinite forwards;
   opacity: 1;
 }
 
 .block1__right.animated .block1-sky-md{
-  animation: moveHorizontalLeft 4000ms ease-in-out infinite forwards;
+  /* animation: moveHorizontalLeft 4000ms ease-in-out infinite forwards; */
+  animation: moveHorizontalLeft 4000ms linear infinite forwards;
   opacity: 1;
 }
 
@@ -168,7 +170,7 @@
     transform: translate(0, 0)
   }
   50%{
-    transform: translate(26%, -5%)
+    transform: translate(18.5%, -5%)
   }
   100%{
     transform: translate(0, 0)
@@ -180,7 +182,7 @@
     transform: translateX(0)
   }
   50%{
-    transform: translateX(-10%)
+    transform: translateX(-5%)
   }
   100%{
     transform: translateX(0%)
