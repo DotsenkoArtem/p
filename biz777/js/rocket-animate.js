@@ -151,7 +151,7 @@ function rocketBlockAnimate(elemClass) {
         gear.style.transform = `rotate(${360 * progress}deg)`;
         gear.style.transformOrigin = `center center`;
       },
-      duration: 2000,
+      duration: 7000,
       // editTime: 0,
     };
 
