@@ -5,8 +5,9 @@
   min-height: var(--block1-right-heigh);
 }
 
-.block1-roket {
+.rocket-roket {
   width: 494px;
+  position: absolute;
   top: -69px;
   right: 35px;
   z-index: 40;
@@ -15,7 +16,7 @@
   visibility: hidden;
 }
 
-.block1-gear {
+.rocket-gear {
   position: absolute;
   top: 257px;
   left: 161px;
@@ -24,11 +25,11 @@
   visibility: hidden;
 }
 
-.block1-gear.transform-on-scroll {
+/* .rocket-gear.transform-on-scroll {
   transform-origin: 100% -600%;
-}
+} */
 
-.block1-sheet-clock-globe {
+.rocket-sheet-clock-globe {
   width: 190px;
   position: absolute;
   top: 95px;
@@ -38,11 +39,11 @@
   visibility: hidden;
 }
 
-.block1-sheet-clock-globe.transform-on-scroll {
+/* .rocket-sheet-clock-globe.transform-on-scroll {
   transform-origin: -150% -50%;
-}
+} */
 
-.block1-sky-lg {
+.rocket-sky-lg {
   width: 250px;
   position: absolute;
   top: 208px;
@@ -52,7 +53,7 @@
   visibility: hidden;
 }
 
-.block1-sky-md-top {
+.rocket-sky-md-top {
   width: 160px;
   position: absolute;
   top: -47px;
@@ -62,7 +63,7 @@
   visibility: hidden;
 }
 
-.block1-sky-md {
+.rocket-sky-md {
   width: 450px;
   position: absolute;
   top: -10px;
@@ -72,38 +73,43 @@
   visibility: hidden;
 }
 
-.block1__right.smooth-entry .block1-sky-lg{
+.block1__right.smooth-entry .rocket-sky-lg{
   transform-origin: 0% 0%;
   animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-roket{
+.block1__right.smooth-entry .rocket-roket{
   animation: rotateInRight 1000ms ease none, fadeIn 650ms ease forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-gear{
+.block1__right.smooth-entry .rocket-gear{
   transform-origin: 500% -320%;
   animation: scaleIn 1000ms ease none, fadeIn 650ms 350ms ease forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-sheet-clock-globe{
+.block1__right.smooth-entry .rocket-sheet-clock-globe{
   transform-origin: 0% 25%;
   animation: scaleIn 1000ms ease none, fadeIn 650ms 350ms ease forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-sky-md-top{
+.block1__right.smooth-entry .rocket-sky-md-top{
   transform-origin: 0% 50%;
   animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
   visibility: visible;
 }
 
-.block1__right.smooth-entry .block1-sky-md{
+.block1__right.smooth-entry .rocket-sky-md{
   transform-origin: -10% 100%;
   animation: skyScaleIn 1000ms ease none, fadeIn 1000ms ease forwards;
+  visibility: visible;
+}
+
+.block1__right.visible * {
+  opacity: 1;
   visibility: visible;
 }
 
@@ -140,32 +146,31 @@
   }
 }
 
-.block1__right.animated .block1-sky-lg,
-.block1__right.animated .block1-sky-md-top
+/* .block1__right.animated .rocket-sky-lg,
+.block1__right.animated .rocket-sky-md-top
 {
   animation: moveHorizontalRight 4000ms linear infinite forwards;
   opacity: 1;
-}
+} */
 
-.block1__right.animated .block1-sky-md{
-  /* animation: moveHorizontalLeft 4000ms ease-in-out infinite forwards; */
+/* .block1__right.animated .rocket-sky-md{
   animation: moveHorizontalLeft 4000ms linear infinite forwards;
   opacity: 1;
-}
+} */
 
-.block1__right.animated .block1-gear{
+/* .block1__right.animated .rocket-gear{
   animation: rotateRight 7000ms linear infinite;
   transform-origin: center;
   opacity: 1;
-}
+} */
 
-.block1__right.animated .block1-sheet-clock-globe{
+/* .block1__right.animated .rocket-sheet-clock-globe{
   animation: globeTranslate 1000ms linear forwards, orbit 5000ms 1000ms linear infinite;
   transform-origin: center center;
   opacity: 1;
-}
+} */
 
-@keyframes moveHorizontalRight {
+/* @keyframes moveHorizontalRight {
   0%{
     transform: translate(0, 0)
   }
@@ -175,9 +180,9 @@
   100%{
     transform: translate(0, 0)
   }
-}
+} */
 
-@keyframes moveHorizontalLeft {
+/* @keyframes moveHorizontalLeft {
   0%{
     transform: translateX(0)
   }
@@ -187,16 +192,16 @@
   100%{
     transform: translateX(0%)
   }
-}
+} */
 
-@keyframes rotateRight {
+/* @keyframes rotateRight {
   0%{
     transform: rotate(0deg)
   }
   100%{
     transform: rotate(360deg)
   }
-}
+} */
 
 @keyframes orbit {
   from { 	transform: rotate(0deg) translateX(10px) rotate(0deg); }
@@ -212,8 +217,9 @@
   }
 }
 
-@media (max-width: 991.98px) {
-  .block1__right.pc {
+@media (max-width: 1000.98px) {
+  /* .block1__right.pc { */
+  .block1__right {
     display: block;
     margin-top: 150px;
     height: 400px;
@@ -221,65 +227,66 @@
   .block1__right.mob {
     display: none;
   }
-  .block1-roket{
+  .rocket-roket{
     left: calc(50% - 190px)
   }
 
-  .block1-gear {
+  .rocket-gear {
     left: calc(50% - 25px)
   }
 
-  .block1-sheet-clock-globe {
+  .rocket-sheet-clock-globe {
     left: calc(50% + 150px)
   }
 
-  .block1-sky-lg {
+  .rocket-sky-lg {
     left: calc(50% - 325px)
   }
 
-  .block1-sky-md {
+  .rocket-sky-md {
     left: calc(50% - 150px)
   }
 
-  .block1-sky-md-top {
+  .rocket-sky-md-top {
     left: calc(50% - 0px)
   }
 }
 
 @media (max-width: 767.98px) {
-  .block1__right.pc {
+  /* .block1__right.pc { */
+  .block1__right {
     margin-top: 100px;
     height: 330px;
   }
-  .block1-roket{
+  .rocket-roket{
     width: 400px;
   }
 
-  .block1-gear {
+  .rocket-gear {
     width: 50px;
     left: calc(50% - 45px);
     top: 205px;
   }
 
-  .block1-sheet-clock-globe {
+  .rocket-sheet-clock-globe {
     width: 140px;
     top: 90px;
     left: calc(50% + 110px)
   }
 
-  .block1-sky-lg {
+  .rocket-sky-lg {
     width: 200px;
     top: 155px;
     left: calc(50% - 290px)
   }
 
-  .block1-sky-md {
+  .rocket-sky-md {
     width: 360px;
     top: -30px;
     left: calc(50% - 175px)
   }
 
-  .block1-sky-md-top {
+  .rocket-sky-md-top {
     width: 130px;
     top: -60px;
     left: calc(50% - 20px)
@@ -291,40 +298,41 @@
     --height-ratio-414: .65;
     --width-ratio-414: .55;
   }
-  .block1__right.pc {
+  /* .block1__right.pc { */
+  .block1__right {
     height: auto;
     min-height: calc(var(--block1-right-heigh) * var(--height-ratio-414));
   }
-  .block1-roket{
+  .rocket-roket{
     width: calc(490px * var( --width-ratio-414));
     left: calc(50% - 135px)
   }
 
-  .block1-gear {
+  .rocket-gear {
     width: calc(61px * var( --width-ratio-414));
     left: calc(50% - 45px);
     top: 110px;
   }
 
-  .block1-sheet-clock-globe {
+  .rocket-sheet-clock-globe {
     width: calc(190px * var( --width-ratio-414));
     top: 29px;
     left: calc(50% + 70px)
   }
 
-  .block1-sky-lg {
+  .rocket-sky-lg {
     width: calc(265px * var( --width-ratio-414));
     top: 85px;
     left: calc(50% - 220px)
   }
 
-  .block1-sky-md {
+  .rocket-sky-md {
     width: calc(450px * var( --width-ratio-414));
     top: -45px;
     left: calc(50% - 138px)
   }
 
-  .block1-sky-md-top {
+  .rocket-sky-md-top {
     width: calc(160px * var( --width-ratio-414));
     top: -65px;
     left: calc(50% - 20px)
@@ -336,40 +344,41 @@
     --height-ratio-414: .5;
     --width-ratio-414: .4;
   }
-  .block1__right.pc {
+  /* .block1__right.pc { */
+  .block1__right {
     height: auto;
     min-height: calc(var(--block1-right-heigh) * var(--height-ratio-414));
   }
-  .block1-roket{
+  .rocket-roket{
     width: calc(490px * var( --width-ratio-414));
     left: calc(50% - 95px)
   }
 
-  .block1-gear {
+  .rocket-gear {
     width: calc(61px * var( --width-ratio-414));
     left: calc(50% - 30px);
     top: 60px;
   }
 
-  .block1-sheet-clock-globe {
+  .rocket-sheet-clock-globe {
     width: calc(190px * var( --width-ratio-414));
     top: 2px;
     left: calc(50% + 60px)
   }
 
-  .block1-sky-lg {
+  .rocket-sky-lg {
     width: calc(265px * var( --width-ratio-414));
     top: 40px;
     left: calc(50% - 160px)
   }
 
-  .block1-sky-md {
+  .rocket-sky-md {
     width: calc(450px * var( --width-ratio-414));
     top: -55px;
     left: calc(50% - 95px)
   }
 
-  .block1-sky-md-top {
+  .rocket-sky-md-top {
     width: calc(160px * var( --width-ratio-414));
     top: -65px;
     left: calc(50% - 20px)
