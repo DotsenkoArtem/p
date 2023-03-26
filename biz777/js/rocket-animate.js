@@ -110,22 +110,24 @@ function rocketBlockAnimate(elemClass) {
 
     let animateCloudsId;
     let animateGearId;
+    let animateSheetClockGlobeId;
 
     // Флаг состояния анимации (для II ЭТАПа)
     let isAnimated = true;
     // Время, прошедшее между остановкой анимации и ее последующим началом
     let deltaTimeClouds = 0;
     let deltaTimeGear = 0;
+    let deltaTimeSheetClockGlobe = 0;
 
     // Параметры для анимации "Облака"
     const animateCloudsOptions = {
-      timingForward(timeFractionForward) {
-        return timeFractionForward;
-      },
+      // timingForward(timeFractionForward) {
+      //   return timeFractionForward;
+      // },
       timing(timeFraction) {
         return 1 - timeFraction;
       },
-      draw(progress, progressForward) {
+      draw(progress) {
         skyLg.style.transform = `translate(${18.5 * progress}%, ${
           -5 * progress
         }%)`;
@@ -133,13 +135,6 @@ function rocketBlockAnimate(elemClass) {
           -5 * progress
         }%)`;
         skyMd.style.transform = `translateX(${-5 * progress}%)`;
-
-        sheetClockGlobe.style.transform = `translate(${
-          10 * Math.sin((360 * progressForward * Math.PI) / 180)
-        }px, ${
-          10 * Math.cos(((360 * progressForward + 180) * Math.PI) / 180) + 10
-        }px)`;
-        sheetClockGlobe.style.transformOrigin = `center center`;
       },
       duration: 2000,
       editTime: 0,
@@ -156,15 +151,25 @@ function rocketBlockAnimate(elemClass) {
       duration: 7000,
       editTime: 0,
     };
+    // Параметры для анимации "Часы, лист, глобус"
+    const animateSheetClockGlobeOptions = {
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        sheetClockGlobe.style.transform = `translate(${
+          10 * Math.sin((360 * progress * Math.PI) / 180)
+        }px, ${
+          10 * Math.cos(((360 * progress + 180) * Math.PI) / 180) + 10
+        }px)`;
+        sheetClockGlobe.style.transformOrigin = `center center`;
+      },
+      duration: 4000,
+      editTime: 0,
+    };
 
     // Функция анимации облаков
-    function animateClouds({
-      timing,
-      timingForward,
-      draw,
-      duration,
-      editTime,
-    }) {
+    function animateClouds({ timing, draw, duration, editTime }) {
       // editTime необходимо для возобновления анимации с того же кадра
       let start = performance.now() + editTime;
 
@@ -172,21 +177,23 @@ function rocketBlockAnimate(elemClass) {
         // Дл облаков
         let timeFraction = Math.abs((time - start) / duration - 1);
         // Для книги и глобуса
-        let timeFractionForward = (time - start) / (2 * duration) - 1;
-        if (timeFractionForward > 1) timeFractionForward = 1;
+        // let timeFractionForward = (time - start) / (2 * duration) - 1;
+        // if (timeFractionForward > 1) timeFractionForward = 1;
         if (timeFraction > 1) start = time;
         // Зацикливание
         deltaTimeClouds = time - start;
         // Прогресс
         let progress = timing(timeFraction);
-        let progressForward = timingForward(timeFractionForward);
+        // let progressForward = timingForward(timeFractionForward);
         // Отрисовка
-        draw(progress, progressForward); // отрисовать её
+        draw(progress); // отрисовать её
         if (timeFraction < 1.1) {
           animateCloudsId = requestAnimationFrame(animateClouds);
         }
       });
     }
+
+
     // Функция анимации "Шестерня"
     // function animateGear({ timing, draw, duration, editTime }) {
     function animateGear({ timing, draw, duration, editTime }) {
@@ -198,6 +205,20 @@ function rocketBlockAnimate(elemClass) {
         let progress = timing(timeFraction);
         draw(progress);
           animateGearId = requestAnimationFrame(animateGear);
+      });
+    }
+
+    
+    // Функция анимации "Часы, лист, глобус"
+    function animateSheetClockGlobe({ timing, draw, duration, editTime }) {
+      let start = performance.now() + editTime;
+      requestAnimationFrame(function animateSheetClockGlobe(time) {
+        let timeFraction = (time - start) / duration;
+        if (timeFraction > 1) start = time;
+        deltaTimeSheetClockGlobe = time - start
+        let progress = timing(timeFraction);
+        draw(progress);
+          animateSheetClockGlobeId = requestAnimationFrame(animateSheetClockGlobe);
       });
     }
 
@@ -246,6 +267,7 @@ function rocketBlockAnimate(elemClass) {
           block.classList.add("visible");
           animateClouds(animateCloudsOptions);
           animateGear(animateGearOptions);
+          animateSheetClockGlobe(animateSheetClockGlobeOptions);
           isAnimated = true
         }, 1000);
           console.log('В ПОЛЕ АНИМАЦИИ!!!!!!!!!!');
@@ -273,27 +295,12 @@ function rocketBlockAnimate(elemClass) {
           block.classList.add("visible")
 
           console.log('ОКНО В ПОЛЕ АНИМАЦИИ СКРОЛЛА ИЛИ НИЖЕ');
-          console.log('isAnimated: ', isAnimated);
           loadRAnge = 3
         }
 
 
 
-        // ЕСЛИ НАД ДИАПАЗОНАМИ АНИМАЦИЙ
-        // if (isAboveAnimRanges(block)) {
-        //   scrollProgress = 1
-          
-        //   rocket.style.transform = `rotate(${
-        //     ROCKET_MAX_ROTATE * scrollProgress
-        //   }deg)`;
 
-        //   animationStopStyles = 0
-        //   scrollRocket(scrollProgress, animationStopStyles)
-        //   block.classList.add("visible");
-
-        //   console.log('isAboveAnimRanges: ', isAboveAnimRanges(block));
-        //   console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
-        // }
 
 
         // III ЭТАП: АНИМАЦИЯ ПРИ СКРОЛЛЕ
@@ -317,6 +324,7 @@ function rocketBlockAnimate(elemClass) {
               if (isAnimated) {
                 cancelAnimationFrame(animateCloudsId);
                 cancelAnimationFrame(animateGearId);
+                cancelAnimationFrame(animateSheetClockGlobeId);
                 isAnimated = false;
 
 
@@ -340,7 +348,8 @@ function rocketBlockAnimate(elemClass) {
                       sheetClockGlobe.style.transform.slice(10, -1).split(", ")[1]
                     ),
                   };
-                  // console.log('sheetClockGlobe-animationStopStyles: ', animationStopStyles.sheetClockGlobe);
+                  console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
+                  console.log('sheetClockGlobe-animationStopStyles: ', animationStopStyles.sheetClockGlobe);
 
                   animationStopStyles.skyMdTop = {
                     translateX: parseFloat(
@@ -350,7 +359,7 @@ function rocketBlockAnimate(elemClass) {
                       skyMdTop.style.transform.slice(10, -1).split(", ")[1]
                     ),
                   };
-                  // console.log();
+
                   animationStopStyles.skyMd = {
                     translateX: parseFloat(skyMd.style.transform.slice(11, -1)),
                     translateY: 0,
@@ -427,13 +436,21 @@ function rocketBlockAnimate(elemClass) {
 
               this.setTimeout(function() {
 
+                console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
+
 
                 animateCloudsOptions.editTime = -deltaTimeClouds;
                 animateGearOptions.editTime = -deltaTimeGear;
+                animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe;
+
+
+
                 deltaTimeClouds = 0
                 deltaTimeGear = 0
+                deltaTimeSheetClockGlobe = 0
                 animateClouds(animateCloudsOptions);
                 animateGear(animateGearOptions);
+                animateSheetClockGlobe(animateSheetClockGlobeOptions);
                 // isAnimated = true;
                 // animationStopStyles = 0;
               }, 1000)
@@ -494,12 +511,12 @@ function rocketBlockAnimate(elemClass) {
 
             sheetClockGlobe.style.transform = `translate(${
               elemsEndStyles.sheetClockGlobe.translateX * scrollProgress + animationStopStyles.sheetClockGlobe.translateX
-            }%, ${
+            }px, ${
               elemsEndStyles.sheetClockGlobe.translateY * scrollProgress + animationStopStyles.sheetClockGlobe.translateY
-            }%) scale(${
+            }px) scale(${
               1 - (1 - elemsEndStyles.sheetClockGlobe.scale) * scrollProgress
             })`;
-            // console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
+            console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
           }
           if(typeof(animationStopStyles) == 'number' ) {
             // console.log('Тип данных: number');
@@ -537,9 +554,9 @@ function rocketBlockAnimate(elemClass) {
 
             sheetClockGlobe.style.transform = `translate(${
               elemsEndStyles.sheetClockGlobe.translateX * scrollProgress
-            }%, ${
+            }px, ${
               elemsEndStyles.sheetClockGlobe.translateY * scrollProgress
-            }%) scale(${
+            }px) scale(${
               1 - (1 - elemsEndStyles.sheetClockGlobe.scale) * scrollProgress
             })`;
           }
@@ -551,6 +568,7 @@ function rocketBlockAnimate(elemClass) {
           exit = new Date().getTime();
           cancelAnimationFrame(animateCloudsId);
           cancelAnimationFrame(animateGearId);
+          cancelAnimationFrame(animateSheetClockGlobeId);
           isAnimated = false
           // console.log("Ушел с вкладки: ", exit);
         });
@@ -562,10 +580,13 @@ function rocketBlockAnimate(elemClass) {
           if(!isAnimated) {
             animateCloudsOptions.editTime = -deltaTimeClouds;
             animateGearOptions.editTime = -deltaTimeGear;
+            animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe;
             deltaTimeClouds = 0
             deltaTimeGear = 0
+            deltaTimeSheetClockGlobe = 0
             animateClouds(animateCloudsOptions);
             animateGear(animateGearOptions);
+            animateSheetClockGlobe(animateSheetClockGlobeOptions);
           }
         });
         // ===========================================
