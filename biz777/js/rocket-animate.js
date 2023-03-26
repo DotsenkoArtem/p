@@ -114,7 +114,8 @@ function rocketBlockAnimate(elemClass) {
     // Флаг состояния анимации (для II ЭТАПа)
     let isAnimated = true;
     // Время, прошедшее между остановкой анимации и ее последующим началом
-    let deltaTime = 0;
+    let deltaTimeClouds = 0;
+    let deltaTimeGear = 0;
 
     // Параметры для анимации "Облака"
     const animateCloudsOptions = {
@@ -153,7 +154,7 @@ function rocketBlockAnimate(elemClass) {
         gear.style.transformOrigin = `center center`;
       },
       duration: 7000,
-      // editTime: 0,
+      editTime: 0,
     };
 
     // Функция анимации облаков
@@ -175,7 +176,7 @@ function rocketBlockAnimate(elemClass) {
         if (timeFractionForward > 1) timeFractionForward = 1;
         if (timeFraction > 1) start = time;
         // Зацикливание
-        deltaTime = time - start;
+        deltaTimeClouds = time - start;
         // Прогресс
         let progress = timing(timeFraction);
         let progressForward = timingForward(timeFractionForward);
@@ -188,11 +189,12 @@ function rocketBlockAnimate(elemClass) {
     }
     // Функция анимации "Шестерня"
     // function animateGear({ timing, draw, duration, editTime }) {
-    function animateGear({ timing, draw, duration }) {
-      let start = performance.now();
+    function animateGear({ timing, draw, duration, editTime }) {
+      let start = performance.now() + editTime;
       requestAnimationFrame(function animateGear(time) {
         let timeFraction = (time - start) / duration;
         if (timeFraction > 1) start = time;
+        deltaTimeGear = time - start
         let progress = timing(timeFraction);
         draw(progress);
           animateGearId = requestAnimationFrame(animateGear);
@@ -426,8 +428,10 @@ function rocketBlockAnimate(elemClass) {
               this.setTimeout(function() {
 
 
-                animateCloudsOptions.editTime = -deltaTime;
-                deltaTime = 0
+                animateCloudsOptions.editTime = -deltaTimeClouds;
+                animateGearOptions.editTime = -deltaTimeGear;
+                deltaTimeClouds = 0
+                deltaTimeGear = 0
                 animateClouds(animateCloudsOptions);
                 animateGear(animateGearOptions);
                 // isAnimated = true;
@@ -556,8 +560,10 @@ function rocketBlockAnimate(elemClass) {
           // console.log("Сфокусирован: ", entry);
           // console.log(`Тебя не было ${entry - exit} ms`);
           if(!isAnimated) {
-            animateCloudsOptions.editTime = -deltaTime;
-            deltaTime = 0
+            animateCloudsOptions.editTime = -deltaTimeClouds;
+            animateGearOptions.editTime = -deltaTimeGear;
+            deltaTimeClouds = 0
+            deltaTimeGear = 0
             animateClouds(animateCloudsOptions);
             animateGear(animateGearOptions);
           }
