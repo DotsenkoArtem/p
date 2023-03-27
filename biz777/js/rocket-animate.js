@@ -6,7 +6,7 @@ const requestAnimationFrame =
 const cancelAnimationFrame =
   window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
-let isTransitioned = false
+let isTransitioned = false;
 
 rocketBlockAnimate("js-rocket");
 
@@ -21,7 +21,6 @@ function rocketBlockAnimate(elemClass) {
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
     window.addEventListener("load", function () {
-
       // НАСТРОЙКИ БЛОКА АНИМАЦИИ
       /* 
     Точки начала и окончания анимации при скролле, соответственно SCROLL_ANIM_ENTRY_POINT и SCROLL_ANIM_EXIT_POINT
@@ -31,7 +30,7 @@ function rocketBlockAnimate(elemClass) {
       // Диапазон работы анимации "при скролле"
       const SCROLL_ANIM_RANGE = 120;
       const SCROLL_ANIM_ENTRY_POINT =
-      ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+        ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
 
       // Точка окончания анимации при скролле
       const SCROLL_ANIM_EXIT_POINT = 0;
@@ -67,7 +66,7 @@ function rocketBlockAnimate(elemClass) {
       const rocket = document.querySelector(".rocket-roket");
       animationBlockItems.push(rocket);
 
-      // Значения конечных трансформаций элементов после анимации скрола
+      // Значения конечных трансформаций элементов после анимации скрола (III ЭТАП)
       const elemsEndStyles = {
         skyLg: {
           translateX: 30,
@@ -84,12 +83,12 @@ function rocketBlockAnimate(elemClass) {
         gear: {
           translateX: 100,
           translateY: -300,
-          scale: 0.05,
+          scale: 0.01,
         },
         sheetClockGlobe: {
           translateX: -160,
           translateY: -60,
-          scale: 0.05,
+          scale: 0,
         },
       };
 
@@ -102,7 +101,7 @@ function rocketBlockAnimate(elemClass) {
           : false;
       }
 
-      // Функция проверки на нахождение элемента в пределах диапазона анимации "При скролле"
+      // Функция проверки на нахождение элемента в пределах диапазона анимации "При скролле" (III ЭТАП)
       function isInScrollAnimRange(elem) {
         return elem.getBoundingClientRect().top < SCROLL_ANIM_ENTRY_POINT &&
           elem.getBoundingClientRect().top >= SCROLL_ANIM_EXIT_POINT
@@ -116,7 +115,7 @@ function rocketBlockAnimate(elemClass) {
           ? true
           : false;
       }
-      
+
       // Флаг состояния анимации (для II ЭТАПа)
       let isAnimated = true;
 
@@ -230,7 +229,6 @@ function rocketBlockAnimate(elemClass) {
 
       // При прокпутке страницы > 0. Без setTimeout при перезагрузке страницы значения window.pageYOffset определяюися то правильно (в соответствии с текущей прокруткой страницы), то равно 0. Соответственно сбивается определение всех исходных координат элементов.
       setTimeout(function () {
-
         // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
         currentAnimationBlockTop = block.getBoundingClientRect().top;
         // Прогресс анимации скролла - изначально был предназначен для вычисления положения ракеты и других элементов анимации в зависимости от величины прокрутки страницы
@@ -240,7 +238,6 @@ function rocketBlockAnimate(elemClass) {
 
         // ЕСЛИ БЛОК В ДИАПАЗОНЕ АНИМАЦИИ (II ЭТАПа)
         if (isInRocketMainAnimRange(block)) {
-
           // I ЭТАП: ПОЯВЛЕНИЕ БЛОКА С ЭЛЕМЕНТАМИ
           block.classList.add("smooth-entry");
 
@@ -254,7 +251,6 @@ function rocketBlockAnimate(elemClass) {
             animateSheetClockGlobe(animateSheetClockGlobeOptions);
             isAnimated = true;
           }, 1000);
-          // console.log("В ПОЛЕ АНИМАЦИИ!!!!!!!!!!");
         }
 
         // ЕСЛИ БЛОК В ДИАПАЗОНЕ АНИМАЦИИ СКРОЛЛА(III ЭТАПа) ИЛИ ВЫШЕ
@@ -270,25 +266,18 @@ function rocketBlockAnimate(elemClass) {
           animationStopStyles = 0;
           scrollRocket(scrollProgress, animationStopStyles);
           block.classList.add("visible");
-
-          // console.log("ОКНО В ПОЛЕ АНИМАЦИИ СКРОЛЛА ИЛИ НИЖЕ");
         }
 
         // III ЭТАП: АНИМАЦИЯ ПРИ СКРОЛЛЕ
-          window.addEventListener("scroll", blockScrollAction);
-
-     
+        window.addEventListener("scroll", blockScrollAction);
 
         function blockScrollAction() {
           currentAnimationBlockTop = block.getBoundingClientRect().top;
-          
-          if(!isTransitioned) {
-          
-            
 
+          if (!isTransitioned) {
             // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА АНИМАЦИИ СКРОЛЛА
             if (isInScrollAnimRange(block)) {
-              console.log('isTransitioned: ', isTransitioned);
+              console.log("isTransitioned: ", isTransitioned);
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
                 item.style.transition = "1s";
@@ -300,7 +289,7 @@ function rocketBlockAnimate(elemClass) {
                 cancelAnimationFrame(animateSheetClockGlobeId);
                 isAnimated = false;
 
-                // Если не забраны стили анимации - забераем их и парсим
+                // Если не забраны стили анимации - забераем их и записывем в объект
                 animationStopStyles = {};
                 animationStopStyles.skyLg = {
                   translateX: parseFloat(
@@ -351,25 +340,16 @@ function rocketBlockAnimate(elemClass) {
             }
           }
 
-
-
-
-
-
-
-
           // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
           if (isInRocketMainAnimRange(block)) {
-
-            if(!isTransitioned) {
-
+            if (!isTransitioned) {
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
                 item.style.transition = "0s";
               });
               if (!isAnimated) {
-                isTransitioned = true
-                console.log('isTransitioned: ', isTransitioned);
+                isTransitioned = true;
+                console.log("isTransitioned: ", isTransitioned);
                 // Для каждого блока устанавливается время перехода
                 movingBlockItems.forEach(function (item) {
                   item.style.transition = "1s";
@@ -381,8 +361,6 @@ function rocketBlockAnimate(elemClass) {
                 isAnimated = true;
 
                 this.setTimeout(function () {
-                  // console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
-
                   animateCloudsOptions.editTime = -deltaTimeClouds;
                   animateGearOptions.editTime = -deltaTimeGear;
                   animateSheetClockGlobeOptions.editTime =
@@ -401,16 +379,10 @@ function rocketBlockAnimate(elemClass) {
                   animateGear(animateGearOptions);
                   animateSheetClockGlobe(animateSheetClockGlobeOptions);
 
-
-                  isTransitioned = false
-                  console.log('isTransitioned: ', isTransitioned);
+                  isTransitioned = false;
                 }, 1000);
               }
-
             }
-
-
-
           }
         }
 
@@ -458,8 +430,6 @@ function rocketBlockAnimate(elemClass) {
             })`;
           }
           if (typeof animationStopStyles == "number") {
-            // console.log('Тип данных: number');
-
             skyLg.style.transform = `translate(${
               elemsEndStyles.skyLg.translateX * scrollProgress +
               animationStopStyles
@@ -499,50 +469,6 @@ function rocketBlockAnimate(elemClass) {
             })`;
           }
         }
-
-        // ДЕЙСТВИЯ ПРИ ПЕРЕХОДЕ ПО ВКЛАДКАМ БРАУЗЕРА
-        // let exit, entry;
-        // this.window.addEventListener("blur", function () {
-        //   exit = new Date().getTime();
-
-        //   // if(isAnimated) {
-        //     cancelAnimationFrame(animateCloudsId);
-        //     cancelAnimationFrame(animateGearId);
-        //     cancelAnimationFrame(animateSheetClockGlobeId);
-        //   //   isAnimated = false
-        //   // }
-
-        //   // console.log("Ушел с вкладки: ", exit);
-        //   // console.log('isAnimated: ', isAnimated);
-        // });
-
-        // this.window.addEventListener("focus", function () {
-        //   entry = new Date().getTime();
-
-        //   switchDelta = entry - exit
-
-        //   // if(!isAnimated) {
-        //     // animateCloudsOptions.editTime = -deltaTimeClouds - switchDelta;
-        //     // animateGearOptions.editTime = -deltaTimeGear - switchDelta;
-        //     // animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe - switchDelta;
-
-        //     // console.log('Вернулся: ', entry);
-        //     // console.log('isAnimated: ', isAnimated);
-
-        //     // console.log('Вернулся: ', deltaTimeClouds);
-        //     // console.log('deltaTimeGear: ', deltaTimeGear);
-        //     // console.log('deltaTimeSheetClockGlobe: ', deltaTimeSheetClockGlobe);
-
-        //     // deltaTimeClouds = 0
-        //     // deltaTimeGear = 0
-        //     // deltaTimeSheetClockGlobe = 0
-
-        //     animateClouds(animateCloudsOptions);
-        //     animateGear(animateGearOptions);
-        //     animateSheetClockGlobe(animateSheetClockGlobeOptions);
-        //   // }
-        // });
-        // ===========================================
 
         // End of Timeout
       }, 0);
