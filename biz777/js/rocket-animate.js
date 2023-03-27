@@ -125,7 +125,7 @@ function rocketBlockAnimate(elemClass) {
       //   return timeFractionForward;
       // },
       timing(timeFraction) {
-        return 1 - timeFraction;
+        return 1 - Math.abs(1 - timeFraction * 2);
       },
       draw(progress) {
         skyLg.style.transform = `translate(${18.5 * progress}%, ${
@@ -136,7 +136,7 @@ function rocketBlockAnimate(elemClass) {
         }%)`;
         skyMd.style.transform = `translateX(${-5 * progress}%)`;
       },
-      duration: 2000,
+      duration: 4000,
       editTime: 0,
     };
     // Параметры для анимации "Шестерня"
@@ -171,14 +171,15 @@ function rocketBlockAnimate(elemClass) {
     // Функция анимации облаков
     function animateClouds({ timing, draw, duration, editTime }) {
       // editTime необходимо для возобновления анимации с того же кадра
+      // let start = performance.now() + editTime;
       let start = performance.now() + editTime;
 
       requestAnimationFrame(function animateClouds(time) {
         // Дл облаков
-        let timeFraction = Math.abs((time - start) / duration - 1);
-        // Для книги и глобуса
-        // let timeFractionForward = (time - start) / (2 * duration) - 1;
-        // if (timeFractionForward > 1) timeFractionForward = 1;
+        // let timeFraction = Math.abs((time - start) / duration - 1);
+        if(start > time) {start = time}
+        let timeFraction = (time - start) / duration;
+
         if (timeFraction > 1) start = time;
         // Зацикливание
         deltaTimeClouds = time - start;
@@ -187,9 +188,9 @@ function rocketBlockAnimate(elemClass) {
         // let progressForward = timingForward(timeFractionForward);
         // Отрисовка
         draw(progress); // отрисовать её
-        if (timeFraction < 1.1) {
+        // if (timeFraction < 1.1) {
           animateCloudsId = requestAnimationFrame(animateClouds);
-        }
+        // }
       });
     }
 
@@ -278,10 +279,7 @@ function rocketBlockAnimate(elemClass) {
         
         // ЕСЛИ БЛОК В ДИАПАЗОНЕ АНИМАЦИИ СКРОЛЛА(III ЭТАПа)
         if (isInScrollAnimRange(block) || isAboveAnimRanges(block)){
-          // Для каждого блока устанавливается время перехода
-          // movingBlockItems.forEach(function (item) {
-          //   item.style.transition = "1s";
-          // });
+
           isAnimated = false
           // Прогресс скролла
           scrollProgress = 1
@@ -348,8 +346,8 @@ function rocketBlockAnimate(elemClass) {
                       sheetClockGlobe.style.transform.slice(10, -1).split(", ")[1]
                     ),
                   };
-                  console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
-                  console.log('sheetClockGlobe-animationStopStyles: ', animationStopStyles.sheetClockGlobe);
+                  // console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
+                  // console.log('sheetClockGlobe-animationStopStyles: ', animationStopStyles.sheetClockGlobe);
 
                   animationStopStyles.skyMdTop = {
                     translateX: parseFloat(
@@ -379,36 +377,6 @@ function rocketBlockAnimate(elemClass) {
               }deg)`;
               // И двигаем облака и скрываем детальки
               scrollRocket(scrollProgress, animationStopStyles);
-
-
-
-              // console.log('2 ДИАПАЗОН');
-              // console.log('isAnimated: ', isAnimated)
-            // }
-
-
-
-
-            // Если загрузка страницы была в пределах диапазона анимации скролла
-            // if(loadRAnge === 3) {
-            //   // Прогресс скролла
-            //   scrollProgress = 1
-
-            //   rocket.style.transform = `rotate(${
-            //     ROCKET_MAX_ROTATE * scrollProgress
-            //   }deg)`;
-            //   // И двигаем облака и скрываем детальки
-            //   scrollRocket(scrollProgress, animationStopStyles);
-              
-            //   console.log('3 ДИАПАЗОН');
-            //   console.log('isAnimated: ', isAnimated);
-            // }
-
-
-
-
-            
-
           }
 
 
@@ -436,21 +404,21 @@ function rocketBlockAnimate(elemClass) {
 
               this.setTimeout(function() {
 
-                console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
+                // console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
 
 
                 animateCloudsOptions.editTime = -deltaTimeClouds;
                 animateGearOptions.editTime = -deltaTimeGear;
                 animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe;
 
-
-
                 deltaTimeClouds = 0
                 deltaTimeGear = 0
                 deltaTimeSheetClockGlobe = 0
+
                 animateClouds(animateCloudsOptions);
                 animateGear(animateGearOptions);
                 animateSheetClockGlobe(animateSheetClockGlobeOptions);
+
                 // isAnimated = true;
                 // animationStopStyles = 0;
               }, 1000)
@@ -458,12 +426,13 @@ function rocketBlockAnimate(elemClass) {
 
           }
 
-          // if(isAboveAnimRanges(block)) {
-          //   if (animationStopStyles == 0) {
+          if(isAboveAnimRanges(block)) {
+            // if (animationStopStyles == 0) {
 
-          //   }
-          //   scrollRocket(1, animationStopStyles)
-          // }
+            // }
+            scrollRocket(1, animationStopStyles)
+            console.log('animationStopStyles: ', animationStopStyles);
+          }
           // if (currentAnimationBlockTop >= ROCKET_MAIN_ANIM_ENTRY_POINT) {
           //   rocket.style.transform = `rotate(${0}deg)`;
           // }
@@ -516,7 +485,7 @@ function rocketBlockAnimate(elemClass) {
             }px) scale(${
               1 - (1 - elemsEndStyles.sheetClockGlobe.scale) * scrollProgress
             })`;
-            console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
+            // console.log('sheetClockGlobe.style.transform: ', sheetClockGlobe.style.transform);
           }
           if(typeof(animationStopStyles) == 'number' ) {
             // console.log('Тип данных: number');
@@ -563,32 +532,48 @@ function rocketBlockAnimate(elemClass) {
         }
 
         // ДЕЙСТВИЯ ПРИ ПЕРЕХОДЕ ПО ВКЛАДКАМ БРАУЗЕРА
-        let exit, entry;
-        this.window.addEventListener("blur", function () {
-          exit = new Date().getTime();
-          cancelAnimationFrame(animateCloudsId);
-          cancelAnimationFrame(animateGearId);
-          cancelAnimationFrame(animateSheetClockGlobeId);
-          isAnimated = false
-          // console.log("Ушел с вкладки: ", exit);
-        });
+        // let exit, entry;
+        // this.window.addEventListener("blur", function () {
+        //   exit = new Date().getTime();
 
-        this.window.addEventListener("focus", function () {
-          entry = new Date().getTime();
-          // console.log("Сфокусирован: ", entry);
-          // console.log(`Тебя не было ${entry - exit} ms`);
-          if(!isAnimated) {
-            animateCloudsOptions.editTime = -deltaTimeClouds;
-            animateGearOptions.editTime = -deltaTimeGear;
-            animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe;
-            deltaTimeClouds = 0
-            deltaTimeGear = 0
-            deltaTimeSheetClockGlobe = 0
-            animateClouds(animateCloudsOptions);
-            animateGear(animateGearOptions);
-            animateSheetClockGlobe(animateSheetClockGlobeOptions);
-          }
-        });
+        //   // if(isAnimated) {
+        //     cancelAnimationFrame(animateCloudsId);
+        //     cancelAnimationFrame(animateGearId);
+        //     cancelAnimationFrame(animateSheetClockGlobeId);
+        //   //   isAnimated = false
+        //   // }
+
+        //   // console.log("Ушел с вкладки: ", exit);
+        //   // console.log('isAnimated: ', isAnimated);
+        // });
+
+        // this.window.addEventListener("focus", function () {
+        //   entry = new Date().getTime();
+
+        //   switchDelta = entry - exit
+
+        //   // if(!isAnimated) {
+        //     // animateCloudsOptions.editTime = -deltaTimeClouds - switchDelta;
+        //     // animateGearOptions.editTime = -deltaTimeGear - switchDelta;
+        //     // animateSheetClockGlobeOptions.editTime = -deltaTimeSheetClockGlobe - switchDelta;
+
+
+        //     // console.log('Вернулся: ', entry);
+        //     // console.log('isAnimated: ', isAnimated);
+
+        //     // console.log('Вернулся: ', deltaTimeClouds);
+        //     // console.log('deltaTimeGear: ', deltaTimeGear);
+        //     // console.log('deltaTimeSheetClockGlobe: ', deltaTimeSheetClockGlobe);
+
+        //     // deltaTimeClouds = 0
+        //     // deltaTimeGear = 0
+        //     // deltaTimeSheetClockGlobe = 0
+
+        //     animateClouds(animateCloudsOptions);
+        //     animateGear(animateGearOptions);
+        //     animateSheetClockGlobe(animateSheetClockGlobeOptions);
+        //   // }
+        // });
         // ===========================================
 
 
