@@ -6,6 +6,8 @@ const requestAnimationFrame =
 const cancelAnimationFrame =
   window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
+let isTransitioned = false
+
 rocketBlockAnimate("js-rocket");
 
 function rocketBlockAnimate(elemClass) {
@@ -273,122 +275,144 @@ function rocketBlockAnimate(elemClass) {
         }
 
         // III ЭТАП: АНИМАЦИЯ ПРИ СКРОЛЛЕ
+          window.addEventListener("scroll", blockScrollAction);
 
-        window.addEventListener("scroll", function () {
+     
+
+        function blockScrollAction() {
           currentAnimationBlockTop = block.getBoundingClientRect().top;
+          
+          if(!isTransitioned) {
+          
+            
 
-          // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА АНИМАЦИИ СКРОЛЛА
-          if (isInScrollAnimRange(block)) {
-            // Для каждого блока устанавливается время перехода
-            movingBlockItems.forEach(function (item) {
-              item.style.transition = "1s";
-            });
-            // И если анимация проигрывается - останавливаем её
-            if (isAnimated) {
-              cancelAnimationFrame(animateCloudsId);
-              cancelAnimationFrame(animateGearId);
-              cancelAnimationFrame(animateSheetClockGlobeId);
-              isAnimated = false;
-
-              // Если не забраны стили анимации - забераем их и парсим
-              animationStopStyles = {};
-
-              animationStopStyles.skyLg = {
-                translateX: parseFloat(
-                  skyLg.style.transform.slice(10, -1).split(", ")[0]
-                ),
-                translateY: parseFloat(
-                  skyLg.style.transform.slice(10, -1).split(", ")[1]
-                ),
-              };
-
-              animationStopStyles.sheetClockGlobe = {
-                translateX: parseFloat(
-                  sheetClockGlobe.style.transform.slice(10, -1).split(", ")[0]
-                ),
-                translateY: parseFloat(
-                  sheetClockGlobe.style.transform.slice(10, -1).split(", ")[1]
-                ),
-              };
-
-              animationStopStyles.skyMdTop = {
-                translateX: parseFloat(
-                  skyMdTop.style.transform.slice(10, -1).split(", ")[0]
-                ),
-                translateY: parseFloat(
-                  skyMdTop.style.transform.slice(10, -1).split(", ")[1]
-                ),
-              };
-
-              animationStopStyles.skyMd = {
-                translateX: parseFloat(skyMd.style.transform.slice(11, -1)),
-                translateY: 0,
-              };
-
-              animationStopStyles.gear = {
-                rotate: parseFloat(gear.style.transform.slice(7, -4)),
-              };
-              // End of getAnimationStopStyles
-            }
-
-            // Прогресс скролла
-            scrollProgress = 1;
-            // Поворачиваем ракету
-            rocket.style.transform = `rotate(${
-              ROCKET_MAX_ROTATE * scrollProgress
-            }deg)`;
-            // Двигаем облака и скрываем детальки
-            scrollRocket(scrollProgress, animationStopStyles);
-          }
-
-          // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
-          if (isInRocketMainAnimRange(block)) {
-            // Для каждого блока устанавливается время перехода
-            movingBlockItems.forEach(function (item) {
-              item.style.transition = "0s";
-            });
-            if (!isAnimated) {
+            // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА АНИМАЦИИ СКРОЛЛА
+            if (isInScrollAnimRange(block)) {
+              console.log('isTransitioned: ', isTransitioned);
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
                 item.style.transition = "1s";
               });
-              scrollProgress = 0;
+              // И если анимация проигрывается - останавливаем её
+              if (isAnimated) {
+                cancelAnimationFrame(animateCloudsId);
+                cancelAnimationFrame(animateGearId);
+                cancelAnimationFrame(animateSheetClockGlobeId);
+                isAnimated = false;
+
+                // Если не забраны стили анимации - забераем их и парсим
+                animationStopStyles = {};
+                animationStopStyles.skyLg = {
+                  translateX: parseFloat(
+                    skyLg.style.transform.slice(10, -1).split(", ")[0]
+                  ),
+                  translateY: parseFloat(
+                    skyLg.style.transform.slice(10, -1).split(", ")[1]
+                  ),
+                };
+
+                animationStopStyles.sheetClockGlobe = {
+                  translateX: parseFloat(
+                    sheetClockGlobe.style.transform.slice(10, -1).split(", ")[0]
+                  ),
+                  translateY: parseFloat(
+                    sheetClockGlobe.style.transform.slice(10, -1).split(", ")[1]
+                  ),
+                };
+
+                animationStopStyles.skyMdTop = {
+                  translateX: parseFloat(
+                    skyMdTop.style.transform.slice(10, -1).split(", ")[0]
+                  ),
+                  translateY: parseFloat(
+                    skyMdTop.style.transform.slice(10, -1).split(", ")[1]
+                  ),
+                };
+
+                animationStopStyles.skyMd = {
+                  translateX: parseFloat(skyMd.style.transform.slice(11, -1)),
+                  translateY: 0,
+                };
+
+                animationStopStyles.gear = {
+                  rotate: parseFloat(gear.style.transform.slice(7, -4)),
+                };
+                // End of getAnimationStopStyles
+              }
+
+              // Прогресс скролла
+              scrollProgress = 1;
+              // Поворачиваем ракету
+              rocket.style.transform = `rotate(${
+                ROCKET_MAX_ROTATE * scrollProgress
+              }deg)`;
+              // Двигаем облака и скрываем детальки
               scrollRocket(scrollProgress, animationStopStyles);
-              rocket.style.transform = `rotate(${scrollProgress}deg)`;
-
-              isAnimated = true;
-
-              this.setTimeout(function () {
-                // console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
-
-                animateCloudsOptions.editTime = -deltaTimeClouds;
-                animateGearOptions.editTime = -deltaTimeGear;
-                animateSheetClockGlobeOptions.editTime =
-                  -deltaTimeSheetClockGlobe;
-
-                deltaTimeClouds = 0;
-                deltaTimeGear = 0;
-                deltaTimeSheetClockGlobe = 0;
-
-                animateClouds(animateCloudsOptions);
-                animateGear(animateGearOptions);
-                animateSheetClockGlobe(animateSheetClockGlobeOptions);
-                
-              }, 1000);
             }
           }
 
-          // if (isAboveAnimRanges(block)) {
-          //   // if (animationStopStyles == 0) {
 
-          //   // }
-          //   scrollRocket(1, animationStopStyles);
-          //   // console.log("animationStopStyles: ", animationStopStyles);
-          // }
-          // if (currentAnimationBlockTop >= ROCKET_MAIN_ANIM_ENTRY_POINT) {
-          //   rocket.style.transform = `rotate(${0}deg)`;
-          // }
-        });
+
+
+
+
+
+
+          // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
+          if (isInRocketMainAnimRange(block)) {
+
+            if(!isTransitioned) {
+
+              // Для каждого блока устанавливается время перехода
+              movingBlockItems.forEach(function (item) {
+                item.style.transition = "0s";
+              });
+              if (!isAnimated) {
+                isTransitioned = true
+                console.log('isTransitioned: ', isTransitioned);
+                // Для каждого блока устанавливается время перехода
+                movingBlockItems.forEach(function (item) {
+                  item.style.transition = "1s";
+                });
+                scrollProgress = 0;
+                scrollRocket(scrollProgress, animationStopStyles);
+                rocket.style.transform = `rotate(${scrollProgress}deg)`;
+
+                isAnimated = true;
+
+                this.setTimeout(function () {
+                  // console.log('SheetClockGlobeStyles: ', sheetClockGlobe.style);
+
+                  animateCloudsOptions.editTime = -deltaTimeClouds;
+                  animateGearOptions.editTime = -deltaTimeGear;
+                  animateSheetClockGlobeOptions.editTime =
+                    -deltaTimeSheetClockGlobe;
+
+                  deltaTimeClouds = 0;
+                  deltaTimeGear = 0;
+                  deltaTimeSheetClockGlobe = 0;
+
+                  // Для каждого блока устанавливается время перехода
+                  movingBlockItems.forEach(function (item) {
+                    item.style.transition = "0s";
+                  });
+
+                  animateClouds(animateCloudsOptions);
+                  animateGear(animateGearOptions);
+                  animateSheetClockGlobe(animateSheetClockGlobeOptions);
+
+
+                  isTransitioned = false
+                  console.log('isTransitioned: ', isTransitioned);
+                }, 1000);
+              }
+
+            }
+
+
+
+          }
+        }
 
         function scrollRocket(scrollProgress, animationStopStyles) {
           if (typeof animationStopStyles == "object") {
