@@ -278,7 +278,6 @@ function rocketBlockAnimate(elemClass) {
           if (!isTransitioned) {
             // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА АНИМАЦИИ СКРОЛЛА
             if (isInScrollAnimRange(block)) {
-              console.log("isTransitioned: ", isTransitioned);
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
                 item.style.transition = "1s";
@@ -356,7 +355,6 @@ function rocketBlockAnimate(elemClass) {
 
 
                 isTransitioned = true;
-                console.log("isTransitioned: ", isTransitioned);
                 // Для каждого блока устанавливается время перехода
                 movingBlockItems.forEach(function (item) {
                   item.style.transition = "1s";
