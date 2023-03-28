@@ -21,6 +21,7 @@ function rocketBlockAnimate(elemClass) {
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
     window.addEventListener("load", function () {
+      
       // НАСТРОЙКИ БЛОКА АНИМАЦИИ
       /* 
     Точки начала и окончания анимации при скролле, соответственно SCROLL_ANIM_ENTRY_POINT и SCROLL_ANIM_EXIT_POINT
@@ -348,6 +349,12 @@ function rocketBlockAnimate(elemClass) {
                 item.style.transition = "0s";
               });
               if (!isAnimated) {
+
+
+                // На время появления деталей блокируется прокрутка страницы
+                lockPage(initialDocumentWidth, header)
+
+
                 isTransitioned = true;
                 console.log("isTransitioned: ", isTransitioned);
                 // Для каждого блока устанавливается время перехода
@@ -361,6 +368,10 @@ function rocketBlockAnimate(elemClass) {
                 isAnimated = true;
 
                 this.setTimeout(function () {
+
+                  // После появления деталей отменяется блокировка страницы
+                  unLockPage(header)
+
                   animateCloudsOptions.editTime = -deltaTimeClouds;
                   animateGearOptions.editTime = -deltaTimeGear;
                   animateSheetClockGlobeOptions.editTime =
