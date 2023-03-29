@@ -1,3 +1,77 @@
+/* БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
+const header = document.querySelector("header.fixed");
+const initialDocumentWidth = document.documentElement.clientWidth;
+let lockedDocumentWidth = undefined
+let initialWsChatBtnRight = undefined;
+
+// ПП - полоса прокрутка
+// Функция блокировки прокрутки страницы
+function lockPage(initialDocumentWidth, header) {
+  // Запрет прокрутки
+  document.body.style.overflow = `hidden`;
+  // Вычисление ширины окна (без учета ПП)
+  lockedDocumentWidth = document.documentElement.clientWidth
+
+  // Если ширина окна (без учета ПП) до запрета прокрутки неравна ширине экрана (также без учета ПП) после запрета прокрутки, то есть ПП изначально существует и исчезает после запрета прокрутки.
+  if (initialDocumentWidth !== lockedDocumentWidth) {
+    document.body.style.paddingRight = `${lockedDocumentWidth - initialDocumentWidth}px`;
+    header.style.left = `${initialDocumentWidth / 2 - 650}px`;
+
+    // Действия с виджетом wsChat
+    let wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container");
+    let wsChatBtns = document.querySelectorAll(".multi_button");
+    // Если wsChat найден именяем его положение на странице, чтобы не прыгал
+    if (wsChat) {
+      if (initialWsChatBtnRight === undefined) {
+        initialWsChatBtnRight =
+        lockedDocumentWidth -
+          wsChatBtns[0].getBoundingClientRect().right;
+      }
+
+      wsChat.style.right = `${
+        lockedDocumentWidth - initialDocumentWidth
+      }px`;
+
+      wsChatBtns.forEach(
+        (item) =>
+          (item.style.right = `${
+            initialWsChatBtnRight +
+            (lockedDocumentWidth - initialDocumentWidth)
+          }px`)
+      );
+    }
+    // End of - Действия с виджетом wsChat
+  }
+}
+
+// Функция разблокировки прокрутки страницы
+function unLockPage(header) {
+    document.body.style.overflow = ``;
+
+  if (initialDocumentWidth !== lockedDocumentWidth) {
+    document.body.style.paddingRight = ``;
+    header.style.left = ``;
+
+    // Действия с виджетом wsChat
+    if (wsChat) {
+      let wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container");
+      let wsChatBtns = document.querySelectorAll(".multi_button");
+
+      wsChat.style.right = ``
+      wsChatBtns.forEach(
+        (item) => (item.style.right = `${initialWsChatBtnRight}px`)
+      );
+    }
+    // End of - Действия с виджетом wsChat
+  }
+}
+/* End of - БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
+
+
+
+
+
+
 const requestAnimationFrame =
   window.requestAnimationFrame ||
   window.mozRequestAnimationFrame ||
@@ -5,8 +79,6 @@ const requestAnimationFrame =
   window.msRequestAnimationFrame;
 const cancelAnimationFrame =
   window.cancelAnimationFrame || window.mozCancelAnimationFrame;
-
-let isTransitioned = false;
 
 rocketBlockAnimate("js-rocket");
 
@@ -117,6 +189,8 @@ function rocketBlockAnimate(elemClass) {
           : false;
       }
 
+      // Флаг состояния элементов анимации - false, если transition: 0s, противном случае true.
+      let isTransitioned = false;
       // Флаг состояния анимации (для II ЭТАПа)
       let isAnimated = true;
 
@@ -484,7 +558,7 @@ function rocketBlockAnimate(elemClass) {
     });
   } else {
     console.log(
-      "HTML-элемент не найден. Пожалуйста убедитель в правильности написания класса элемента."
+      `HTML-элемент с классом "${elemClass}" не найден. Пожалуйста убедитель в правильности написания класса элемента.`
     );
   }
 }
