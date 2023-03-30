@@ -18,51 +18,61 @@ function rocketBlockAnimate(elemClass) {
   // Получение блока анимации
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
+
+    // Переменная вынесена в начало, чтобы обновлялась при ресайзе экрана
+    let currentAnimationBlockTop = block.getBoundingClientRect().top;
+    console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
+
+
+    let ROCKET_MAIN_ANIM_ENTRY_POINT
+    let SCROLL_ANIM_ENTRY_POINT
+
+
+    // Переменные для lockPage()
+    let lockedDocumentWidth = window.innerWidth;
+    let unLockedDocumentWidth = document.documentElement.clientWidth;
+    let scrollBarWidth = lockedDocumentWidth - unLockedDocumentWidth
+    // Действия с виджетом wsChat
+    let wsChat = document.querySelector(
+      ".ws-chat .ws-chat-btn-el-container"
+    );
+    let wsChatBtns = document.querySelectorAll(".multi_button");
+    let initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right || false;
+
+
+
     window.addEventListener("load", function () {
       /* БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
       const header = document.querySelector("header.fixed");
-      const initialDocumentWidth = document.documentElement.clientWidth;
-      let lockedDocumentWidth = undefined;
-      let initialWsChatBtnRight = undefined;
+
+      // Отступ справа - с прокруткой
+      // Повторяется определение переменной $initialWsChatBtnRightOffset, так как wsChatBtns появятся после события load, 
+      // А выше она определяется для того, чтобы перехватить при ресайзе окна
+      initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right
 
       // ПП - полоса прокрутка
       // Функция блокировки прокрутки страницы
-      function lockPage(initialDocumentWidth, header) {
+      function lockPage(unLockedDocumentWidth, header) {
         // Запрет прокрутки
         document.body.style.overflow = `hidden`;
-        // Вычисление ширины окна (без учета ПП)
-        lockedDocumentWidth = document.documentElement.clientWidth;
 
         // Если ширина окна (без учета ПП) до запрета прокрутки неравна ширине экрана (также без учета ПП) после запрета прокрутки, то есть ПП изначально существует и исчезает после запрета прокрутки.
-        if (initialDocumentWidth !== lockedDocumentWidth) {
-          document.body.style.paddingRight = `${
-            lockedDocumentWidth - initialDocumentWidth
-          }px`;
-          header.style.left = `${initialDocumentWidth / 2 - 650}px`;
+        if (unLockedDocumentWidth !== lockedDocumentWidth) {
+          document.body.style.paddingRight = `${scrollBarWidth}px`;
+          header.style.left = `${unLockedDocumentWidth / 2 - 650}px`;
 
           // Действия с виджетом wsChat
-          let wsChat = document.querySelector(
-            ".ws-chat .ws-chat-btn-el-container"
-          );
-          let wsChatBtns = document.querySelectorAll(".multi_button");
-          // Если wsChat найден меняем его положение на странице, чтобы не прыгал
-          if (initialWsChatBtnRight === undefined) {
-            initialWsChatBtnRight =
-              lockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right;
-          }
+          wsChatBtns = document.querySelectorAll(".multi_button");
+          wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container")
+
           if (wsChatBtns) {
             wsChatBtns.forEach((item) => {
-              item.style.right = `${
-                initialWsChatBtnRight +
-                (lockedDocumentWidth - initialDocumentWidth)
-              }px`;
+              item.style.right = `${initialWsChatBtnRightOffset + scrollBarWidth}px`;
             });
           }
 
           if (wsChat) {
-            wsChat.style.right = `${
-              lockedDocumentWidth - initialDocumentWidth
-            }px`;
+            wsChat.style.right = `${scrollBarWidth}px`;
           }
           
           // End of - Действия с виджетом wsChat
@@ -73,19 +83,14 @@ function rocketBlockAnimate(elemClass) {
       function unLockPage(header) {
         document.body.style.overflow = ``;
 
-        if (initialDocumentWidth !== lockedDocumentWidth) {
+        if (unLockedDocumentWidth !== lockedDocumentWidth) {
           document.body.style.paddingRight = ``;
           header.style.left = ``;
         }
-        // Действия с виджетом wsChat
-        let wsChat = document.querySelector(
-          ".ws-chat .ws-chat-btn-el-container"
-        );
-        let wsChatBtns = document.querySelectorAll(".multi_button");
 
         if (wsChatBtns) {
           wsChatBtns.forEach((item) => {
-            item.style.right = `${initialWsChatBtnRight}px`;
+            item.style.right = `${initialWsChatBtnRightOffset}px`;
           });
         }
 
@@ -97,15 +102,17 @@ function rocketBlockAnimate(elemClass) {
       }
       /* End of - БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
 
-      // НАСТРОЙКИ БЛОКА АНИМАЦИИ
+
+    
+    // НАСТРОЙКИ БЛОКА АНИМАЦИИ
       /* 
     Точки начала и окончания анимации при скролле, соответственно SCROLL_ANIM_ENTRY_POINT и SCROLL_ANIM_EXIT_POINT
     В данном контексте значениями начала и окончания являются отступы от верхней границы окна браузера
     */
-      const ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+      ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
       // Диапазон работы анимации "при скролле"
       const SCROLL_ANIM_RANGE = 120;
-      const SCROLL_ANIM_ENTRY_POINT =
+      SCROLL_ANIM_ENTRY_POINT =
         ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
 
       // Точка окончания анимации при скролле
@@ -114,7 +121,8 @@ function rocketBlockAnimate(elemClass) {
       const ROCKET_MAX_ROTATE = 25;
 
       // // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
-      let currentAnimationBlockTop;
+      // let currentAnimationBlockTop = block.getBoundingClientRect().top;
+      currentAnimationBlockTop = block.getBoundingClientRect().top;
 
       // Массив динамических (которые анимируются в II ЭТАПе) элементов блока анимации
       let movingBlockItems = [];
@@ -350,6 +358,9 @@ function rocketBlockAnimate(elemClass) {
         window.addEventListener("scroll", blockScrollAction);
 
         function blockScrollAction() {
+          console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
+          console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
+          console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
           currentAnimationBlockTop = block.getBoundingClientRect().top;
 
           if (!isTransitioned) {
@@ -419,6 +430,7 @@ function rocketBlockAnimate(elemClass) {
 
           // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
           if (isInRocketMainAnimRange(block)) {
+            console.log('В ределах анимирования!');
             if (!isTransitioned) {
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
@@ -426,7 +438,7 @@ function rocketBlockAnimate(elemClass) {
               });
               if (!isAnimated) {
                 // На время появления деталей блокируется прокрутка страницы
-                lockPage(initialDocumentWidth, header);
+                lockPage(unLockedDocumentWidth, header);
 
                 isTransitioned = true;
                 // Для каждого блока устанавливается время перехода
@@ -554,6 +566,23 @@ function rocketBlockAnimate(elemClass) {
 
         // End of Timeout
       }, 0);
+
+
+
+
+
+
+
+
+      window.addEventListener('resize', function(){
+        // Переопределение переменных для адекватной работы анимации при ресайзе
+        ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+        SCROLL_ANIM_ENTRY_POINT =
+        ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+
+        rocketBlockAnimate("js-rocket")
+      })
+
     });
   } else {
     console.log(
@@ -561,9 +590,3 @@ function rocketBlockAnimate(elemClass) {
     );
   }
 }
-
-
-window.addEventListener('resize', function(){
-  rocketBlockAnimate("js-rocket")
-  console.log('Изменен размер экрана!');
-})
