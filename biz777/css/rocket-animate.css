@@ -1,10 +1,12 @@
 /* Стили для скрытия полосы прокрутки */
-body{
+body {
   background: #f1f1f1;
 }
-.content{
+
+.content {
   background: #0f0a3f;
 }
+
 /* End of - Стили для скрытия полосы прокрутки */
 
 :root {
@@ -28,7 +30,7 @@ body{
   visibility: hidden;
   -webkit-transition: 1s;
   -o-transition: 1s;
-  transition: 1s
+  transition: 1s;
 }
 
 .rocket-gear {
@@ -260,7 +262,7 @@ body{
 
   to {
     -webkit-transform: translateX(10px);
-    transform: translateX(10px)
+    transform: translateX(10px);
   }
 }
 
@@ -272,13 +274,90 @@ body{
 
   to {
     -webkit-transform: translateX(10px);
-    transform: translateX(10px)
+    transform: translateX(10px);
+  }
+}
+
+@media (max-width: 1249.98px) {
+  .rocket-roket {
+    width: 400px;
+    left: calc(50% - 160px);
+    top: 0;
+  }
+
+  .rocket-gear {
+    width: 50px;
+    left: calc(50% - 30px);
+    top: 260px;
+  }
+
+  .rocket-sheet-clock-globe {
+    width: 140px;
+    top: 142px;
+    left: calc(50% + 125px);
+  }
+
+  .rocket-sky-lg {
+    width: 200px;
+    top: 230px;
+    left: calc(50% - 255px);
+  }
+
+  .rocket-sky-md {
+    width: 360px;
+    top: 55px;
+    left: calc(50% - 155px);
+  }
+
+  .rocket-sky-md-top {
+    width: 130px;
+    top: 20px;
+    left: calc(50% + 10px);
+  }
+}
+
+@media (max-width: 1099.98px) {
+  .rocket-roket {
+    width: 350px;
+    left: calc(50% - 160px);
+    top: 0;
+  }
+
+  .rocket-gear {
+    width: 45px;
+    left: calc(50% - 40px);
+    top: 235px;
+  }
+
+  .rocket-sheet-clock-globe {
+    width: 120px;
+    top: 130px;
+    left: calc(50% + 110px);
+  }
+
+  .rocket-sky-lg {
+    width: 175px;
+    top: 205px;
+    left: calc(50% - 235px);
+  }
+
+  .rocket-sky-md {
+    width: 315px;
+    top: 40px;
+    left: calc(50% - 155px);
+  }
+
+  .rocket-sky-md-top {
+    width: 110px;
+    top: 15px;
+    left: calc(50% - 10px);
   }
 }
 
 @media (max-width: 1000.98px) {
   .block1__right {
     display: block;
+    margin-left: -30px;
     margin-top: 150px;
     height: 400px;
   }
@@ -288,33 +367,46 @@ body{
   }
 
   .rocket-roket {
-    left: calc(50% - 190px)
+    width: 494px;
+    top: -70px;
+    left: calc(50% - 190px);
   }
 
   .rocket-gear {
-    left: calc(50% - 25px)
+    width: 61px;
+    top: 255px;
+    left: calc(50% - 25px);
   }
 
   .rocket-sheet-clock-globe {
-    left: calc(50% + 150px)
+    width: 190px;
+    top: 95px;
+    left: calc(50% + 150px);
   }
 
   .rocket-sky-lg {
-    left: calc(50% - 325px)
+    width: 250px;
+    top: 210px;
+    left: calc(50% - 310px);
   }
 
   .rocket-sky-md {
-    left: calc(50% - 150px)
+    width: 450px;
+    top: -10px;
+    left: calc(50% - 150px);
   }
 
   .rocket-sky-md-top {
-    left: calc(50% - 0px)
+    width: 160px;
+    top: -47px;
+    left: calc(50% - 0px);
   }
 }
 
 @media (max-width: 767.98px) {
   .block1__right {
     margin-top: 100px;
+    margin-left: 0;
     height: 330px;
   }
 
@@ -331,25 +423,25 @@ body{
   .rocket-sheet-clock-globe {
     width: 140px;
     top: 90px;
-    left: calc(50% + 110px)
+    left: calc(50% + 110px);
   }
 
   .rocket-sky-lg {
     width: 200px;
     top: 155px;
-    left: calc(50% - 290px)
+    left: calc(50% - 290px);
   }
 
   .rocket-sky-md {
     width: 360px;
     top: -30px;
-    left: calc(50% - 175px)
+    left: calc(50% - 175px);
   }
 
   .rocket-sky-md-top {
     width: 130px;
     top: -60px;
-    left: calc(50% - 20px)
+    left: calc(50% - 20px);
   }
 }
 
@@ -366,7 +458,7 @@ body{
 
   .rocket-roket {
     width: calc(490px * var(--width-ratio-414));
-    left: calc(50% - 135px)
+    left: calc(50% - 135px);
   }
 
   .rocket-gear {
@@ -378,25 +470,25 @@ body{
   .rocket-sheet-clock-globe {
     width: calc(190px * var(--width-ratio-414));
     top: 29px;
-    left: calc(50% + 70px)
+    left: calc(50% + 70px);
   }
 
   .rocket-sky-lg {
     width: calc(265px * var(--width-ratio-414));
     top: 85px;
-    left: calc(50% - 220px)
+    left: calc(50% - 220px);
   }
 
   .rocket-sky-md {
     width: calc(450px * var(--width-ratio-414));
     top: -45px;
-    left: calc(50% - 138px)
+    left: calc(50% - 138px);
   }
 
   .rocket-sky-md-top {
     width: calc(160px * var(--width-ratio-414));
     top: -65px;
-    left: calc(50% - 20px)
+    left: calc(50% - 20px);
   }
 }
 
@@ -413,7 +505,7 @@ body{
 
   .rocket-roket {
     width: calc(490px * var(--width-ratio-414));
-    left: calc(50% - 95px)
+    left: calc(50% - 95px);
   }
 
   .rocket-gear {
@@ -425,24 +517,24 @@ body{
   .rocket-sheet-clock-globe {
     width: calc(190px * var(--width-ratio-414));
     top: 2px;
-    left: calc(50% + 60px)
+    left: calc(50% + 60px);
   }
 
   .rocket-sky-lg {
     width: calc(265px * var(--width-ratio-414));
     top: 40px;
-    left: calc(50% - 160px)
+    left: calc(50% - 160px);
   }
 
   .rocket-sky-md {
     width: calc(450px * var(--width-ratio-414));
     top: -55px;
-    left: calc(50% - 95px)
+    left: calc(50% - 95px);
   }
 
   .rocket-sky-md-top {
     width: calc(160px * var(--width-ratio-414));
     top: -65px;
-    left: calc(50% - 20px)
+    left: calc(50% - 20px);
   }
 }

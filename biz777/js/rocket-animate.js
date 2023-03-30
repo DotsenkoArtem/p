@@ -561,3 +561,9 @@ function rocketBlockAnimate(elemClass) {
     );
   }
 }
+
+
+window.addEventListener('resize', function(){
+  rocketBlockAnimate("js-rocket")
+  console.log('Изменен размер экрана!');
+})
