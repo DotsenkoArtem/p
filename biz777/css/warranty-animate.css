@@ -1,3 +1,7 @@
+.content{
+  overflow: hidden;
+}
+
 .pc-img-block2{
   /* display: flex;
   align-self: stretch; */
@@ -7,10 +11,11 @@
 
 .warranty-scene{
   position: absolute;
-  top: -11px;
-  left: 23px;
+  top: 0px;
+  left: 0px;
   z-index: 5;
   width: 400px;
+  max-width: 100%;
 }
 
 .warranty-text-wrap{
@@ -36,7 +41,7 @@
   z-index: 15;
 }
 
-.warranty-pen.fixed{
+.warranty-pen.sticky{
   position: fixed;
   z-index: 999;
   transition: opacity 5s;
