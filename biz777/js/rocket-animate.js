@@ -21,7 +21,7 @@ function rocketBlockAnimate(elemClass) {
 
     // Переменная вынесена в начало, чтобы обновлялась при ресайзе экрана
     let currentAnimationBlockTop = block.getBoundingClientRect().top;
-    console.log('currentAnimationBlockTop- в начале: ', currentAnimationBlockTop);
+    // console.log('currentAnimationBlockTop- в начале: ', currentAnimationBlockTop);
 
     // Диапазон работы анимации "при скролле"
     let SCROLL_ANIM_RANGE = 120;
@@ -39,7 +39,10 @@ function rocketBlockAnimate(elemClass) {
       ".ws-chat .ws-chat-btn-el-container"
     );
     let wsChatBtns = document.querySelectorAll(".multi_button");
-    let initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right || false;
+
+
+    // let initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right || false;
+    let initialWsChatBtnRightOffset
 
 
 
@@ -47,10 +50,17 @@ function rocketBlockAnimate(elemClass) {
       /* БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
       const header = document.querySelector("header.fixed");
 
+
+
+      // Действия с виджетом wsChat
+      wsChatBtns = document.querySelectorAll(".multi_button");
+      wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container")
       // Отступ справа - с прокруткой
       // Повторяется определение переменной $initialWsChatBtnRightOffset, так как wsChatBtns появятся после события load, 
       // А выше она определяется для того, чтобы перехватить при ресайзе окна
-      initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right
+      // console.log('wsChatBtns.length: ', wsChatBtns.length);
+      if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right}
+      
 
       // ПП - полоса прокрутка
       // Функция блокировки прокрутки страницы
@@ -63,13 +73,14 @@ function rocketBlockAnimate(elemClass) {
           document.body.style.paddingRight = `${scrollBarWidth}px`;
           header.style.left = `${unLockedDocumentWidth / 2 - 650}px`;
 
-          // Действия с виджетом wsChat
-          wsChatBtns = document.querySelectorAll(".multi_button");
-          wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container")
 
-          if (wsChatBtns) {
+
+
+          if (wsChatBtns.length > 0) {
             wsChatBtns.forEach((item) => {
               item.style.right = `${initialWsChatBtnRightOffset + scrollBarWidth}px`;
+              // console.log('initialWsChatBtnRightOffset: ', initialWsChatBtnRightOffset);
+              // console.log('item.style.right: ', item.style.right);
             });
           }
 
@@ -90,7 +101,7 @@ function rocketBlockAnimate(elemClass) {
           header.style.left = ``;
         }
 
-        if (wsChatBtns) {
+        if (wsChatBtns.length > 0) {
           wsChatBtns.forEach((item) => {
             item.style.right = `${initialWsChatBtnRightOffset}px`;
           });
@@ -432,7 +443,7 @@ function rocketBlockAnimate(elemClass) {
 
           // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
           if (isInRocketMainAnimRange(block)) {
-            console.log('В ределах анимирования!');
+            // console.log('В ределах анимирования!');
             if (!isTransitioned) {
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
