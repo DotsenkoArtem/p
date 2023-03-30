@@ -21,11 +21,13 @@ function rocketBlockAnimate(elemClass) {
 
     // Переменная вынесена в начало, чтобы обновлялась при ресайзе экрана
     let currentAnimationBlockTop = block.getBoundingClientRect().top;
-    console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
+    console.log('currentAnimationBlockTop- в начале: ', currentAnimationBlockTop);
 
-
-    let ROCKET_MAIN_ANIM_ENTRY_POINT
-    let SCROLL_ANIM_ENTRY_POINT
+    // Диапазон работы анимации "при скролле"
+    let SCROLL_ANIM_RANGE = 120;
+    let ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+    let SCROLL_ANIM_ENTRY_POINT =
+    ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
 
 
     // Переменные для lockPage()
@@ -110,8 +112,8 @@ function rocketBlockAnimate(elemClass) {
     В данном контексте значениями начала и окончания являются отступы от верхней границы окна браузера
     */
       ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
-      // Диапазон работы анимации "при скролле"
-      const SCROLL_ANIM_RANGE = 120;
+      // // Диапазон работы анимации "при скролле"
+      // const SCROLL_ANIM_RANGE = 120;
       SCROLL_ANIM_ENTRY_POINT =
         ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
 
@@ -358,9 +360,9 @@ function rocketBlockAnimate(elemClass) {
         window.addEventListener("scroll", blockScrollAction);
 
         function blockScrollAction() {
-          console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
-          console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
-          console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
+          // console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
+          // console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
+          // console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
           currentAnimationBlockTop = block.getBoundingClientRect().top;
 
           if (!isTransitioned) {
