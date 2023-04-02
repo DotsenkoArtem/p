@@ -116,11 +116,11 @@ function rocketBlockAnimate(elemClass) {
     Точки начала и окончания анимации при скролле, соответственно SCROLL_ANIM_ENTRY_POINT и SCROLL_ANIM_EXIT_POINT
     В данном контексте значениями начала и окончания являются отступы от верхней границы окна браузера
     */
-    let ROCKET_MAIN_ANIM_ENTRY_POINT = window.innerHeight * .8;
+    let ROCKET_MAIN_ANIM_ENTRY_POINT = window.innerHeight * 1;
     console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
       // // Диапазон работы анимации "при скролле"
       // const SCROLL_ANIM_RANGE = 120;
-      const SCROLL_ANIM_RANGE = window.innerHeight * .6
+      const SCROLL_ANIM_RANGE = window.innerHeight * .85
 
 
       let SCROLL_ANIM_ENTRY_POINT =
