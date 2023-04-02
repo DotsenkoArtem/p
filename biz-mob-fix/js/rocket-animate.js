@@ -6,7 +6,10 @@ const requestAnimationFrame =
 const cancelAnimationFrame =
   window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
-rocketBlockAnimate("js-rocket");
+
+window.addEventListener("load", function () {
+  rocketBlockAnimate("js-rocket");
+})
 
 function rocketBlockAnimate(elemClass) {
   /* 
@@ -18,15 +21,11 @@ function rocketBlockAnimate(elemClass) {
   // Получение блока анимации
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
+    // function rocketBlockAnimate(elemClass) {
 
     // Переменная вынесена в начало, чтобы обновлялась при ресайзе экрана
     let currentAnimationBlockTop = block.getBoundingClientRect().top;
-    console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
-
-
-    let ROCKET_MAIN_ANIM_ENTRY_POINT
-    let SCROLL_ANIM_ENTRY_POINT
-
+    console.log('currentAnimationBlockTop-до загрузки: ', currentAnimationBlockTop);
 
     // Переменные для lockPage()
     let lockedDocumentWidth = window.innerWidth;
@@ -41,7 +40,7 @@ function rocketBlockAnimate(elemClass) {
 
 
 
-    window.addEventListener("load", function () {
+    // window.addEventListener("load", function () {
       /* БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
       const header = document.querySelector("header.fixed");
 
@@ -109,11 +108,18 @@ function rocketBlockAnimate(elemClass) {
     Точки начала и окончания анимации при скролле, соответственно SCROLL_ANIM_ENTRY_POINT и SCROLL_ANIM_EXIT_POINT
     В данном контексте значениями начала и окончания являются отступы от верхней границы окна браузера
     */
-      ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+      // let ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+      let ROCKET_MAIN_ANIM_ENTRY_POINT = window.innerHeight * .8;
+      console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
       // Диапазон работы анимации "при скролле"
-      const SCROLL_ANIM_RANGE = 120;
-      SCROLL_ANIM_ENTRY_POINT =
+      // const SCROLL_ANIM_RANGE = 120;
+      const SCROLL_ANIM_RANGE = window.innerHeight * .6
+      
+
+      // let SCROLL_ANIM_ENTRY_POINT = ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+      let SCROLL_ANIM_ENTRY_POINT =
         ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+      console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
 
       // Точка окончания анимации при скролле
       const SCROLL_ANIM_EXIT_POINT = 0;
@@ -122,7 +128,8 @@ function rocketBlockAnimate(elemClass) {
 
       // // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
       // let currentAnimationBlockTop = block.getBoundingClientRect().top;
-      currentAnimationBlockTop = block.getBoundingClientRect().top;
+      // currentAnimationBlockTop = block.getBoundingClientRect().top;
+      // console.log('currentAnimationBlockTop-загрузка: ', currentAnimationBlockTop);
 
       // Массив динамических (которые анимируются в II ЭТАПе) элементов блока анимации
       let movingBlockItems = [];
@@ -317,6 +324,7 @@ function rocketBlockAnimate(elemClass) {
       setTimeout(function () {
         // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
         currentAnimationBlockTop = block.getBoundingClientRect().top;
+        console.log('currentAnimationBlockTop-до timeOut: ', currentAnimationBlockTop);
         // Прогресс анимации скролла - изначально был предназначен для вычисления положения ракеты и других элементов анимации в зависимости от величины прокрутки страницы
         let scrollProgress = 0;
         // Стили в момент остановки анимации
@@ -358,9 +366,6 @@ function rocketBlockAnimate(elemClass) {
         window.addEventListener("scroll", blockScrollAction);
 
         function blockScrollAction() {
-          console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
-          console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
-          console.log('currentAnimationBlockTop: ', currentAnimationBlockTop);
           currentAnimationBlockTop = block.getBoundingClientRect().top;
 
           if (!isTransitioned) {
@@ -574,16 +579,22 @@ function rocketBlockAnimate(elemClass) {
 
 
 
-      window.addEventListener('resize', function(){
-        // Переопределение переменных для адекватной работы анимации при ресайзе
-        ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
-        SCROLL_ANIM_ENTRY_POINT =
-        ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+      // window.addEventListener('resize', function(){
+        // console.log('ROCKET_MAIN_ANIM_ENTRY_POINT-resize: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
+      //   // Переопределение переменных для адекватной работы анимации при ресайзе
+      //   ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
+      //   SCROLL_ANIM_ENTRY_POINT =
+      //   ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
+      //   // console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
 
-        rocketBlockAnimate("js-rocket")
-      })
+        // currentAnimationBlockTop = block.getBoundingClientRect().top;
+      //   console.log('currentAnimationBlockTop- resize: ', currentAnimationBlockTop);
 
-    });
+          // rocketBlockAnimate("js-rocket")
+        
+      // })
+
+    // });
   } else {
     console.log(
       `HTML-элемент с классом "${elemClass}" не найден. Пожалуйста убедитель в правильности написания класса элемента.`
