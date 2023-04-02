@@ -1,7 +1,3 @@
-.content{
-  overflow: hidden;
-}
-
 .pc-img-block2{
   /* display: flex;
   align-self: stretch; */
@@ -21,11 +17,11 @@
 .warranty-text-wrap{
   position: absolute;
   top: 180px;
-  right: 163px;
+  left: 80px;
   z-index: 10;
   width: 143px;
   height: 88px;
-  max-width: 143px;
+  max-width: 45px;
   overflow: hidden;
 }
 
@@ -35,20 +31,21 @@
 
 .warranty-pen{
   position: absolute;
-  top: 211px;
-  left: 85px;
-  width: 220px;
+  top: 235px;
+  left: 90px;
+  width: 132px;
   z-index: 15;
 }
 
 .warranty-pen.sticky{
   position: fixed;
   z-index: 999;
-  transition: opacity 5s;
+  transition: opacity .5s;
 }
 .warranty-pen.unvisible{
-  visibility: hidden;
+  /* visibility: hidden; */
   opacity: 0;
+  transition: opacity .5s;
 }
 
 .warranty-pen.up{

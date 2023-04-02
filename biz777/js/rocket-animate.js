@@ -1,11 +1,3 @@
-const requestAnimationFrame =
-  window.requestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.msRequestAnimationFrame;
-const cancelAnimationFrame =
-  window.cancelAnimationFrame || window.mozCancelAnimationFrame;
-
 rocketBlockAnimate("js-rocket");
 
 function rocketBlockAnimate(elemClass) {
@@ -30,39 +22,39 @@ function rocketBlockAnimate(elemClass) {
     ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
 
 
-    // Переменные для lockPage()
+/*     // Переменные для lockPage()
     let lockedDocumentWidth = window.innerWidth;
     let unLockedDocumentWidth = document.documentElement.clientWidth;
-    let scrollBarWidth = lockedDocumentWidth - unLockedDocumentWidth
-    // Действия с виджетом wsChat
+    let scrollBarWidth = lockedDocumentWidth - unLockedDocumentWidth */
+/*     // Действия с виджетом wsChat
     let wsChat = document.querySelector(
       ".ws-chat .ws-chat-btn-el-container"
     );
-    let wsChatBtns = document.querySelectorAll(".multi_button");
+    let wsChatBtns = document.querySelectorAll(".multi_button"); */
 
 
     // let initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right || false;
-    let initialWsChatBtnRightOffset
+    // let initialWsChatBtnRightOffset
 
 
 
     window.addEventListener("load", function () {
       /* БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
-      const header = document.querySelector("header.fixed");
+      // const header = document.querySelector("header.fixed");
 
 
 
-      // Действия с виджетом wsChat
+/*       // Действия с виджетом wsChat
       wsChatBtns = document.querySelectorAll(".multi_button");
       wsChat = document.querySelector(".ws-chat .ws-chat-btn-el-container")
       // Отступ справа - с прокруткой
       // Повторяется определение переменной $initialWsChatBtnRightOffset, так как wsChatBtns появятся после события load, 
       // А выше она определяется для того, чтобы перехватить при ресайзе окна
       // console.log('wsChatBtns.length: ', wsChatBtns.length);
-      if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right}
+      if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right} */
       
 
-      // ПП - полоса прокрутка
+/*        // ПП - полоса прокрутка
       // Функция блокировки прокрутки страницы
       function lockPage(unLockedDocumentWidth, header) {
         // Запрет прокрутки
@@ -112,7 +104,7 @@ function rocketBlockAnimate(elemClass) {
         }
         // End of - Действия с виджетом wsChat
         
-      }
+      } */
       /* End of - БЛОКИРОВКА-РАЗБЛОКИРОВКА ПОЛОСЫ ПРОКРУТКИ */
 
 
@@ -354,6 +346,7 @@ function rocketBlockAnimate(elemClass) {
 
         // ЕСЛИ БЛОК В ДИАПАЗОНЕ АНИМАЦИИ СКРОЛЛА(III ЭТАПа) ИЛИ ВЫШЕ
         if (isInScrollAnimRange(block) || isAboveAnimRanges(block)) {
+          console.log('isInScrollAnimRange(block) || isAboveAnimRanges(block)');
           isAnimated = false;
           // Прогресс скролла
           scrollProgress = 1;
