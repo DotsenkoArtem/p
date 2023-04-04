@@ -16,7 +16,6 @@ function warrantyBlockAnimate(elemClass) {
       // ФЛАГИ
       let penIsUnsticked = false;
       let penIsDown = true;
-      // let penIsWrite = true
       let textIsWritten = false;
 
       // Получение элементов
@@ -100,19 +99,9 @@ function warrantyBlockAnimate(elemClass) {
 
       function writePen({ timing, duration }) {
         let start = performance.now();
-        let textStart = performance.now();
         requestAnimationFrame(function writePen(time) {
           let timeFraction = (time - start) / duration;
           if (timeFraction > 1) start = time;
-
-          let textTimeFraction = (time - textStart) / (duration * 2);
-          if (textTimeFraction > 1) {
-            textTimeFraction = 1;
-            textIsWritten = true;
-          }
-
-          if (!textIsWritten)
-            warrantyText.style.maxWidth = `${143 * textTimeFraction}px`;
 
           let progress = timing(timeFraction);
 
@@ -387,7 +376,7 @@ function warrantyBlockAnimate(elemClass) {
         // Если вне блока анимации - отменяем анимацию, кладем ручку
         if (isAfterPenAction() || isBeforePenAction()) {
           cancelAnimationFrame(writePenId);
-          penGetDown();
+          getDownPen();
         }
       });
       window.addEventListener("scroll", getUpPen);
@@ -468,7 +457,7 @@ function warrantyBlockAnimate(elemClass) {
       }
 
       // ПОЛОЖИТЬ РУЧКУ
-      function penGetDown() {
+      function getDownPen() {
         if (penIsUnsticked) {
           warrantyPen.style.transition = `1000ms`;
           warrantyPen.style.transform = `rotate(0deg)`;
@@ -478,10 +467,29 @@ function warrantyBlockAnimate(elemClass) {
 
       // РИСОВАТЬ
       function penAnimate() {
+        if (!textIsWritten) {
+          showText();
+          textIsWritten = true;
+        }
+
+        if (textIsWritten) {
+          setTimeout(() => {
+            warrantyText.style.transition = `0ms`;
+          }, penAnimateDuration);
+        }
+
         setTimeout(() => {
           warrantyPen.style.transition = `0ms`;
           writePen(writePenOptions);
         }, warrantyPenUpTime);
+      }
+
+      // ПОКАЗАТЬ ТЕКСТ
+      function showText() {
+        warrantyText.style.transition = `${penAnimateDuration * 4.5}ms ${
+          warrantyPenUpTime * 0.2
+        }ms`;
+        warrantyText.style.maxWidth = `143px`;
       }
     }, 0);
   } else {
