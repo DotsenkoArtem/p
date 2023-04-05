@@ -33,7 +33,6 @@ function warrantyBlockAnimate(elemClass) {
       // РУЧКА
       // Начальная координата ручки по оси Y
       const initialWarrantyPenTop = warrantyPen.getBoundingClientRect().top;
-      const initialPenHeight = warrantyPen.getBoundingClientRect().height;
       // Отступ от ручки до верхней границы блока
       const warrantyPenTopBlockOffset =
         initialWarrantyPenTop - initialWarrantyBlockTop;
@@ -422,9 +421,7 @@ function warrantyBlockAnimate(elemClass) {
           // if(isInPenAnimRange()) {
           warrantyPen.classList.remove("unvisible");
           // Если докрутили до точки отлипания
-          // if (isInPenEntryRange()) {
-          if (currentBlockTop + warrantyPenTopBlockOffset + initialPenHeight <=
-            warrantyPenAppearPoint) {
+          if (currentBlockTop + warrantyPenTopBlockOffset <= warrantyAnimStartPoint) {
             // Отклеиваем и удаляем слушатель функции появления ручки (showWarrantyPen())
             unstickPen();
           }
