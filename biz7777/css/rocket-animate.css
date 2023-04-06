@@ -1,11 +1,10 @@
 /* Стили для скрытия полосы прокрутки */
 body {
-  background: #f1f1f1;
+  /* background: #f1f1f1; */
 }
 
 .content {
   background: #0f0a3f;
-  /* overflow: hidden; */
 }
 
 /* End of - Стили для скрытия полосы прокрутки */

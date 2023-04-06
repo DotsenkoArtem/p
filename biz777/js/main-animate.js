@@ -28,6 +28,7 @@ const header = document.querySelector("header.fixed");
 function lockPage(unLockedDocumentWidth, header) {
   // Запрет прокрутки
   document.body.style.overflow = `hidden`;
+  document.body.style.backgroundColor = `#f1f1f1`;
 
   // Если ширина окна (без учета ПП) до запрета прокрутки неравна ширине экрана (также без учета ПП) после запрета прокрутки, то есть ПП изначально существует и исчезает после запрета прокрутки.
   if (unLockedDocumentWidth !== lockedDocumentWidth) {
@@ -56,6 +57,7 @@ function lockPage(unLockedDocumentWidth, header) {
 // Функция разблокировки прокрутки страницы
 function unLockPage(header) {
   document.body.style.overflow = ``;
+  document.body.style.backgroundColor = ``;
 
   if (unLockedDocumentWidth !== lockedDocumentWidth) {
     document.body.style.paddingRight = ``;
