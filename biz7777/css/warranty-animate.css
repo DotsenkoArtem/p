@@ -39,12 +39,12 @@
 .warranty-pen.sticky{
   position: fixed;
   z-index: 999;
-  transition: opacity .5s;
+  /* transition: opacity .5s; */
 }
 .warranty-pen.unvisible{
   /* visibility: hidden; */
   opacity: 0;
-  transition: opacity .5s;
+  /* transition: opacity .5s; */
 }
 
 .warranty-pen.up{
