@@ -6,6 +6,7 @@ function warrantyBlockAnimate(elemClass) {
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
     this.setTimeout(() => {
+
       // РАЗМЕТКА ГРАНИЦ АНИМАЦИИ
       // Точка, после пересечения которой блоком .js-warranty появляется ручка
       const warrantyPenAppearPoint = window.innerHeight * 0.75;
@@ -21,6 +22,7 @@ function warrantyBlockAnimate(elemClass) {
       // Получение элементов
       const block = document.querySelector(".js-warranty");
       const warrantyPen = block.querySelector(".warranty-pen");
+      const warrantyScene = block.querySelector(".warranty-scene");
       const warrantyText = block.querySelector(".warranty-text-wrap");
 
       // НАЧАЛЬНЫЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
@@ -37,6 +39,8 @@ function warrantyBlockAnimate(elemClass) {
       const warrantyPenTopBlockOffset =
         initialWarrantyPenTop - initialWarrantyBlockTop;
 
+
+
       // ТЕКУЩИЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
       // БЛОК
       // Текущий отступ блока по оси Y от верхней границы окна
@@ -44,6 +48,10 @@ function warrantyBlockAnimate(elemClass) {
       //  РУЧКА
       // Текущий отступ ручки по оси Y от верхней границы окна
       let currentPenBottom = warrantyPen.getBoundingClientRect().bottom;
+      // Текущий отступ оснвоного изображения по оси Y от верхней границы окна
+      let currentWarrantySceneTop = warrantyScene.getBoundingClientRect().top;
+
+
 
       // ПАРАМЕТРЫ АНИМАЦИИ
       // Время подъема/падения ручки
@@ -372,6 +380,7 @@ function warrantyBlockAnimate(elemClass) {
         // Кждый раз при скролле переопределем переменные ниже
         currentBlockTop = block.getBoundingClientRect().top;
         currentPenBottom = warrantyPen.getBoundingClientRect().bottom;
+        currentWarrantySceneTop = warrantyScene.getBoundingClientRect().top;
 
         // Если вне блока анимации - отменяем анимацию, кладем ручку
         if (isAfterPenAction() || isBeforePenAction()) {
@@ -417,7 +426,7 @@ function warrantyBlockAnimate(elemClass) {
       // ПОКАЗАТЬ РУЧКУ
       function showWarrantyPen() {
         // Если блок выше точки появления ручки
-        if (warrantyPenAppearPoint >= currentBlockTop) {
+        if (warrantyPenAppearPoint >= currentWarrantySceneTop + 120) {
           // if(isInPenAnimRange()) {
           warrantyPen.classList.remove("unvisible");
           // Если докрутили до точки отлипания
@@ -427,7 +436,7 @@ function warrantyBlockAnimate(elemClass) {
           }
         }
         // Если не докрутили до диапазона приклеивания ручки "isInPenEntryRange"
-        if (warrantyPenAppearPoint < currentBlockTop) {
+        if (warrantyPenAppearPoint < currentWarrantySceneTop + 120) {
           warrantyPen.classList.add("unvisible");
         }
       }
@@ -486,10 +495,42 @@ function warrantyBlockAnimate(elemClass) {
 
       // ПОКАЗАТЬ ТЕКСТ
       function showText() {
-        warrantyText.style.transition = `${penAnimateDuration * 4.5}ms ${
-          warrantyPenUpTime * 0.2
-        }ms`;
         warrantyText.style.maxWidth = `143px`;
+        if(lockedDocumentWidth >= 1250) {
+          warrantyText.style.transition = `${penAnimateDuration * 5}ms ${
+            warrantyPenUpTime * 0
+          }ms`;
+        }
+        if(unLockedDocumentWidth >= 1100 && unLockedDocumentWidth < 1250) {
+          warrantyText.style.transition = `${penAnimateDuration * 6}ms ${
+            warrantyPenUpTime * 0.2
+          }ms`;
+        }
+        if(unLockedDocumentWidth >= 1000 && unLockedDocumentWidth < 1100) {
+          warrantyText.style.transition = `${penAnimateDuration * 6.5}ms ${
+            warrantyPenUpTime * 0.4
+          }ms`;
+        }
+        if(unLockedDocumentWidth >= 768 && unLockedDocumentWidth < 1000) {
+          warrantyText.style.transition = `${penAnimateDuration * 3}ms ${
+            warrantyPenUpTime * 0.5
+          }ms`;
+        }
+        if(unLockedDocumentWidth >= 415 && unLockedDocumentWidth < 768) {
+          warrantyText.style.transition = `${penAnimateDuration * 4.5}ms ${
+            warrantyPenUpTime * 0.5
+          }ms`;
+        }
+        if(unLockedDocumentWidth >= 360 && unLockedDocumentWidth < 415) {
+          warrantyText.style.transition = `${penAnimateDuration * 5}ms ${
+            warrantyPenUpTime * 0.4
+          }ms`;
+        }
+        if(unLockedDocumentWidth < 360) {
+          warrantyText.style.transition = `${penAnimateDuration * 5.5}ms ${
+            warrantyPenUpTime * 0.5
+          }ms`;
+        }
       }
     }, 0);
   } else {
