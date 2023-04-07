@@ -1,0 +1,20 @@
+/* Animation-dirations */
+.animation-duration-800{
+  animation-duration: 800ms!important;
+}
+
+.animation-duration-900{
+  animation-duration: 900ms!important;
+}
+
+
+
+
+/* Animation-delays */
+.animation-delay-100{
+  animation-delay: 100ms!important;
+}
+
+.animation-delay-200{
+  animation-delay: 200ms!important;
+}

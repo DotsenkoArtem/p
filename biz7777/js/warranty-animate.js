@@ -6,7 +6,6 @@ function warrantyBlockAnimate(elemClass) {
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
     this.setTimeout(() => {
-
       // РАЗМЕТКА ГРАНИЦ АНИМАЦИИ
       // Точка, после пересечения которой блоком .js-warranty появляется ручка
       const warrantyPenAppearPoint = window.innerHeight * 0.75;
@@ -487,42 +486,10 @@ function warrantyBlockAnimate(elemClass) {
 
       // ПОКАЗАТЬ ТЕКСТ
       function showText() {
+        warrantyText.style.transition = `${penAnimateDuration * 4.5}ms ${
+          warrantyPenUpTime * 0.2
+        }ms`;
         warrantyText.style.maxWidth = `143px`;
-        if(lockedDocumentWidth >= 1250) {
-          warrantyText.style.transition = `${penAnimateDuration * 5}ms ${
-            warrantyPenUpTime * 0
-          }ms`;
-        }
-        if(unLockedDocumentWidth >= 1100 && unLockedDocumentWidth < 1250) {
-          warrantyText.style.transition = `${penAnimateDuration * 6}ms ${
-            warrantyPenUpTime * 0.2
-          }ms`;
-        }
-        if(unLockedDocumentWidth >= 1000 && unLockedDocumentWidth < 1100) {
-          warrantyText.style.transition = `${penAnimateDuration * 6.5}ms ${
-            warrantyPenUpTime * 0.4
-          }ms`;
-        }
-        if(unLockedDocumentWidth >= 768 && unLockedDocumentWidth < 1000) {
-          warrantyText.style.transition = `${penAnimateDuration * 3}ms ${
-            warrantyPenUpTime * 0.5
-          }ms`;
-        }
-        if(unLockedDocumentWidth >= 415 && unLockedDocumentWidth < 768) {
-          warrantyText.style.transition = `${penAnimateDuration * 4.5}ms ${
-            warrantyPenUpTime * 0.5
-          }ms`;
-        }
-        if(unLockedDocumentWidth >= 360 && unLockedDocumentWidth < 415) {
-          warrantyText.style.transition = `${penAnimateDuration * 5}ms ${
-            warrantyPenUpTime * 0.4
-          }ms`;
-        }
-        if(unLockedDocumentWidth < 360) {
-          warrantyText.style.transition = `${penAnimateDuration * 5.5}ms ${
-            warrantyPenUpTime * 0.5
-          }ms`;
-        }
       }
     }, 0);
   } else {
