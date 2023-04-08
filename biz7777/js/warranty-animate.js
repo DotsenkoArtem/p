@@ -386,7 +386,8 @@ function warrantyBlockAnimate(elemClass) {
         // Если вне блока анимации - отменяем анимацию, кладем ручку
         if (isAfterPenAction() || isBeforePenAction()) {
           cancelAnimationFrame(writePenId);
-          if(!penIsDown) getDownPen();
+          // if(!penIsDown) getDownPen();
+          getDownPen();
         }
       });
       window.addEventListener("scroll", getUpPen);
