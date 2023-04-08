@@ -471,6 +471,7 @@ function warrantyBlockAnimate(elemClass) {
       function getDownPen() {
         if (penIsUnsticked) {
           textCompleted()
+          console.log('textIsWritten: ', textIsWritten);
           if(!textIsWritten) {
             warrantyText.style.maxWidth = ``
             warrantyText.style.transition = `200ms`
@@ -504,7 +505,7 @@ function warrantyBlockAnimate(elemClass) {
       // textIsWritten = false
 
       function textCompleted() {
-        return (warrantyText.getBoundingClientRect().width * .8 >= parseInt(getComputedStyle(warrantyTextImg).width)) ? textIsWritten = true : textIsWritten = false
+        return (warrantyText.getBoundingClientRect().width >= parseInt(getComputedStyle(warrantyTextImg).width)) * .8 ? textIsWritten = true : textIsWritten = false
       }
 
 
