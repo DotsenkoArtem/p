@@ -24,6 +24,7 @@ function warrantyBlockAnimate(elemClass) {
       const warrantyPen = block.querySelector(".warranty-pen");
       const warrantyScene = block.querySelector(".warranty-scene");
       const warrantyText = block.querySelector(".warranty-text-wrap");
+      const warrantyTextImg = warrantyText.querySelector(".warranty-text");
 
       // НАЧАЛЬНЫЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
       // БЛОК
@@ -385,7 +386,7 @@ function warrantyBlockAnimate(elemClass) {
         // Если вне блока анимации - отменяем анимацию, кладем ручку
         if (isAfterPenAction() || isBeforePenAction()) {
           cancelAnimationFrame(writePenId);
-          getDownPen();
+          if(!penIsDown) getDownPen();
         }
       });
       window.addEventListener("scroll", getUpPen);
@@ -426,7 +427,7 @@ function warrantyBlockAnimate(elemClass) {
       // ПОКАЗАТЬ РУЧКУ
       function showWarrantyPen() {
         // Если блок выше точки появления ручки
-        if (warrantyPenAppearPoint >= currentWarrantySceneTop + 120) {
+        if (warrantyPenAppearPoint >= currentWarrantySceneTop + warrantyScene.getBoundingClientRect().height / 4 + 120) {
           // if(isInPenAnimRange()) {
           warrantyPen.classList.remove("unvisible");
           // Если докрутили до точки отлипания
@@ -436,7 +437,7 @@ function warrantyBlockAnimate(elemClass) {
           }
         }
         // Если не докрутили до диапазона приклеивания ручки "isInPenEntryRange"
-        if (warrantyPenAppearPoint < currentWarrantySceneTop + 120) {
+        if (warrantyPenAppearPoint < currentWarrantySceneTop + warrantyScene.getBoundingClientRect().height / 4 + 120) {
           warrantyPen.classList.add("unvisible");
         }
       }
@@ -468,6 +469,12 @@ function warrantyBlockAnimate(elemClass) {
       // ПОЛОЖИТЬ РУЧКУ
       function getDownPen() {
         if (penIsUnsticked) {
+          textCompleted()
+          if(!textIsWritten) {
+            warrantyText.style.maxWidth = ``
+            warrantyText.style.transition = `200ms`
+          }
+
           warrantyPen.style.transition = `1000ms`;
           warrantyPen.style.transform = `rotate(0deg)`;
           penIsDown = true;
@@ -493,9 +500,17 @@ function warrantyBlockAnimate(elemClass) {
         }, warrantyPenUpTime);
       }
 
+      // textIsWritten = false
+
+      function textCompleted() {
+        return (warrantyText.getBoundingClientRect().width * .8 >= parseInt(getComputedStyle(warrantyTextImg).width)) ? textIsWritten = true : textIsWritten = false
+      }
+
+
       // ПОКАЗАТЬ ТЕКСТ
       function showText() {
         warrantyText.style.maxWidth = `143px`;
+
         if(lockedDocumentWidth >= 1250) {
           warrantyText.style.transition = `${penAnimateDuration * 5}ms ${
             warrantyPenUpTime * 0
