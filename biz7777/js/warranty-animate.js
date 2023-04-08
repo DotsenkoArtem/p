@@ -424,13 +424,21 @@ function warrantyBlockAnimate(elemClass) {
           ? true
           : false;
       }
+      
+      let progress = 0;
+      function warrantyPenFade(progress) {
+        progress = Math.round(Math.abs((warrantyPenAppearPoint - (currentWarrantySceneTop + warrantyScene.getBoundingClientRect().height / 4 + 120)) / (warrantyPenAppearPoint - (warrantyAnimStartPoint + warrantyScene.getBoundingClientRect().height / 4 + 120))) * 100)
+        console.log('progress: ', progress);
+        (progress >= 95) ? warrantyPen.style.opacity = `` : warrantyPen.style.opacity = `${progress / 100}` 
+      }
+
 
       // ПОКАЗАТЬ РУЧКУ
       function showWarrantyPen() {
         // Если блок выше точки появления ручки
         if (warrantyPenAppearPoint >= currentWarrantySceneTop + warrantyScene.getBoundingClientRect().height / 4 + 120) {
-          // if(isInPenAnimRange()) {
           warrantyPen.classList.remove("unvisible");
+          warrantyPenFade()
           // Если докрутили до точки отлипания
           if (currentBlockTop + warrantyPenTopBlockOffset <= warrantyAnimStartPoint) {
             // Отклеиваем и удаляем слушатель функции появления ручки (showWarrantyPen())
@@ -440,6 +448,7 @@ function warrantyBlockAnimate(elemClass) {
         // Если не докрутили до диапазона приклеивания ручки "isInPenEntryRange"
         if (warrantyPenAppearPoint < currentWarrantySceneTop + warrantyScene.getBoundingClientRect().height / 4 + 120) {
           warrantyPen.classList.add("unvisible");
+          warrantyPen.style.opacity = ``
         }
       }
 
