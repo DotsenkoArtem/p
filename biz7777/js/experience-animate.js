@@ -7,13 +7,15 @@ function expBlockAnimate(elemClass) {
 
   if (block) {
     this.setTimeout(() => {
-      const expAnimStartPoint = window.innerHeight * 0.8;
-      const expAnimStopPoint = window.innerHeight * 0.2;
+
       // ТЕКУЩИЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
       // БЛОК
       // Текущий отступ блока по оси Y от верхней границы окна
       let currentBlockTop = block.getBoundingClientRect().top;
       let currentBlockBottom = block.getBoundingClientRect().bottom;
+
+      let expAnimStartPoint
+      let expAnimStopPoint
 
 
       const expBoxIconItem = block.querySelector(".block3__box-icon");
@@ -60,6 +62,8 @@ function expBlockAnimate(elemClass) {
         getScrollDirection();
 
         if (unLockedDocumentWidth > 1000) {
+          expAnimStartPoint = window.innerHeight - block.getBoundingClientRect().height;
+          expAnimStopPoint = block.getBoundingClientRect().height + 100;
           if (
             (currentBlockTop <= expAnimStartPoint && scrollDirection < 0) ||
             (currentBlockBottom >= expAnimStopPoint && scrollDirection > 0)
@@ -93,14 +97,16 @@ function expBlockAnimate(elemClass) {
         }
 
         if (unLockedDocumentWidth <= 1000) {
+          // expAnimStartPoint = window.innerHeight * 0.8;
+          // expAnimStopPoint = window.innerHeight * 0.2;
           let currAnimItems = 0;
           
 
           expTextAnimItems.forEach((item) => {
             if (
-              (item.getBoundingClientRect().top <= expAnimStartPoint &&
+              (item.getBoundingClientRect().top <= window.innerHeight - item.getBoundingClientRect().height &&
                 scrollDirection < 0) ||
-              (item.getBoundingClientRect().bottom >= expAnimStopPoint &&
+              (item.getBoundingClientRect().bottom >= item.getBoundingClientRect().height + 100 &&
                 scrollDirection > 0)
             ) {
               item.style.visibility = ``;
@@ -125,9 +131,9 @@ function expBlockAnimate(elemClass) {
 
           expSceneItems.forEach((item) => {
             if (
-              (expScene.getBoundingClientRect().top <= expAnimStartPoint &&
+              (expScene.getBoundingClientRect().top <= window.innerHeight - expScene.getBoundingClientRect().height &&
                 scrollDirection < 0) ||
-              (expScene.getBoundingClientRect().bottom >= expAnimStopPoint &&
+              (expScene.getBoundingClientRect().bottom >= expScene.getBoundingClientRect().height + 100 &&
                 scrollDirection > 0)
             ) {
               item.style.visibility = ``;
