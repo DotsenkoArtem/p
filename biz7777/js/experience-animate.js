@@ -60,13 +60,15 @@ function expBlockAnimate(elemClass) {
         currentBlockTop = block.getBoundingClientRect().top;
         currentBlockBottom = block.getBoundingClientRect().bottom;
         getScrollDirection();
+        console.log('scrollDirection: ', scrollDirection);
+
 
         if (unLockedDocumentWidth > 1000) {
           expAnimStartPoint = window.innerHeight - block.getBoundingClientRect().height;
           expAnimStopPoint = block.getBoundingClientRect().height + 100;
           if (
-            (currentBlockTop <= expAnimStartPoint && scrollDirection < 0) ||
-            (currentBlockBottom >= expAnimStopPoint && scrollDirection > 0)
+            (currentBlockTop <= expAnimStartPoint && currentBlockBottom > expAnimStartPoint && scrollDirection < 0) ||
+            (currentBlockBottom >= expAnimStopPoint && currentBlockTop < expAnimStopPoint && scrollDirection > 0)
           ) {
             expAnimItems.forEach((item) => {
               item.style.visibility = ``;
@@ -103,10 +105,22 @@ function expBlockAnimate(elemClass) {
           
 
           expTextAnimItems.forEach((item) => {
+
+
+                          // if (
+            //   (currentBlockTop <= expAnimStartPoint && currentBlockBottom > expAnimStartPoint && scrollDirection < 0) ||
+            //   (currentBlockBottom >= expAnimStopPoint && currentBlockTop < expAnimStopPoint && scrollDirection > 0)
+            // ) {
+
+
+
+
             if (
               (item.getBoundingClientRect().top <= window.innerHeight - item.getBoundingClientRect().height &&
+              item.getBoundingClientRect().bottom > window.innerHeight - item.getBoundingClientRect().height &&
                 scrollDirection < 0) ||
               (item.getBoundingClientRect().bottom >= item.getBoundingClientRect().height + 100 &&
+                item.getBoundingClientRect().top < item.getBoundingClientRect().height + 100 &&
                 scrollDirection > 0)
             ) {
               item.style.visibility = ``;
@@ -130,10 +144,13 @@ function expBlockAnimate(elemClass) {
           
 
           expSceneItems.forEach((item) => {
+
             if (
               (expScene.getBoundingClientRect().top <= window.innerHeight - expScene.getBoundingClientRect().height &&
+              expScene.getBoundingClientRect().bottom > window.innerHeight - expScene.getBoundingClientRect().height &&
                 scrollDirection < 0) ||
               (expScene.getBoundingClientRect().bottom >= expScene.getBoundingClientRect().height + 100 &&
+                expScene.getBoundingClientRect().top < expScene.getBoundingClientRect().height + 100 &&
                 scrollDirection > 0)
             ) {
               item.style.visibility = ``;
