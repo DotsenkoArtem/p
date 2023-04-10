@@ -320,6 +320,7 @@
 @media (max-width: 1000.98px) {
   .block3__box-icon {
     margin: 0 auto 60px auto;
+    max-width: 300px;
   }
 
   .block3-img-box {
