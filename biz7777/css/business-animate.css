@@ -1,0 +1,9 @@
+.bus-slider__pagination{
+  display: none;
+}
+
+@media (max-width: 1000.98px) {
+  .bus-slider__pagination{
+    display: block;
+  }
+}
