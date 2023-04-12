@@ -111,7 +111,7 @@ function blockHorizontalScroll(sectionClassName, scrollingElemClassName, transit
 
           scrollingElem.style.transition = `${transition}ms`
 
-          elTranslateX -= e.deltaY / .5
+          elTranslateX -= e.deltaY / 5
           
           if(elTranslateX >= 0) {
             elTranslateX = 0
