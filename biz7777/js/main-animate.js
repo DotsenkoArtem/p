@@ -94,4 +94,11 @@ window.addEventListener("load", function() {
   // А выше она определяется для того, чтобы перехватить при ресайзе окна
   // console.log('wsChatBtns.length: ', wsChatBtns.length);
   if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right}
+
+
+
+
+
+
+
 })

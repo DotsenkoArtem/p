@@ -2,6 +2,20 @@
   display: none;
 }
 
+@media (min-width: 1001px) {
+  /* .bus-slider.scaled {
+    transition: 1000ms;
+  }
+  .bus-slider.scaled {
+    transform: scale(1.5);
+    opacity: 0.25;
+  } */
+  .bus-slider .swiper-slide {
+    margin-left: 75px;
+    margin-right: 75px;
+  }
+}
+
 @media (max-width: 1000.98px) {
   .bus-slider__pagination{
     display: block;
