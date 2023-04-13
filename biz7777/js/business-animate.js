@@ -51,7 +51,7 @@ function initBusSlider() {
 
 
 
-blockHorizontalScroll('bus-slider', 'bus-slider__container', 500)
+blockHorizontalScroll('bus-slider', 'bus-slider__container', 750)
 
 function blockHorizontalScroll(sectionClassName, scrollingElemClassName, transition) {
   if(unLockedDocumentWidth > 1000) {
@@ -111,7 +111,7 @@ function blockHorizontalScroll(sectionClassName, scrollingElemClassName, transit
 
           scrollingElem.style.transition = `${transition}ms`
 
-          elTranslateX -= e.deltaY / 5
+          elTranslateX -= e.deltaY * .4
           
           if(elTranslateX >= 0) {
             elTranslateX = 0
