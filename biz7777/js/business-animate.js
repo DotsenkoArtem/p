@@ -47,19 +47,20 @@ function initBusSlider() {
   }
 }
 
+blockHorizontalScroll("bus-slider", "bus-slider__container", 750);
 
-
-
-
-blockHorizontalScroll('bus-slider', 'bus-slider__container', 750)
-
-function blockHorizontalScroll(sectionClassName, scrollingElemClassName, transition) {
-  if(unLockedDocumentWidth > 1000) {
-    let section = document.querySelector(`.${sectionClassName}`)
-    let scrollingElem = section.querySelector(`.${scrollingElemClassName}`)
-    let elTranslateX = 0
-    let startPoint = window.innerHeight * .75
-    let stopPoint = scrollingElem.getBoundingClientRect().height + window.innerHeight * .55
+function blockHorizontalScroll(
+  sectionClassName,
+  scrollingElemClassName,
+  transition
+) {
+  if (unLockedDocumentWidth > 1000) {
+    let section = document.querySelector(`.${sectionClassName}`);
+    let scrollingElem = section.querySelector(`.${scrollingElemClassName}`);
+    let elTranslateX = 0;
+    let startPoint = window.innerHeight * 0.75;
+    let stopPoint =
+      scrollingElem.getBoundingClientRect().height + window.innerHeight * 0.55;
 
     let scrollDirection = 0;
     let startY = window.pageYOffset;
@@ -70,91 +71,62 @@ function blockHorizontalScroll(sectionClassName, scrollingElemClassName, transit
       startY = currentY;
     }
 
-    window.addEventListener('scroll', lockBySectionPosition)
-    
+    window.addEventListener("scroll", lockBySectionPosition);
 
     function lockBySectionPosition() {
-      getScrollDirection()
-      
-      let scrollingElemTop = scrollingElem.getBoundingClientRect().top
-      let scrollingElemBottom = scrollingElem.getBoundingClientRect().bottom
-      let scrollingElemWIdth = scrollingElem.scrollWidth
+      getScrollDirection();
+      let scrollingElemTop = scrollingElem.getBoundingClientRect().top;
+      let scrollingElemBottom = scrollingElem.getBoundingClientRect().bottom;
+      let scrollingElemWIdth = scrollingElem.scrollWidth;
 
-      console.log('scrollDirection: ', scrollDirection);
-
-      if((scrollingElemTop < startPoint &&
-        scrollingElemBottom > startPoint &&
-        scrollDirection < 0 && elTranslateX !== -(scrollingElemWIdth - scrollingElem.offsetWidth)) 
-        ||
+      if (
+        (scrollingElemTop < startPoint &&
+          scrollingElemBottom > startPoint &&
+          scrollDirection < 0 &&
+          elTranslateX !== -(scrollingElemWIdth - scrollingElem.offsetWidth)) ||
         (scrollingElemBottom > stopPoint &&
           scrollingElemTop < stopPoint &&
-          scrollDirection > 0 && elTranslateX !== 0)
-        ) 
-        {
+          scrollDirection > 0 &&
+          elTranslateX !== 0)
+      ) {
+        lockPage(unLockedDocumentWidth, header);
 
-        // section.classList.remove('scaled')
-        lockPage(unLockedDocumentWidth, header)
-        console.log('elTranslateX: ', elTranslateX);
-        console.log('(scrollingElemWIdth - scrollingElem.offsetWidth): ', (scrollingElemWIdth - scrollingElem.offsetWidth));
-        // window.removeEventListener('scroll', lockBySectionPosition)
-
-        // let elTranslateX = 0
-        let content = document.querySelector('.content')
-
-        // setTimeout(function() {
-        //   content.addEventListener('wheel', scrollBlock)
-        // }, 1000)
-
-        content.addEventListener('wheel', scrollBlock)
+        let content = document.querySelector(".content");
+        content.addEventListener("wheel", scrollBlock);
         function scrollBlock(e) {
-          e.preventDefault()
+          e.preventDefault();
+          scrollingElem.style.transition = `${transition}ms`;
+          elTranslateX -= e.deltaY * 0.4;
+          if (elTranslateX >= 0) {
+            elTranslateX = 0;
+            scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
 
-          scrollingElem.style.transition = `${transition}ms`
-
-          elTranslateX -= e.deltaY * .4
-          
-          if(elTranslateX >= 0) {
-            elTranslateX = 0
-            scrollingElem.style.transform = `translateX(${elTranslateX}px)`
-
-            setTimeout(()=>{
-              unLockPage(header)
-              content.removeEventListener('wheel', scrollBlock)
-              scrollingElem.style.transition = ``
-              window.addEventListener('scroll', lockBySectionPosition)
-            }, transition)
-
+            setTimeout(() => {
+              unLockPage(header);
+              content.removeEventListener("wheel", scrollBlock);
+              scrollingElem.style.transition = ``;
+              window.addEventListener("scroll", lockBySectionPosition);
+            }, transition);
           }
 
-          if(Math.abs(elTranslateX) >= (scrollingElemWIdth - scrollingElem.offsetWidth)) {
-            elTranslateX = -(scrollingElemWIdth - scrollingElem.offsetWidth)
-            scrollingElem.style.transform = `translateX(${elTranslateX}px)`
+          if (
+            Math.abs(elTranslateX) >=
+            scrollingElemWIdth - scrollingElem.offsetWidth
+          ) {
+            elTranslateX = -(scrollingElemWIdth - scrollingElem.offsetWidth);
+            scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
 
-            setTimeout(()=>{
-              unLockPage(header)
-              content.removeEventListener('wheel', scrollBlock)
-              scrollingElem.style.transition = ``
-              window.addEventListener('scroll', lockBySectionPosition)
-            }, transition)
+            setTimeout(() => {
+              unLockPage(header);
+              content.removeEventListener("wheel", scrollBlock);
+              scrollingElem.style.transition = ``;
+              window.addEventListener("scroll", lockBySectionPosition);
+            }, transition);
+          } else {
+            scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
           }
-        
-          else {
-            scrollingElem.style.transform = `translateX(${elTranslateX}px)`
-          }
-          // console.log('elTranslateX: ', elTranslateX);
         }
       }
-      // else{
-      //   unLockPage(header)
-      //   content.removeEventListener('wheel', scrollBlock)
-      //   scrollingElem.style.transition = ``
-      // }
-      
-
     }
-
   }
-
 }
-
-
