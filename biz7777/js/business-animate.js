@@ -47,7 +47,7 @@ function initBusSlider() {
   }
 }
 
-blockHorizontalScroll("bus-slider", "bus-slider__container", 750);
+blockHorizontalScroll("bus-slider", "bus-slider__container", 1000);
 
 function blockHorizontalScroll(
   sectionClassName,
@@ -96,7 +96,7 @@ function blockHorizontalScroll(
         function scrollBlock(e) {
           e.preventDefault();
           scrollingElem.style.transition = `${transition}ms`;
-          elTranslateX -= e.deltaY * 0.4;
+          elTranslateX -= e.deltaY * 0.75;
           if (elTranslateX >= 0) {
             elTranslateX = 0;
             scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
