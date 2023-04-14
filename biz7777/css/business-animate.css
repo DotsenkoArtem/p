@@ -4,8 +4,9 @@
 
 @media (min-width: 1001px) {
   .bus-slider .swiper-slide {
-    margin-left: 75px;
-    margin-right: 75px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(50% - 20px);
   }
 }
 
