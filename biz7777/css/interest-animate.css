@@ -1,6 +1,6 @@
 .interest{
   position: relative;
-  width: 100%;
+  width: 32%;
   max-width: 407px;
 }
 
@@ -11,10 +11,10 @@
 
 .interest__scene{
   position: absolute;
-  top: -24%;
-  left: -45%;
-  width: 170%;
-  height: 170%;
+  top: -19%;
+  left: -11%;
+  width: 140%;
+  height: 140%;
 }
 
 .interest__item{
@@ -215,4 +215,57 @@
   left: 0%;
   width: 100%;
   z-index: 60;
+}
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES */
+@media (max-width: 1399.98px) {
+  .block8{
+    justify-content: space-between;
+  }
+
+  .block8__info{
+    width: 60%;
+  }
+
+  .interest__scene{
+    left: 0;
+  }
+}
+
+@media (max-width: 1000.98px) {
+  .interest {
+    margin-top: 50%;
+    width: 100%;
+    max-width: 970px;
+  }
+
+  .interest__scene{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+
+
+@media (max-width: 767.98px) {
+
+}
+
+
+@media (max-width: 414.98px) {
+  
+}
+
+
+@media (max-width: 359.98px) {
+  
 }
