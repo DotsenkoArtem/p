@@ -253,6 +253,10 @@
     left: 0;
     top: 0;
   }
+
+  .block8__info{
+    width: auto;
+  }
 }
 
 
