@@ -36,15 +36,15 @@ function expBlockAnimate(elemClass) {
         item.style.animationName = `none`;
       });
 
-      let scrollDirection = 0;
-      let startY = window.pageYOffset;
-      let currentY = 0;
+      // let scrollDirection = 0;
+      // let startY = window.pageYOffset;
+      // let currentY = 0;
 
-      function getScrollDirection() {
-        currentY = window.pageYOffset;
-        scrollDirection = startY - currentY;
-        startY = currentY;
-      }
+      // function getScrollDirection() {
+      //   currentY = window.pageYOffset;
+      //   scrollDirection = startY - currentY;
+      //   startY = currentY;
+      // }
 
       window.addEventListener("scroll", expAnimate);
 
@@ -52,7 +52,7 @@ function expBlockAnimate(elemClass) {
       function expAnimate() {
         currentBlockTop = block.getBoundingClientRect().top;
         currentBlockBottom = block.getBoundingClientRect().bottom;
-        getScrollDirection();
+        // getScrollDirection();
 
         if (unLockedDocumentWidth > 1000) {
           expAnimStartPoint =

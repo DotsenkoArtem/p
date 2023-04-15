@@ -62,19 +62,19 @@ function blockHorizontalScroll(
     let stopPoint =
       scrollingElem.getBoundingClientRect().height + window.innerHeight * 0.55;
 
-    let scrollDirection = 0;
-    let startY = window.pageYOffset;
-    let currentY = 0;
-    function getScrollDirection() {
-      currentY = window.pageYOffset;
-      scrollDirection = startY - currentY;
-      startY = currentY;
-    }
+    // let scrollDirection = 0;
+    // let startY = window.pageYOffset;
+    // let currentY = 0;
+    // function getScrollDirection() {
+    //   currentY = window.pageYOffset;
+    //   scrollDirection = startY - currentY;
+    //   startY = currentY;
+    // }
 
     window.addEventListener("scroll", lockBySectionPosition);
 
     function lockBySectionPosition() {
-      getScrollDirection();
+      // getScrollDirection();
       let scrollingElemTop = scrollingElem.getBoundingClientRect().top;
       let scrollingElemBottom = scrollingElem.getBoundingClientRect().bottom;
       let scrollingElemWIdth = scrollingElem.scrollWidth;

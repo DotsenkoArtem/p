@@ -95,10 +95,19 @@ window.addEventListener("load", function() {
   // console.log('wsChatBtns.length: ', wsChatBtns.length);
   if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right}
 
+})
 
 
+let scrollDirection = 0;
+let startY = window.pageYOffset;
+let currentY = 0;
 
+function getScrollDirection() {
+  currentY = window.pageYOffset;
+  scrollDirection = startY - currentY;
+  startY = currentY;
+}
 
-
-
+window.addEventListener('scroll', () => {
+  getScrollDirection()
 })

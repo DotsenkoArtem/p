@@ -2,6 +2,11 @@
   position: relative;
   width: 32%;
   max-width: 407px;
+  transition: opacity 1200ms;
+}
+
+.interest_transparent{
+  opacity: 0;
 }
 
 .interest__skeleton{
@@ -108,8 +113,12 @@
   left: 50%;
   width: 40%;
   height: 50%;
-  z-index: 20;
+  z-index: 80;
 }
+
+/* .interest__man-fly-wrap.is-landed {
+  transform: translate(-10%, 130%) rotate(21deg);
+} */
 
 .interest__man-fly-bag-fire {
   top: 7%;
@@ -181,7 +190,7 @@
   left: 23%;
   width: 25%;
   height: 50%;
-  z-index: 15;
+  z-index: 60;
 }
 .interest__man-up {
   top: 1%;
