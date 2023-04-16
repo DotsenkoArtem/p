@@ -8,36 +8,38 @@ function interestBlockAnimate(elemClass) {
     this.setTimeout(() => {
       // РАЗМЕТКА ГРАНИЦ АНИМАЦИИ
       // Точка, после пересечения которой блоком появляются элементы анимации
-      const intLandingPoint = +(document.documentElement.clientHeight * .75).toFixed();
-      // Точка появления ручки (отступ по оси Y от верхней грницы окна)
+      // const intLandingPoint = +(document.documentElement.clientHeight * .75).toFixed();
+      const intLandingPoint = +(document.documentElement.clientHeight * 1).toFixed();
+
       const intMeetingPoint =  +(document.documentElement.clientHeight * .4).toFixed()
       const intHandShakingPoint = +(document.documentElement.clientHeight * .2).toFixed()
       const intExitPoint = +(document.documentElement.clientHeight * 0).toFixed()
 
 
 
-
-      console.log('intMeetingPoint: ', intMeetingPoint);
-
-
       // Получение элементов
+      // Сцена
+      const intScene = block.querySelector('.interest__scene')
       // Верхнее облако
       const intTopCloud = block.querySelector('.interest__tp-cloud-5')
-      // Летаущий человек
+      // Летающий человек
       const intFlyMan = block.querySelector('.interest__man-fly-wrap')
+      // Облако под человеком
+      const intTpCloud4 = block.querySelector('.interest__tp-cloud-4')
       
 
 
       // ТЕКУЩИЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
       // Блок
       let currentBlockTop = block.getBoundingClientRect().top;
+      // Сцена
+      let currentIntSceneBottom = intScene.getBoundingClientRect().bottom;
       // Верхнее облако
       let currentIntTopCloudTop = intTopCloud.getBoundingClientRect().top;
+      // Облако под человеком
+      let intTpCloud4Coords = intTpCloud4.getBoundingClientRect();
+      let intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
 
-
-
-      let currentLandingScroll = undefined
-      let targetLandingScroll = undefined
 
 
       // ФЛАГИ
@@ -50,14 +52,14 @@ function interestBlockAnimate(elemClass) {
       // FUNCTIONS
       // ДИАПАЗОН - ПЕРЕД НАЧАЛОМ ДЕЙСТВИЙ БЛОКА
       function isBeforeIntAction() {
-        return currentIntTopCloudTop > intLandingPoint
+        return intTpCloud4Top > intLandingPoint
           ? true
           : false;
       }
       // ДИАПАЗОН - ПРИЗЕМЛЕНИЕ
       function isInIntLandingRange() {
-        return currentIntTopCloudTop <= intLandingPoint &&
-        currentIntTopCloudTop > intMeetingPoint
+        return intTpCloud4Top <= intLandingPoint &&
+        intTpCloud4Top > intMeetingPoint
           ? true
           : false;
       }
@@ -91,7 +93,7 @@ function interestBlockAnimate(elemClass) {
       // ЕСЛИ ЗАГРУКА ДО НАЧАЛА БЛОКА
       if(isBeforeIntAction()) {
         window.addEventListener('scroll', ()=>{
-          if(currentIntTopCloudTop < intLandingPoint) {
+          if(intTpCloud4Top < intLandingPoint) {
             blockFadeIn()
           }
         })
@@ -125,14 +127,19 @@ function interestBlockAnimate(elemClass) {
 
       window.addEventListener('scroll', function() {
         currentBlockTop = block.getBoundingClientRect().top;
+        currentIntSceneBottom = intScene.getBoundingClientRect().bottom;
         currentIntTopCloudTop = intTopCloud.getBoundingClientRect().top;
+        intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
+        console.log('currentIntSceneBottom: ', currentIntSceneBottom);
 
         intLanding()
       })
 
 
       // ПРИЗЕМЛЕНИЕ
-      const landingTransition =2000
+      let currentLandingScroll = undefined
+      let targetLandingScroll = undefined
+      const landingTransition =1500
       function intLanding() {
         if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
           lockPage(unLockedDocumentWidth, header)
@@ -143,7 +150,7 @@ function interestBlockAnimate(elemClass) {
   
             if(!currentLandingScroll) {
               currentLandingScroll = this.window.scrollY
-              targetLandingScroll = currentLandingScroll + intMeetingPoint
+              targetLandingScroll = currentLandingScroll + (currentIntSceneBottom - intLandingPoint)
             }
             
             animateScrollLanding({
@@ -160,13 +167,13 @@ function interestBlockAnimate(elemClass) {
               // duration: Math.abs(currentLandingScroll - targetLandingScroll),
               duration: landingTransition,
             });
-          }, 1000)
+          }, 750)
 
 
           isLanded = true
           setTimeout(()=> {
             unLockPage(header)
-          }, landingTransition + 1000)
+          }, landingTransition + 750)
         }
       }
 
@@ -187,15 +194,14 @@ function interestBlockAnimate(elemClass) {
       
           // Пример функции ease-out
           // Зашпаргалил здесь: https://easings.net/ru
-          let progress = 1 - Math.abs(Math.pow(timing(timeFraction) - 1, 3));
+          // let progress = 1 - Math.abs(Math.pow(timing(timeFraction) - 1, 3));
+          let progress = timing(timeFraction) < .5 ? 4 * timing(timeFraction) * timing(timeFraction) * timing(timeFraction) : 1 - Math.pow(-2 * timing(timeFraction) + 2, 3) / 2;
           draw(progress); // отрисовать её
           if (timeFraction < 1) {
             requestAnimationFrame(animateScrollLanding);
           }
         });
       }
-
-
 
 
 
