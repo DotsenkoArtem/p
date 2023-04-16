@@ -24,8 +24,33 @@ function interestBlockAnimate(elemClass) {
       let content = document.querySelector(".content");
       // Сцена
       const intScene = block.querySelector('.interest__scene')
-      // Верхнее облако
+
+
+      // ОБЛАКА
+      // Верхнее облако - 1
+      const intTopCloud1 = block.querySelector('.interest__tp-cloud-1')
+      // Верхнее облако - 2
+      const intTopCloud2 = block.querySelector('.interest__tp-cloud-2')
+      // Верхнее облако - 3
+      const intTopCloud3 = block.querySelector('.interest__tp-cloud-3')
+      // Облако под человеком (верхнее облако - 5)
+      const intTpCloud4 = block.querySelector('.interest__tp-cloud-4')
+      // Верхнее облако - 5
       const intTopCloud = block.querySelector('.interest__tp-cloud-5')
+      // Верхнее облако - 6
+      const intTpCloud6 = block.querySelector('.interest__tp-cloud-6')
+      // Среднее облако - 1
+      const intMdCloud1 = block.querySelector('.interest__md-cloud-1')
+      // Среднее облако - 2
+      const intMdCloud2 = block.querySelector('.interest__md-cloud-2')
+      // Среднее облако - 3
+      const intMdCloud3 = block.querySelector('.interest__md-cloud-3')
+      // Среднее облако - 4
+      const intMdCloud4 = block.querySelector('.interest__md-cloud-4')
+      // Среднее облако - 5
+      const intMdCloud5 = block.querySelector('.interest__md-cloud-5')
+
+
       // Стоящий человек
       const intUpMan = block.querySelector('.interest__man-up-wrap')
       // Стоящий человек - рука
@@ -40,8 +65,6 @@ function interestBlockAnimate(elemClass) {
       const intFlyMan = block.querySelector('.interest__man-fly-wrap')
       // Летающий человек - рука
       const intFlyManHand = block.querySelector('.interest__man-fly-hand')
-      // Облако под человеком
-      const intTpCloud4 = block.querySelector('.interest__tp-cloud-4')
       // Стрелка малая (слева)
       const intArrowSm = block.querySelector('.interest__int-arrow-sm')
       // Стрелка синяя
@@ -68,7 +91,9 @@ function interestBlockAnimate(elemClass) {
       // ФЛАГИ
       let isLanded = false
       let canMeet = false
+      let canHandShake = false
       let isMeetingAnimated = false
+      let isHandShakeAnimated = false
 
 
 
@@ -159,15 +184,16 @@ function interestBlockAnimate(elemClass) {
 
         intLanding()
         intMeeting()
+        
       })
 
-
+      let requestAnimationFrameId
       // ПРИЗЕМЛЕНИЕ
       let currentLandingScroll = undefined
       let targetLandingScroll = undefined
-      let animateScrollLandingId
-      const landingTransition =1500
-      const meetingTransition =1500
+      const landingTransition = 1500
+      const meetingTransition = 1500
+      const handShakeTransition = 2000
       function intLanding() {
         if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
           lockPage(unLockedDocumentWidth, header)
@@ -208,12 +234,13 @@ function interestBlockAnimate(elemClass) {
 
       function animateScrollLanding({ timing, draw, duration }) {
         let start = performance.now();
+        
       
         requestAnimationFrame(function animateScrollLanding(time) {
           let timeFraction = (time - start) / duration;
           if (timeFraction > 1) timeFraction = 1;
           // вычисление текущего состояния анимации
-      
+          
           // Линейная функция
           // let progress = timing(timeFraction);
       
@@ -223,17 +250,20 @@ function interestBlockAnimate(elemClass) {
           let progress = timing(timeFraction) < .5 ? 4 * timing(timeFraction) * timing(timeFraction) * timing(timeFraction) : 1 - Math.pow(-2 * timing(timeFraction) + 2, 3) / 2;
           draw(progress); // отрисовать её
           if (timeFraction < 1) {
-            requestAnimationFrame(animateScrollLanding);
+            requestAnimationFrameId = requestAnimationFrame(animateScrollLanding);
           }
         });
       }
 
 
       // ВСТРЕЧА
+      let animateScrollMeetingId
       function intMeeting() {
-        if(canMeet) {
 
-          if(scrollDirection < 0 && !isMeetingAnimated) {
+        if(canMeet && !isMeetingAnimated) {
+          // console.log('ВЫзов функции:');
+          if(scrollDirection < 0) {
+            
             lockPage(unLockedDocumentWidth, header)
             isMeetingAnimated = true
             animateScrollMeeting({
@@ -244,7 +274,7 @@ function interestBlockAnimate(elemClass) {
                 intFlyManHand.style.transformOrigin = `7% 8%`
                 intFlyManHand.style.transform = `rotate(${46 * progress}deg)`
 
-                intUpMan.style.transform = `translate(${41 * progress}%, ${-22 * progress}%)`
+                intUpMan.style.transform = `translate(${44 * progress}%, ${-23 * progress}%)`
                 intUpHand.style.transformOrigin = `62% 2%`
                 intUpHand.style.transform = `rotate(${-57 * progress}deg)`
                 intUpLegLeft.style.transformOrigin = `51% 57%`
@@ -284,13 +314,15 @@ function interestBlockAnimate(elemClass) {
                 // let progress = timing(timeFraction) < .5 ? 4 * timing(timeFraction) * timing(timeFraction) * timing(timeFraction) : 1 - Math.pow(-2 * timing(timeFraction) + 2, 3) / 2;
                 draw(progress); // отрисовать её
                 if (timeFraction < 1) {
-                  requestAnimationFrame(animateScrollMeeting);
+                  animateScrollMeetingId = requestAnimationFrame(animateScrollMeeting);
                 }
               });
             }
 
             setTimeout(()=>{
               unLockPage(header)
+              canHandShake = true
+              intHandShake()
             } ,meetingTransition)
           }
           
@@ -300,11 +332,79 @@ function interestBlockAnimate(elemClass) {
         
 
           
-
+          
 
         }
       }
 
+
+
+
+
+      // РУКОПОЖАТИЕ
+      let animateHandShakeId
+      function intHandShake() {
+        if(canHandShake && !isHandShakeAnimated) {
+
+
+          isHandShakeAnimated = true
+
+          
+          animateHandShake({
+            timing(timeFraction) {
+              return 1 - Math.abs(1 - timeFraction * 2);
+            },
+            timing2(timeFraction2) {
+              return 1 - Math.abs(1 - timeFraction2 * 2);
+            },
+            draw(progress, progress2) {
+              intTopCloud1.style.transform = `translate(${12 * progress}%, ${-3 * progress}%)`;
+              intTopCloud2.style.transform = `translate(${5 * progress}%, ${0 * progress}%)`;
+              intTopCloud3.style.transform = `translate(${18 * progress}%, ${0 * progress}%)`;
+              intTpCloud4.style.transform = `translate(${-16 * progress}%, ${5 * progress}%)`;
+              intTopCloud.style.transform = `translate(${-30 * progress}%, ${0 * progress}%)`;
+              intTpCloud6.style.transform = `translate(${-40 * progress}%, ${-10 * progress}%)`;
+
+              intMdCloud1.style.transform = `translate(${60 * progress}%, ${-10 * progress}%)`;
+              intMdCloud2.style.transform = `translate(${12 * progress}%, ${-5 * progress}%)`;
+              intMdCloud3.style.transform = `translate(${-50 * progress}%, ${25 * progress}%)`;
+              intMdCloud4.style.transform = `translate(${-35 * progress}%, ${-15 * progress}%)`;
+              intMdCloud5.style.transform = `translate(${-35 * progress}%, ${0 * progress}%)`;
+
+              // intFlyManHand.style.transformOrigin = `75% 75%`
+              intFlyManHand.style.transform = `translateY(${2 * progress2}%) rotate(${46 - 10 * progress2}deg)`
+              intUpHand.style.transform = `translateX(${0}%) rotate(${-57 + 10 * progress2}deg)`
+            },
+            duration: handShakeTransition * 2,
+          })
+        }
+      }
+
+
+
+      function animateHandShake({ timing, timing2, draw, duration }) {
+        let start = performance.now();
+
+        
+            
+        requestAnimationFrame(function animateScrollMeeting(time) {
+          if (start > time) {
+            start = time;
+          }
+          let timeFraction = (time - start) / duration;
+          let timeFraction2 = Math.abs(1 - Math.abs(1 - Math.abs(1 - (4 * (time - start) / duration))));
+          if (timeFraction > 1) start = time;
+          // вычисление текущего состояния анимации
+      
+          // Линейная функция
+          let progress = timing(timeFraction);
+          let progress2 = timing2(timeFraction2);
+          draw(progress, progress2); // отрисовать её
+          
+            animateScrollMeetingId = requestAnimationFrame(animateScrollMeeting);
+          
+        });
+      }
 
       
 
