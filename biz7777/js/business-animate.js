@@ -47,221 +47,210 @@ function initBusSlider() {
   }
 }
 
-blockHorizontalScroll("bus-slider", "bus-slider__container", 1000);
+window.addEventListener("load", blockHorizontalScroll);
 
-function blockHorizontalScroll(
-  sectionClassName,
-  scrollingElemClassName,
-  transition
-) {
+// blockHorizontalScroll("bus-slider", "bus-slider__container", 1000);
+// blockHorizontalScroll()
+
+function blockHorizontalScroll() {
   if (unLockedDocumentWidth > 1000) {
-    const block = document.querySelector(`.block6`);
-    let blockTop = block.getBoundingClientRect().top;
-    let blockBottom = block.getBoundingClientRect().bottom;
+    setTimeout(function () {
+      const block = document.querySelector(`.block6`);
+      let blockTop = block.getBoundingClientRect().top;
+      let blockBottom = block.getBoundingClientRect().bottom;
 
-    let content = document.querySelector(".content");
-    let section = document.querySelector(`.${sectionClassName}`);
-    let sectionTop = section.getBoundingClientRect().top;
-    let scrollingElem = section.querySelector(`.${scrollingElemClassName}`);
-    let elTranslateX = 0;
-    let startPoint = window.innerHeight * 0.75;
-    let stopPoint =
-      scrollingElem.getBoundingClientRect().height + window.innerHeight * 0.55;
+      const content = document.querySelector(".content");
 
+      let slider = document.querySelector(`.bus-slider`);
+      let sliderTop = slider.getBoundingClientRect().top.toFixed();
 
+      const scrollingElem = slider.querySelector(`.bus-slider__container`);
+      let scrollingElemWIdth = scrollingElem.scrollWidth;
+      let currentScroll = undefined;
+      let targetScroll = undefined;
+      let transition = 1000;
+      let elTranslateX = 0;
 
+      const sliderFixPoint = (
+        document.documentElement.clientHeight * 0.5
+      ).toFixed();
+      const topPoint = (document.documentElement.clientHeight * 0).toFixed();
+      const bottomPoint = (document.documentElement.clientHeight * 1).toFixed();
 
+      // FLAGS
+      let isAnimating = false;
+      let isAfterHorizScroll = false;
+      let isInFixPoint = false;
 
-    let isInWindow = false
-    let isLocked = false
-
-    // window.addEventListener("scroll", lockBySectionPosition);
-
-    window.addEventListener("scroll", () => {
-      blockTop = block.getBoundingClientRect().top;
-      blockBottom = block.getBoundingClientRect().bottom;
-      sectionTop = section.getBoundingClientRect().top;
-
-      if(blockTop > document.documentElement.clientHeight * .6 && scrollDirection < 0 || blockBottom < document.documentElement.clientHeight * .4 && scrollDirection > 0) {
-        isInWindow = false
+      // FUNCTIONS
+      function isInRange() {
+        return sliderTop < bottomPoint && sliderTop > topPoint ? true : false;
       }
-      // if(sectionTop > document.documentElement.clientHeight / 2 && scrollDirection > 0
-      // ||
-      // sectionTop < document.documentElement.clientHeight / 2 && scrollDirection < 0) {
-      //   isInWindow = false
-      // }
-      console.log('scrollDirection: ', scrollDirection);
 
-      if (
-        (blockTop <= document.documentElement.clientHeight && blockTop >= 0 && !isInWindow) ||
-        (blockBottom >= 0 &&
-          blockBottom <= document.documentElement.clientHeight  && !isInWindow)
-      ) {
+      function animateScrollToCenter({ timing, draw, duration }) {
+        let start = performance.now();
 
-  
+        requestAnimationFrame(function animateScrollToCenter(time) {
+          let timeFraction = (time - start) / duration;
+          if (timeFraction > 1) timeFraction = 1;
+          // Линейная функция
+          let progress = timing(timeFraction);
+          draw(progress); // отрисовать её
+          if (timeFraction < 1) {
+            requestAnimationFrame(animateScrollToCenter);
+          }
+        });
+      }
+
+      function scrollToCenter() {
         lockPage(unLockedDocumentWidth, header);
 
-        setTimeout(()=>{
-          scrollToCenter()
-        },0)
-        
-
-      }
-    });
-
-    // content.addEventListener("wheel", scrollToCenter);
-    let scrolledToCenter = false;
-    let currentScroll = undefined;
-    let targetScroll = undefined;
-    function scrollToCenter() {
-      if(!isInWindow) { 
-        // let sectionTop = section.getBoundingClientRect().top;
         currentScroll = window.scrollY;
-        targetScroll = sectionTop - document.documentElement.clientHeight / 2;
+        targetScroll = sliderTop - sliderFixPoint;
 
-        
         animateScrollToCenter({
           timing(timeFraction) {
             return timeFraction;
           },
           draw(progress) {
-            window.scrollTo(
-              0,
-              currentScroll + targetScroll * progress
-            );
+            window.scrollTo(0, currentScroll + targetScroll * progress);
           },
-          duration: Math.abs(targetScroll * .6),
-          // duration: 750,
+          // duration: Math.abs(targetScroll),
+          duration: 300,
         });
-        isInWindow = true
-        setTimeout(()=>{
-          isLocked = true
-          // unLockPage(header)
-        }, Math.abs(targetScroll * .6))
-        // }, 2000)
+        isAnimating = true;
+        // isInWindow = true
+        setTimeout(() => {
+          isAnimating = false;
+          isInFixPoint = true;
+          unLockPage(header);
+          // }, Math.abs(targetScroll))
+        }, 300);
       }
 
+      // ЗАГРУЗКА СЛАЙДЕРА В ПРЕДЕЛАХ ОКНА
+      // if (isInRange()) {
+      //   scrollToCenter();
+      // }
 
+      window.addEventListener("scroll", function getCurrentCoords() {
+        sliderTop = slider.getBoundingClientRect().top;
+      });
 
-
-    }
-
-    function animateScrollToCenter({ timing, draw, duration }) {
-      let start = performance.now();
-
-      requestAnimationFrame(function animateScrollToCenter(time) {
-        let timeFraction = (time - start) / duration;
-        if (timeFraction > 1) timeFraction = 1;
-        // Линейная функция
-        let progress = timing(timeFraction);
-        // let progress =
-        //   timing(timeFraction) < 0.5
-        //     ? 4 *
-        //       timing(timeFraction) *
-        //       timing(timeFraction) *
-        //       timing(timeFraction)
-        //     : 1 - Math.pow(-2 * timing(timeFraction) + 2, 3) / 2;
-        draw(progress); // отрисовать её
-        if (timeFraction < 1) {
-          requestAnimationFrame(animateScrollToCenter);
+      window.addEventListener("scroll", function () {
+        if (
+          // Движение сверху к середине
+          (isInRange() && scrollDirection > 0 && sliderTop < sliderFixPoint) ||
+          // Движение снизу к середине
+          (isInRange() && scrollDirection < 0 && sliderTop > sliderFixPoint)
+        ) {
+          if (isAnimating === false) {
+            scrollToCenter();
+          }
         }
       });
-    }
 
-    content.addEventListener("wheel", lockBySectionPosition);
+      // content.addEventListener("wheel", disableWheel);
+      // function disableWheel(e) {
+      //   if (isAnimating === true) {
+      //     e.preventDefault();
+      //   }
+      // }
 
-    function lockBySectionPosition(e) {
-      // console.log('scrollDirection: ', scrollDirection);
-
-      if(isInWindow && isLocked) {
-
-
-        let scrollingElemTop = scrollingElem.getBoundingClientRect().top;
-        let scrollingElemBottom = scrollingElem.getBoundingClientRect().bottom;
-        let scrollingElemWIdth = scrollingElem.scrollWidth;
-
-        // if (
-          // // Скроллим вниз
-          // (
-          //   scrollDirection < 0 
-          //   && elTranslateX <= 0 && elTranslateX > (scrollingElem.offsetWidth - scrollingElemWIdth)
-          //   )
-          //   ||
-          //   // Скроллим вверх
-          // (
-          //   scrollDirection > 0 
-          //   && elTranslateX >= (scrollingElem.offsetWidth - scrollingElemWIdth) && elTranslateX < 0
-          //   )
-        // ) {
-          
-          
+      content.addEventListener("wheel", function (e) {
 
 
-          scrollBlock()
-          // content.addEventListener("wheel", scrollBlock);
-          function scrollBlock() {
-            // e.preventDefault();
-            scrollingElem.style.transition = `${transition}ms`;
-            elTranslateX -= e.deltaY * 0.75;
-            console.log('elTranslateX: ', elTranslateX);
-            
-            if (elTranslateX >= 0 && e.deltaY < 0) {
-              elTranslateX = 0;
-              scrollingElem.style.transform = `translateX(${0}px)`;
-              isLocked = false
-              // unLockPage(header);
-              console.log('elTranslateX: ', elTranslateX);
-              console.log('e.defaultPrevented: ', e.defaultPrevented);
-             
+        if (isAnimating === true) {
+          e.preventDefault();
+        }
 
+
+
+
+
+
+        if (isInFixPoint === true) {
+          let sliderTranslateX = +parseInt(
+            scrollingElem.style.transform.slice(11, -1)
+          );
+
+          // Скролл вверх, слайдер в начале
+          if (e.deltaY < 0 && !sliderTranslateX) {
+            if (isAfterHorizScroll === true) {
               setTimeout(() => {
                 unLockPage(header);
-                // content.removeEventListener("wheel", scrollBlock);
-                scrollingElem.style.transition = ``;
-              //   window.addEventListener("scroll", lockBySectionPosition);
-              }, transition);
-            }
-
-            else if (
-              Math.abs(elTranslateX) >=  Math.abs(scrollingElem.offsetWidth - scrollingElemWIdth) && e.deltaY > 0
-            ) {
-              elTranslateX = scrollingElem.offsetWidth - scrollingElemWIdth;
-              scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
-              isLocked = false
-              console.log('В КОНЦЕ МЫ: ');
-              // unLockPage(header);
-              setTimeout(() => {
-                unLockPage(header);
-              //   content.removeEventListener("wheel", scrollBlock);
-                scrollingElem.style.transition = ``;
-              //   window.addEventListener("scroll", lockBySectionPosition);
+                isAfterHorizScroll === false;
               }, transition);
             } else {
-              // isLocked = true
-              lockPage(unLockedDocumentWidth, header);
-              e.preventDefault();
-              scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
-              console.log('elTranslateX: ', elTranslateX);
+              unLockPage(header);
             }
-
-            
-
+            isInFixPoint = false;
           }
-        // }
-        // if(elTranslateX)
 
+          // Скролл вниз, слайдер в конце
+          if (
+            e.deltaY > 0 &&
+            sliderTranslateX === scrollingElem.offsetWidth - scrollingElemWIdth
+          ) {
+            if (isAfterHorizScroll === true) {
+              setTimeout(() => {
+                unLockPage(header);
+                isAfterHorizScroll === false;
+              }, transition);
+            } else {
+              unLockPage(header);
+            }
+            isInFixPoint = false;
+            // console.log('csr-isAfterHorizScroll: ', isAfterHorizScroll);
+          }
 
+          // Скролл вниз, слайдер в начале
+          if (
+            (e.deltaY > 0 && !sliderTranslateX) ||
+            (e.deltaY > 0 &&
+              sliderTranslateX > scrollingElem.offsetWidth - scrollingElemWIdth)
+          ) {
+            e.preventDefault();
+            lockPage(unLockedDocumentWidth, header);
+            scrollBlock();
+            isAfterHorizScroll = true;
+            // console.log('csr-isAfterHorizScroll: ', isAfterHorizScroll);
+          }
 
+          // Скролл вверх, слайдер в конце
+          if (
+            e.deltaY < 0 &&
+            sliderTranslateX >=
+              scrollingElem.offsetWidth - scrollingElemWIdth &&
+            sliderTranslateX < 0
+          ) {
+            e.preventDefault();
+            lockPage(unLockedDocumentWidth, header);
+            scrollBlock();
+            isAfterHorizScroll = true;
 
+            console.log("scrollDirection: ", scrollDirection);
+          }
+        }
 
+        function scrollBlock() {
+          scrollingElem.style.transition = `${transition}ms`;
+          elTranslateX -= e.deltaY * 0.75;
 
+          if (elTranslateX >= 0) {
+            elTranslateX = 0;
+          }
 
-      }
+          if (elTranslateX <= scrollingElem.offsetWidth - scrollingElemWIdth) {
+            elTranslateX = scrollingElem.offsetWidth - scrollingElemWIdth;
+          }
 
+          // lockPage(unLockedDocumentWidth, header);
+          scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
+        }
 
-
-
-
-    }
+        // console.log("sliderTranslateX: ", sliderTranslateX);
+      });
+    }, 0);
   }
 }
