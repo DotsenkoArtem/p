@@ -157,11 +157,19 @@ function blockHorizontalScroll() {
       //   }
       // }
 
+      window.addEventListener('scroll', ()=> {
+        if (isAnimating === true) {
+          e.preventDefault();
+        }
+      })
+
+
       content.addEventListener("wheel", function (e) {
 
 
         if (isAnimating === true) {
           e.preventDefault();
+          // return
         }
 
 
