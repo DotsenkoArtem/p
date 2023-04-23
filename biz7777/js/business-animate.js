@@ -97,35 +97,44 @@ function blockHorizontalScroll() {
           let progress = timing(timeFraction);
           draw(progress); // отрисовать её
           if (timeFraction < 1) {
-            requestAnimationFrame(animateScrollToCenter);
+            requestId = requestAnimationFrame(animateScrollToCenter);
           }
         });
       }
+      let requestId
 
       function scrollToCenter() {
-        lockPage(unLockedDocumentWidth, header);
+        if(!requestId) {
+          console.log('РАБОТАю');
+          lockPage(unLockedDocumentWidth, header);
 
-        currentScroll = window.scrollY;
-        targetScroll = sliderTop - sliderFixPoint;
-
-        animateScrollToCenter({
-          timing(timeFraction) {
-            return timeFraction;
-          },
-          draw(progress) {
-            window.scrollTo(0, currentScroll + targetScroll * progress);
-          },
-          // duration: Math.abs(targetScroll),
-          duration: 300,
-        });
-        isAnimating = true;
-        // isInWindow = true
-        setTimeout(() => {
-          isAnimating = false;
-          isInFixPoint = true;
-          unLockPage(header);
-          // }, Math.abs(targetScroll))
-        }, 300);
+          currentScroll = window.scrollY;
+          targetScroll = sliderTop - sliderFixPoint;
+  
+          animateScrollToCenter({
+            timing(timeFraction) {
+              return timeFraction;
+            },
+            draw(progress) {
+              window.scrollTo(0, currentScroll + targetScroll * progress);
+            },
+            // duration: Math.abs(targetScroll),
+            duration: 3000,
+          });
+          isAnimating = true;
+          // isInWindow = true
+          setTimeout(() => {
+            isAnimating = false;
+            isInFixPoint = true;
+            unLockPage(header);
+            cancelAnimationFrame(requestId)
+            console.log('ЗАКОНЧИЛ');
+            requestId = undefined
+            
+            // }, Math.abs(targetScroll))
+          }, 3000);
+        } 
+        
       }
 
       // ЗАГРУЗКА СЛАЙДЕРА В ПРЕДЕЛАХ ОКНА
@@ -157,7 +166,7 @@ function blockHorizontalScroll() {
       //   }
       // }
 
-      window.addEventListener('scroll', ()=> {
+      window.addEventListener('scroll', (e)=> {
         if (isAnimating === true) {
           e.preventDefault();
         }
