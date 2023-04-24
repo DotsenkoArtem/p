@@ -119,7 +119,7 @@ function blockHorizontalScroll() {
               window.scrollTo(0, currentScroll + targetScroll * progress);
             },
             // duration: Math.abs(targetScroll),
-            duration: 3000,
+            duration: 500,
           });
           isAnimating = true;
           // isInWindow = true
@@ -132,7 +132,7 @@ function blockHorizontalScroll() {
             requestId = undefined
             
             // }, Math.abs(targetScroll))
-          }, 3000);
+          }, 500);
         } 
         
       }
