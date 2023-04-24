@@ -116,9 +116,6 @@ function blockHorizontalScroll() {
         // if(!requestId) {
           console.log('РАБОТАю');
           
-
-          // currentScroll = window.scrollY;
-          // targetScroll = sliderTop - sliderFixPoint;
   
           animateScrollToCenter({
             timing(timeFraction) {
@@ -131,14 +128,27 @@ function blockHorizontalScroll() {
             // duration: 1000,
           });
           isAnimating = true;
-          // isInWindow = true
+
+
+
           setTimeout(() => {
             isAnimating = false;
             isInFixPoint = true;
-            unLockPage(header);
-            // cancelAnimationFrame(requestId)
+            // unLockPage(header);
             console.log('ЗАКОНЧИЛ');
-            // requestId = undefined
+
+
+
+
+
+            content.addEventListener("wheel", scrollHandle)
+
+
+
+
+
+
+
             
             }, Math.abs(targetScroll))
           // }, 1000);
@@ -147,12 +157,7 @@ function blockHorizontalScroll() {
       }
 
 
-      // window.addEventListener("scroll", function getCurrentCoords() {
-      //   sliderTop = slider.getBoundingClientRect().top;
-      //   currentScroll = window.scrollY;
-      //   targetScroll = sliderTop - sliderFixPoint;
 
-      // });
 
       window.addEventListener("scroll", function () {
         sliderTop = slider.getBoundingClientRect().top;
@@ -174,24 +179,24 @@ function blockHorizontalScroll() {
 
 
 
-      window.addEventListener('scroll', (e)=> {
-        if (isAnimating === true) {
-          e.preventDefault();
-        }
-      })
+      // window.addEventListener('scroll', (e)=> {
+      //   if (isAnimating === true) {
+      //     e.preventDefault();
+      //   }
+      // })
 
 
-      content.addEventListener("wheel", function (e) {
+      // content.addEventListener("wheel", function (e) {
+
+      
+        // if (isAnimating === true) {
+        //   e.preventDefault();
+        // }
 
 
-        if (isAnimating === true) {
-          e.preventDefault();
-        }
 
 
-
-
-
+      function scrollHandle(e) {
 
         if (isInFixPoint === true) {
           let sliderTranslateX = +parseInt(
@@ -273,8 +278,12 @@ function blockHorizontalScroll() {
           scrollingElem.style.transform = `translateX(${elTranslateX}px)`;
         }
 
-        // console.log("sliderTranslateX: ", sliderTranslateX);
-      });
+      }
+      // });
+
+
+
+
     }, 0);
   }
 }
