@@ -134,6 +134,7 @@ function blockHorizontalScroll() {
           setTimeout(() => {
             isAnimating = false;
             isInFixPoint = true;
+            isAfterHorizScroll = false
             // unLockPage(header);
             console.log('ЗАКОНЧИЛ');
 
