@@ -108,6 +108,11 @@ function getScrollDirection() {
   startY = currentY;
 }
 
+let currentScroll = undefined;
+
 window.addEventListener('scroll', () => {
+  // Текущее направление скролла
   getScrollDirection()
+  // Текущее значение прокрутки страницы
+  currentScroll = window.scrollY;
 })

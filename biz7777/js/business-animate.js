@@ -66,7 +66,7 @@ function blockHorizontalScroll() {
 
       const scrollingElem = slider.querySelector(`.bus-slider__container`);
       let scrollingElemWIdth = scrollingElem.scrollWidth;
-      let currentScroll = undefined;
+      // let currentScroll = undefined;
       let targetScroll = undefined;
       let transition = 1000;
       let elTranslateX = 0;
@@ -113,8 +113,7 @@ function blockHorizontalScroll() {
       
 
       function scrollToCenter() {
-        // if(!requestId) {
-          console.log('РАБОТАю');
+          // console.log('РАБОТАю');
           
   
           animateScrollToCenter({
@@ -125,7 +124,6 @@ function blockHorizontalScroll() {
               window.scrollTo(0, currentScroll + targetScroll * progress);
             },
             duration: Math.abs(targetScroll),
-            // duration: 1000,
           });
           isAnimating = true;
 
@@ -135,8 +133,7 @@ function blockHorizontalScroll() {
             isAnimating = false;
             isInFixPoint = true;
             isAfterHorizScroll = false
-            // unLockPage(header);
-            console.log('ЗАКОНЧИЛ');
+            // console.log('ЗАКОНЧИЛ');
 
 
 
@@ -152,8 +149,6 @@ function blockHorizontalScroll() {
 
             
             }, Math.abs(targetScroll))
-          // }, 1000);
-        // } 
         
       }
 
@@ -162,7 +157,7 @@ function blockHorizontalScroll() {
 
       window.addEventListener("scroll", function () {
         sliderTop = slider.getBoundingClientRect().top;
-        currentScroll = window.scrollY;
+        // currentScroll = window.scrollY;
         targetScroll = sliderTop - sliderFixPoint;
 
         if (
@@ -177,22 +172,6 @@ function blockHorizontalScroll() {
           }
         }
       });
-
-
-
-      // window.addEventListener('scroll', (e)=> {
-      //   if (isAnimating === true) {
-      //     e.preventDefault();
-      //   }
-      // })
-
-
-      // content.addEventListener("wheel", function (e) {
-
-      
-        // if (isAnimating === true) {
-        //   e.preventDefault();
-        // }
 
 
 
@@ -231,7 +210,6 @@ function blockHorizontalScroll() {
               unLockPage(header);
             }
             isInFixPoint = false;
-            // console.log('csr-isAfterHorizScroll: ', isAfterHorizScroll);
           }
 
           // Скролл вниз, слайдер в начале
@@ -244,7 +222,6 @@ function blockHorizontalScroll() {
             lockPage(unLockedDocumentWidth, header);
             scrollBlock();
             isAfterHorizScroll = true;
-            // console.log('csr-isAfterHorizScroll: ', isAfterHorizScroll);
           }
 
           // Скролл вверх, слайдер в конце
@@ -259,7 +236,7 @@ function blockHorizontalScroll() {
             scrollBlock();
             isAfterHorizScroll = true;
 
-            console.log("scrollDirection: ", scrollDirection);
+            // console.log("scrollDirection: ", scrollDirection);
           }
         }
 
@@ -280,10 +257,6 @@ function blockHorizontalScroll() {
         }
 
       }
-      // });
-
-
-
 
     }, 0);
   }
