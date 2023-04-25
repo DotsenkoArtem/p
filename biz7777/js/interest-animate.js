@@ -180,16 +180,26 @@ function interestBlockAnimate(elemClass) {
         currentIntSceneBottom = intScene.getBoundingClientRect().bottom;
         currentIntTopCloudTop = intTopCloud.getBoundingClientRect().top;
         intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
-        // console.log('currentIntSceneBottom: ', currentIntSceneBottom);
 
         intLanding()
         intMeeting()
-        
+        if(currentIntSceneBottom < intExitPoint && animateHandShakeId || currentIntTopCloudTop > intLandingPoint && animateHandShakeId) {
+          cancelAnimationFrame(animateHandShakeId)
+          animateHandShakeId = undefined
+          console.log('ОТМЕНЕНА');
+        } 
+        if(currentIntSceneBottom > intExitPoint && currentIntSceneBottom < intLandingPoint && canHandShake && !animateHandShakeId
+          ||
+          currentIntTopCloudTop > intExitPoint && currentIntTopCloudTop < intLandingPoint && canHandShake && !animateHandShakeId
+          ) {
+          animateHandShake(animateHandShakeOptions)
+          console.log('ВКЛЮЧЕНА');
+        }
       })
 
       let requestAnimationFrameId
       // ПРИЗЕМЛЕНИЕ
-      let currentLandingScroll = undefined
+      // let currentLandingScroll = undefined
       let targetLandingScroll = undefined
       const landingTransition = 1500
       const meetingTransition = 1500
@@ -199,13 +209,11 @@ function interestBlockAnimate(elemClass) {
           lockPage(unLockedDocumentWidth, header)
           
           setTimeout(()=>{
-            // intFlyMan.style.transition = `transform ${landingTransition}ms`
-            // intFlyMan.classList.add('is-landed')
   
-            if(!currentLandingScroll) {
-              currentLandingScroll = this.window.scrollY
-              targetLandingScroll = currentLandingScroll + (currentIntSceneBottom - intLandingPoint)
-            }
+            // if(!currentScroll) {
+              // currentScroll = this.window.scrollY
+              targetLandingScroll = currentScroll + (currentIntSceneBottom - intLandingPoint)
+            // }
             
             animateScrollLanding({
               timing(timeFraction) {
@@ -214,11 +222,11 @@ function interestBlockAnimate(elemClass) {
               draw(progress) {
                 window.scrollTo(
                   0,
-                  currentLandingScroll - (currentLandingScroll - targetLandingScroll) * progress
+                  currentScroll - (currentScroll - targetLandingScroll) * progress
                 );
                 intFlyMan.style.transform = `translate(${-10 * progress}%, ${134 * progress}%) rotate(${21 * progress}deg)`
               },
-              // duration: Math.abs(currentLandingScroll - targetLandingScroll),
+              // duration: Math.abs(currentScroll - targetLandingScroll),
               duration: landingTransition,
             });
           }, 750)
@@ -251,6 +259,9 @@ function interestBlockAnimate(elemClass) {
           draw(progress); // отрисовать её
           if (timeFraction < 1) {
             requestAnimationFrameId = requestAnimationFrame(animateScrollLanding);
+          } else if (timeFraction >= 1) {
+            cancelAnimationFrame(requestAnimationFrameId)
+            requestAnimationFrameId = undefined
           }
         });
       }
@@ -315,6 +326,9 @@ function interestBlockAnimate(elemClass) {
                 draw(progress); // отрисовать её
                 if (timeFraction < 1) {
                   animateScrollMeetingId = requestAnimationFrame(animateScrollMeeting);
+                } else if (timeFraction >= 1) {
+                  cancelAnimationFrame(animateScrollMeetingId)
+                  animateScrollMeetingId = undefined
                 }
               });
             }
@@ -343,6 +357,37 @@ function interestBlockAnimate(elemClass) {
 
       // РУКОПОЖАТИЕ
       let animateHandShakeId
+
+      let animateHandShakeOptions = {
+        timing(timeFraction) {
+          return 1 - Math.abs(1 - timeFraction * 2);
+        },
+        timing2(timeFraction2) {
+          return 1 - Math.abs(1 - timeFraction2 * 2);
+        },
+        draw(progress, progress2) {
+          intTopCloud1.style.transform = `translate(${12 * progress}%, ${-3 * progress}%)`;
+          intTopCloud2.style.transform = `translate(${5 * progress}%, ${0 * progress}%)`;
+          intTopCloud3.style.transform = `translate(${18 * progress}%, ${0 * progress}%)`;
+          intTpCloud4.style.transform = `translate(${-16 * progress}%, ${5 * progress}%)`;
+          intTopCloud.style.transform = `translate(${-30 * progress}%, ${0 * progress}%)`;
+          intTpCloud6.style.transform = `translate(${-40 * progress}%, ${-10 * progress}%)`;
+
+          intMdCloud1.style.transform = `translate(${60 * progress}%, ${-10 * progress}%)`;
+          intMdCloud2.style.transform = `translate(${12 * progress}%, ${-5 * progress}%)`;
+          intMdCloud3.style.transform = `translate(${-50 * progress}%, ${25 * progress}%)`;
+          intMdCloud4.style.transform = `translate(${-35 * progress}%, ${-15 * progress}%)`;
+          intMdCloud5.style.transform = `translate(${-35 * progress}%, ${0 * progress}%)`;
+
+          // intFlyManHand.style.transformOrigin = `75% 75%`
+          intFlyManHand.style.transform = `translateY(${2 * progress2}%) rotate(${46 - 10 * progress2}deg)`
+          intUpHand.style.transform = `translateX(${0}%) rotate(${-57 + 10 * progress2}deg)`
+        },
+        duration: handShakeTransition * 2,
+      }
+
+
+
       function intHandShake() {
         if(canHandShake && !isHandShakeAnimated) {
 
@@ -350,33 +395,7 @@ function interestBlockAnimate(elemClass) {
           isHandShakeAnimated = true
 
           
-          animateHandShake({
-            timing(timeFraction) {
-              return 1 - Math.abs(1 - timeFraction * 2);
-            },
-            timing2(timeFraction2) {
-              return 1 - Math.abs(1 - timeFraction2 * 2);
-            },
-            draw(progress, progress2) {
-              intTopCloud1.style.transform = `translate(${12 * progress}%, ${-3 * progress}%)`;
-              intTopCloud2.style.transform = `translate(${5 * progress}%, ${0 * progress}%)`;
-              intTopCloud3.style.transform = `translate(${18 * progress}%, ${0 * progress}%)`;
-              intTpCloud4.style.transform = `translate(${-16 * progress}%, ${5 * progress}%)`;
-              intTopCloud.style.transform = `translate(${-30 * progress}%, ${0 * progress}%)`;
-              intTpCloud6.style.transform = `translate(${-40 * progress}%, ${-10 * progress}%)`;
-
-              intMdCloud1.style.transform = `translate(${60 * progress}%, ${-10 * progress}%)`;
-              intMdCloud2.style.transform = `translate(${12 * progress}%, ${-5 * progress}%)`;
-              intMdCloud3.style.transform = `translate(${-50 * progress}%, ${25 * progress}%)`;
-              intMdCloud4.style.transform = `translate(${-35 * progress}%, ${-15 * progress}%)`;
-              intMdCloud5.style.transform = `translate(${-35 * progress}%, ${0 * progress}%)`;
-
-              // intFlyManHand.style.transformOrigin = `75% 75%`
-              intFlyManHand.style.transform = `translateY(${2 * progress2}%) rotate(${46 - 10 * progress2}deg)`
-              intUpHand.style.transform = `translateX(${0}%) rotate(${-57 + 10 * progress2}deg)`
-            },
-            duration: handShakeTransition * 2,
-          })
+          animateHandShake(animateHandShakeOptions)
         }
       }
 
@@ -387,7 +406,7 @@ function interestBlockAnimate(elemClass) {
 
         
             
-        requestAnimationFrame(function animateScrollMeeting(time) {
+        requestAnimationFrame(function animateHandShake(time) {
           if (start > time) {
             start = time;
           }
@@ -401,7 +420,7 @@ function interestBlockAnimate(elemClass) {
           let progress2 = timing2(timeFraction2);
           draw(progress, progress2); // отрисовать её
           
-            animateScrollMeetingId = requestAnimationFrame(animateScrollMeeting);
+          animateHandShakeId = requestAnimationFrame(animateHandShake);
           
         });
       }
