@@ -6,16 +6,7 @@ function interestBlockAnimate(elemClass) {
   const block = document.querySelector(`.${elemClass}`);
   if (block) {
     this.setTimeout(() => {
-      // РАЗМЕТКА ГРАНИЦ АНИМАЦИИ
-      // Точка, после пересечения которой блоком появляются элементы анимации
-      // const intLandingPoint = +(document.documentElement.clientHeight * .75).toFixed();
-      const intLandingPoint = +(document.documentElement.clientHeight * 1).toFixed();
 
-      // const intMeetingPoint =  +(document.documentElement.clientHeight * .4).toFixed()
-      const intMeetingPoint =  +(document.documentElement.clientHeight * .75).toFixed()
-
-      const intHandShakingPoint = +(document.documentElement.clientHeight * .2).toFixed()
-      const intExitPoint = +(document.documentElement.clientHeight * 0).toFixed()
 
 
 
@@ -87,6 +78,8 @@ function interestBlockAnimate(elemClass) {
       // ТЕКУЩИЕ КООРДИНАТЫ ЭЛЕМЕНТОВ
       // Блок
       let currentBlockTop = block.getBoundingClientRect().top;
+      // Сцена - верх
+      let currentIntSceneTop = intScene.getBoundingClientRect().top;
       // Сцена
       let currentIntSceneBottom = intScene.getBoundingClientRect().bottom;
       // Верхнее облако
@@ -94,6 +87,21 @@ function interestBlockAnimate(elemClass) {
       // Облако под человеком
       let intTpCloud4Coords = intTpCloud4.getBoundingClientRect();
       let intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
+
+
+      // РАЗМЕТКА ГРАНИЦ АНИМАЦИИ
+      // Точка, после пересечения которой блоком появляются элементы анимации
+      const intLandingPoint = +(document.documentElement.clientHeight * 1 + intScene.clientHeight).toFixed();
+      
+
+      // const intMeetingPoint =  +(document.documentElement.clientHeight * .75).toFixed()
+      const intMeetingPoint =  +(document.documentElement.clientHeight * 1).toFixed()
+
+      // const intHandShakingPoint = +(document.documentElement.clientHeight * .5).toFixed()
+      const intHandShakingPoint = intMeetingPoint - 50
+      // console.log('intHandShakingPoint: ', intHandShakingPoint);
+
+      const intExitPoint = +(document.documentElement.clientHeight * 0).toFixed()
 
 
 
@@ -114,38 +122,44 @@ function interestBlockAnimate(elemClass) {
 
 
 
-
+      
       // FUNCTIONS
       // ДИАПАЗОН - ПЕРЕД НАЧАЛОМ ДЕЙСТВИЙ БЛОКА
       function isBeforeIntAction() {
-        return intTpCloud4Top > intLandingPoint
+        // return intTpCloud4Top > intLandingPoint
+        return currentIntSceneBottom > intLandingPoint
           ? true
           : false;
       }
       // ДИАПАЗОН - ПРИЗЕМЛЕНИЕ
       function isInIntLandingRange() {
-        return intTpCloud4Top <= intLandingPoint &&
-        intTpCloud4Top > intMeetingPoint
+        // return intTpCloud4Top <= intLandingPoint &&
+        // intTpCloud4Top > intMeetingPoint
+        return currentIntSceneBottom <= intLandingPoint &&
+        currentIntSceneBottom > intMeetingPoint
           ? true
           : false;
       }
       // ДИАПАЗОН - ВСТРЕЧА
       function isInIntMeetingRange() {
-        return currentIntTopCloudTop <= intMeetingPoint &&
-        currentIntTopCloudTop > intHandShakingPoint
+        // return currentIntTopCloudTop <= intMeetingPoint &&
+        // currentIntTopCloudTop > intHandShakingPoint
+        return currentIntSceneBottom <= intMeetingPoint &&
+        currentIntSceneBottom > intHandShakingPoint
           ? true
           : false;
       }
       // ДИАПАЗОН - РУКОПОЖАТИЕ
       function isInIntHandShakingRange() {
-        return currentIntTopCloudTop <= intHandShakingPoint &&
-        currentIntTopCloudTop >= intExitPoint
+        return currentIntSceneBottom <= intHandShakingPoint &&
+        currentIntSceneBottom >= intExitPoint
           ? true
           : false;
       }
       // ДИАПАЗОН - ПОСЛЕ ДЕЙСТВИЙ БЛОКА
       function isAfterIntAction() {
-        return currentIntTopCloudTop < intExitPoint
+        // return currentIntTopCloudTop < intExitPoint
+        return currentIntSceneBottom < intExitPoint
           ? true
           : false;
       }
@@ -159,7 +173,7 @@ function interestBlockAnimate(elemClass) {
       // ЕСЛИ ЗАГРУКА ДО НАЧАЛА БЛОКА
       if(isBeforeIntAction()) {
         window.addEventListener('scroll', ()=>{
-          if(intTpCloud4Top < intLandingPoint) {
+          if(intTpCloud4Top < intLandingPoint - intScene.clientHeight) {
             blockFadeIn()
             if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
               intLanding()
@@ -167,7 +181,6 @@ function interestBlockAnimate(elemClass) {
             }
             if(isInIntMeetingRange() && scrollDirection < 0) {
               intMeeting()
-              
             }
             
           }
@@ -181,7 +194,7 @@ function interestBlockAnimate(elemClass) {
         intLanding()
         setTimeout(intMeeting, landingTransition + blockFadeInTransition)
         
-        // console.log('ПОСЛЕ ПРИЗЕМЛЕНИЯ');
+        // console.log('ПОЛЕ ПРИЗЕМЛЕНИЯ');
       }
 
 
@@ -190,7 +203,7 @@ function interestBlockAnimate(elemClass) {
         blockFadeIn()
         intLanding()
         setTimeout(intMeeting, landingTransition + blockFadeInTransition)
-        // console.log('ПОСЛЕ ВСТРЕЧИ');
+        // console.log('ПОЛЕ ВСТРЕЧИ');
       }
 
 
@@ -199,7 +212,7 @@ function interestBlockAnimate(elemClass) {
         blockFadeIn()
         intLanding()
         setTimeout(intMeeting, landingTransition + blockFadeInTransition)
-        // console.log('ПОСЛЕ РУКОПОЖАТИЯ');
+        console.log('ПОЛЕ РУКОПОЖАТИЯ');
       }
 
 
@@ -227,7 +240,11 @@ function interestBlockAnimate(elemClass) {
 
 
       window.addEventListener('scroll', function() {
+        console.log('isBeforeIntAction: ', isBeforeIntAction());
+        // console.log('isInIntMeetingRange: ', isInIntMeetingRange());
+
         currentBlockTop = block.getBoundingClientRect().top;
+        currentIntSceneTop = intScene.getBoundingClientRect().top;
         currentIntSceneBottom = intScene.getBoundingClientRect().bottom;
         currentIntTopCloudTop = intTopCloud.getBoundingClientRect().top;
         intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
@@ -254,13 +271,14 @@ function interestBlockAnimate(elemClass) {
 
       function intLanding() {
         // if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
-        if(isInIntLandingRange() && !isLanded || isInIntMeetingRange() && !isLanded) {
+        if(isInIntLandingRange() && !isLanded || isInIntMeetingRange() && !isLanded || isInIntHandShakingRange() && !isLanded) {
           lockPage(unLockedDocumentWidth, header)
           
           setTimeout(()=>{
 
             let landingScrollStart = currentScroll || window.scrollY
-            let targetLandingScroll = landingScrollStart + (currentIntSceneBottom - intLandingPoint)
+            // let targetLandingScroll = landingScrollStart + (currentIntSceneBottom - intLandingPoint)
+            let targetLandingScroll = landingScrollStart + (currentIntSceneBottom - intMeetingPoint)
             
             animateScrollLanding({
               timing(timeFraction) {
