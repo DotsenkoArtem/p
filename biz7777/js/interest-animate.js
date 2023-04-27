@@ -117,7 +117,7 @@ function interestBlockAnimate(elemClass) {
       // let targetLandingScroll = undefined
       let blockFadeInTransition = 1500
       const landingTransition = 1500
-      const meetingTransition = 1500
+      const meetingTransition = 1200
       const handShakeTransition = 2000
 
 
@@ -353,11 +353,11 @@ function interestBlockAnimate(elemClass) {
                 intFlyManHand.style.transformOrigin = `7% 8%`
                 intFlyManHand.style.transform = `rotate(${46 * progress}deg)`
 
-                intBagFire.style.transform = `translate(-${70 * progress}%, -${100 * progress}%) rotate(-46deg)`
-                intBagFire.style.opacity = `${2 * progress > 1 ? 0 : 1 - 2 * progress}`
+                // intBagFire.style.transform = `translate(-${70 * progress}%, -${100 * progress}%) rotate(-46deg)`
+                intBagFire.style.opacity = `${1.5 * progress > 1 ? 0 : 1 - 1.5 * progress}`
 
-                intBag.style.transform = `translate(${70 - 70 * progress}%, ${150 - 150 * progress}%) rotate(-46deg)`
-                intBag.style.opacity = `${2 * progress <= 1 ? 0 : 2 * progress - 1}`
+                // intBag.style.transform = `translate(${70 - 70 * progress}%, ${150 - 150 * progress}%) rotate(-46deg)`
+                // intBag.style.opacity = `${6 * progress <= 1 ? 0 : 6 * progress - 1}`
 
 
                 intUpMan.style.transform = `translate(${44 * progress}%, ${-23 * progress}%)`
@@ -369,8 +369,8 @@ function interestBlockAnimate(elemClass) {
                 intUpLegRight.style.transform = `translate(${0}%, ${0}%)`
                 intUpLegRight.style.opacity = `${5 * progress > 1 ? 0 : 1 - 5 * progress}`
 
-                intUpLegRightStep.style.transform = `translate(0%, ${-100 + 100 * progress}%)`
-                intUpLegRightStep.style.opacity = `${1 * progress}`
+                // intUpLegRightStep.style.transform = `translate(0%, ${-100 + 100 * progress}%)`
+                intUpLegRightStep.style.opacity = `${3 * progress <= 2 ? 0 : 3 * progress - 2}`
 
                 intArrowSm.style.transform = `translate(${75 * progress}%, ${-81 * progress}%)`
                 intArrowSm.style.opacity = `${.5 + .5 * progress}`
