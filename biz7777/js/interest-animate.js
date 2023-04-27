@@ -61,10 +61,19 @@ function interestBlockAnimate(elemClass) {
       const intUpLegRight = block.querySelector('.interest__man-up-leg-r')
       // Стоящий человек - нога правая согнутая
       const intUpLegRightStep = block.querySelector('.interest__man-up-leg-r-step')
+
+
       // Летающий человек
       const intFlyMan = block.querySelector('.interest__man-fly-wrap')
       // Летающий человек - рука
       const intFlyManHand = block.querySelector('.interest__man-fly-hand')
+      // Летающий человек - ранец
+      const intBag = block.querySelector('.interest__man-fly-bag')
+      // Летающий человек - ранец с огнями
+      const intBagFire = block.querySelector('.interest__man-fly-bag-fire')
+
+
+
       // Стрелка малая (слева)
       const intArrowSm = block.querySelector('.interest__int-arrow-sm')
       // Стрелка синяя
@@ -95,6 +104,13 @@ function interestBlockAnimate(elemClass) {
       let isMeetingAnimated = false
       let isHandShakeAnimated = false
 
+
+            // let currentLandingScroll = undefined
+      // let targetLandingScroll = undefined
+      let blockFadeInTransition = 1500
+      const landingTransition = 1500
+      const meetingTransition = 1500
+      const handShakeTransition = 2000
 
 
 
@@ -145,6 +161,11 @@ function interestBlockAnimate(elemClass) {
         window.addEventListener('scroll', ()=>{
           if(intTpCloud4Top < intLandingPoint) {
             blockFadeIn()
+            if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
+              intLanding()
+              
+            }
+            // intMeeting()
           }
         })
       }
@@ -153,24 +174,48 @@ function interestBlockAnimate(elemClass) {
       // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ПРИЗЕМЛЕНИЯ
       if(isInIntLandingRange()) {
         blockFadeIn()
+        intLanding()
+        setTimeout(intMeeting, landingTransition + blockFadeInTransition)
+        
+        // console.log('ПОСЛЕ ПРИЗЕМЛЕНИЯ');
       }
 
 
       // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ВСТРЕЧИ
       if(isInIntMeetingRange()) {
         blockFadeIn()
+        intLanding()
+        setTimeout(intMeeting, landingTransition + blockFadeInTransition)
+        // console.log('ПОСЛЕ ВСТРЕЧИ');
       }
 
 
       // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ РУКОПОЖАТИЯ
       if(isInIntHandShakingRange()) {
         blockFadeIn()
+        // console.log('ПОСЛЕ РУКОПОЖАТИЯ');
       }
 
 
       // ЕСЛИ ЗАГРУКА ПОСЛЕ ДЕЙТВИЙ БЛОКА
       if(isAfterIntAction()) {
+        blockFadeInTransition = 0
         blockFadeIn()
+        window.addEventListener('scroll', ()=>{
+          // console.log('scrollDirection: ', scrollDirection);
+          if(currentIntTopCloudTop > intExitPoint) {
+            
+            // if(isInIntLandingRange() && !isLanded) {
+              intLanding()
+              // console.log('ЭТО ЯЯЯЯЯЯ');
+              setTimeout(intMeeting, landingTransition + blockFadeInTransition)
+              
+            // }
+            
+          }
+          // intMeeting()
+        })
+        // console.log('ПОСЛЕ ДЕЙСТВИЙ');
       }
 
 
@@ -181,7 +226,7 @@ function interestBlockAnimate(elemClass) {
         currentIntTopCloudTop = intTopCloud.getBoundingClientRect().top;
         intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
 
-        intLanding()
+        // intLanding()
         intMeeting()
         if(currentIntSceneBottom < intExitPoint && animateHandShakeId || currentIntTopCloudTop > intLandingPoint && animateHandShakeId) {
           cancelAnimationFrame(animateHandShakeId)
@@ -199,21 +244,17 @@ function interestBlockAnimate(elemClass) {
 
       let requestAnimationFrameId
       // ПРИЗЕМЛЕНИЕ
-      // let currentLandingScroll = undefined
-      let targetLandingScroll = undefined
-      const landingTransition = 1500
-      const meetingTransition = 1500
-      const handShakeTransition = 2000
+
+
       function intLanding() {
-        if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
+        // if(isInIntLandingRange() && !isLanded && scrollDirection < 0) {
+        if(isInIntLandingRange() && !isLanded || isInIntMeetingRange() && !isLanded) {
           lockPage(unLockedDocumentWidth, header)
           
           setTimeout(()=>{
-  
-            // if(!currentScroll) {
-              // currentScroll = this.window.scrollY
-              targetLandingScroll = currentScroll + (currentIntSceneBottom - intLandingPoint)
-            // }
+
+            let landingScrollStart = currentScroll || window.scrollY
+            let targetLandingScroll = landingScrollStart + (currentIntSceneBottom - intLandingPoint)
             
             animateScrollLanding({
               timing(timeFraction) {
@@ -222,21 +263,22 @@ function interestBlockAnimate(elemClass) {
               draw(progress) {
                 window.scrollTo(
                   0,
-                  currentScroll - (currentScroll - targetLandingScroll) * progress
+                  landingScrollStart - (landingScrollStart - targetLandingScroll) * progress
                 );
                 intFlyMan.style.transform = `translate(${-10 * progress}%, ${134 * progress}%) rotate(${21 * progress}deg)`
+                intTpCloud4.style.transform = `rotate(${-180 * progress}deg)`;
               },
-              // duration: Math.abs(currentScroll - targetLandingScroll),
+              // duration: Math.abs(landingScrollStart - targetLandingScroll),
               duration: landingTransition,
             });
-          }, 750)
-
+          }, blockFadeInTransition)
 
           isLanded = true
+
           setTimeout(()=> {
             unLockPage(header)
             canMeet = true
-          }, landingTransition + 750)
+          }, landingTransition + blockFadeInTransition)
         }
       }
 
@@ -256,6 +298,7 @@ function interestBlockAnimate(elemClass) {
           // Зашпаргалил здесь: https://easings.net/ru
           // let progress = 1 - Math.abs(Math.pow(timing(timeFraction) - 1, 3));
           let progress = timing(timeFraction) < .5 ? 4 * timing(timeFraction) * timing(timeFraction) * timing(timeFraction) : 1 - Math.pow(-2 * timing(timeFraction) + 2, 3) / 2;
+        
           draw(progress); // отрисовать её
           if (timeFraction < 1) {
             requestAnimationFrameId = requestAnimationFrame(animateScrollLanding);
@@ -272,10 +315,11 @@ function interestBlockAnimate(elemClass) {
       function intMeeting() {
 
         if(canMeet && !isMeetingAnimated) {
-          // console.log('ВЫзов функции:');
-          if(scrollDirection < 0) {
+          // if(scrollDirection < 0) {
             
             lockPage(unLockedDocumentWidth, header)
+            intBagFire.style.transition = `unset`
+            intBag.classList.remove('hidden')
             isMeetingAnimated = true
             animateScrollMeeting({
               timing(timeFraction) {
@@ -285,13 +329,22 @@ function interestBlockAnimate(elemClass) {
                 intFlyManHand.style.transformOrigin = `7% 8%`
                 intFlyManHand.style.transform = `rotate(${46 * progress}deg)`
 
+                intBagFire.style.transform = `translate(-${70 * progress}%, -${100 * progress}%) rotate(-46deg)`
+                intBagFire.style.opacity = `${2 * progress > 1 ? 0 : 1 - 2 * progress}`
+
+                intBag.style.transform = `translate(${70 - 70 * progress}%, ${150 - 150 * progress}%) rotate(-46deg)`
+                intBag.style.opacity = `${2 * progress <= 1 ? 0 : 2 * progress - 1}`
+
+
                 intUpMan.style.transform = `translate(${44 * progress}%, ${-23 * progress}%)`
                 intUpHand.style.transformOrigin = `62% 2%`
                 intUpHand.style.transform = `rotate(${-57 * progress}deg)`
                 intUpLegLeft.style.transformOrigin = `51% 57%`
                 intUpLegLeft.style.transform = `rotate(${15 * progress}deg)`
-                intUpLegRight.style.transform = `translate(0%, ${150 * progress}%)`
-                intUpLegRight.style.opacity = `${1 - 1 * progress}`
+
+                intUpLegRight.style.transform = `translate(${0}%, ${0}%)`
+                intUpLegRight.style.opacity = `${5 * progress > 1 ? 0 : 1 - 5 * progress}`
+
                 intUpLegRightStep.style.transform = `translate(0%, ${-100 + 100 * progress}%)`
                 intUpLegRightStep.style.opacity = `${1 * progress}`
 
@@ -306,7 +359,6 @@ function interestBlockAnimate(elemClass) {
               },
               duration: meetingTransition,
             });
-
 
             function animateScrollMeeting({ timing, draw, duration }) {
               let start = performance.now();
@@ -336,18 +388,11 @@ function interestBlockAnimate(elemClass) {
             setTimeout(()=>{
               unLockPage(header)
               canHandShake = true
+              intBagFire.classList.add('hidden')
               intHandShake()
-            } ,meetingTransition)
-          }
+            } , meetingTransition)
+          // }
           
-
-
-
-        
-
-          
-          
-
         }
       }
 
@@ -369,7 +414,8 @@ function interestBlockAnimate(elemClass) {
           intTopCloud1.style.transform = `translate(${12 * progress}%, ${-3 * progress}%)`;
           intTopCloud2.style.transform = `translate(${5 * progress}%, ${0 * progress}%)`;
           intTopCloud3.style.transform = `translate(${18 * progress}%, ${0 * progress}%)`;
-          intTpCloud4.style.transform = `translate(${-16 * progress}%, ${5 * progress}%)`;
+          intTpCloud4.style.transform = `translate(${-16 * progress}%, ${5 * progress}%) rotate(${-180}deg)`;
+
           intTopCloud.style.transform = `translate(${-30 * progress}%, ${0 * progress}%)`;
           intTpCloud6.style.transform = `translate(${-40 * progress}%, ${-10 * progress}%)`;
 

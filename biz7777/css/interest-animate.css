@@ -120,12 +120,34 @@
   transform: translate(-10%, 130%) rotate(21deg);
 } */
 
-.interest__man-fly-bag-fire {
-  top: 7%;
-  left: 12%;
-  width: 50%;
-  z-index: 14;
+.interest__man-fly-bag {
+  top: 14%;
+  left: 20%;
+  transform: translate(70%, 150%) rotate(-46deg);
+  width: 29%;
+  z-index: 10;
 }
+
+.interest__man-fly-bag-fire {
+  top: 11%;
+  left: 23%;
+  transform: rotate(-46deg);
+  width: 29%;
+  z-index: 14;
+  transition: opacity 750ms 750ms;
+}
+
+.interest__man-fly-bag.hidden,
+.interest__man-fly-bag-fire.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.interest_transparent .interest__man-fly-bag-fire{
+  opacity: 0;
+}
+
+
 .interest__man-fly{
   top: 0%;
   left: 0%;
