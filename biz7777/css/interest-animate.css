@@ -298,9 +298,9 @@
 }
 
 @media (max-width: 1000.98px) {
-  .interest_transparent{
+  /* .interest_transparent{
     opacity: 1;
-  }
+  } */
   .interest {
     margin-top: 50%;
     width: 100%;
@@ -359,6 +359,14 @@
     transform: translate(0%, -5%);
   }
 
+
+  /* FOR STATIC */
+  .interest__man-fly-hand{
+    transform: rotate(46deg);
+  }
+  .interest__man-up-hand{
+    transform: rotate(-57deg);
+  }
 
 
 

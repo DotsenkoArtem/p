@@ -528,10 +528,55 @@ function interestBlockAnimate(elemClass) {
 
       } 
       if (unLockedDocumentWidth <= 1000) {
-        canHandShake = true
 
 
-        animateHandShake(animateHandShakeOptions)
+                // ЕСЛИ ЗАГРУКА ДО НАЧАЛА БЛОКА
+                if (isBeforeIntAction()) {
+                  window.addEventListener("scroll", () => {
+                    if (intTpCloud4Top < intLandingPoint - intScene.clientHeight) {
+                      blockFadeIn();
+                    }
+                  });
+                }
+        
+                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ПРИЗЕМЛЕНИЯ
+                if (isInIntLandingRange()) {
+                  blockFadeIn();
+                }
+        
+                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ВСТРЕЧИ
+                if (isInIntMeetingRange()) {
+                  blockFadeIn();
+                }
+        
+                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ РУКОПОЖАТИЯ
+                if (isInIntHandShakingRange()) {
+                  blockFadeIn();
+                }
+        
+                // ЕСЛИ ЗАГРУКА ПОСЛЕ ДЕЙТВИЙ БЛОКА
+                if (isAfterIntAction()) {
+                  blockFadeIn();
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //   canHandShake = true
+      //   animateHandShake(animateHandShakeOptions)
       }
 
 
