@@ -298,6 +298,9 @@
 }
 
 @media (max-width: 1000.98px) {
+  .interest_transparent{
+    opacity: 1;
+  }
   .interest {
     margin-top: 50%;
     width: 100%;
@@ -314,6 +317,61 @@
   .block8__info{
     width: auto;
   }
+
+
+  /* FOR MOB ANIMATION */
+  .interest__man-fly-wrap{
+    transform: translate(-10%, 134%) rotate(21deg);
+  }
+  .interest__man-fly-hand{
+    transform-origin: 7% 8%;
+  }
+  .interest__man-up-wrap{
+    transform: translate(44%, -23%);
+  }
+  .interest__man-up-leg-r{
+    transform: translate(0%, 0%);
+    opacity: 0;
+  }
+  .interest__man-up-leg-r-step{
+    opacity: 1;
+  }
+  .interest__man-up-leg-l{
+    transform-origin: 51% 57%;
+    transform: rotate(15deg);
+  }
+  .interest__man-up-hand{
+    transform-origin: 62% 2%;
+  }
+  .interest__int-arrow-blue{
+    transform: translate(101%, -97.4%);
+    opacity: 1;
+  }
+  .interest__int-arrow-md{
+    transform: translate(67%, -59%);
+    opacity: 1;
+  }
+  .interest__int-arrow-sm{
+    transform: translate(75%, -81%);
+    opacity: 1;
+  }
+  .interest__btm-clouds{
+    transform: translate(0%, -5%);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
