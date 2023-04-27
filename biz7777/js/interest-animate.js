@@ -165,7 +165,11 @@ function interestBlockAnimate(elemClass) {
               intLanding()
               
             }
-            // intMeeting()
+            if(isInIntMeetingRange() && scrollDirection < 0) {
+              intMeeting()
+              
+            }
+            
           }
         })
       }
@@ -193,6 +197,8 @@ function interestBlockAnimate(elemClass) {
       // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ РУКОПОЖАТИЯ
       if(isInIntHandShakingRange()) {
         blockFadeIn()
+        intLanding()
+        setTimeout(intMeeting, landingTransition + blockFadeInTransition)
         // console.log('ПОСЛЕ РУКОПОЖАТИЯ');
       }
 
@@ -227,7 +233,7 @@ function interestBlockAnimate(elemClass) {
         intTpCloud4Top = intTpCloud4.getBoundingClientRect().top;
 
         // intLanding()
-        intMeeting()
+        // intMeeting()
         if(currentIntSceneBottom < intExitPoint && animateHandShakeId || currentIntTopCloudTop > intLandingPoint && animateHandShakeId) {
           cancelAnimationFrame(animateHandShakeId)
           animateHandShakeId = undefined
