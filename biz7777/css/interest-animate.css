@@ -252,14 +252,14 @@
 
 .interest__man-up-leg-l {
   top: -1%;
-  left: .5%;
+  left: -.5%;
   width: 81%;
   z-index: 8;
 }
 
 .interest__man-up-leg-r {
   top: 32.5%;
-  left: -2%;
+  left: -1%;
   width: 87%;
   z-index: 8;
 }
@@ -306,6 +306,9 @@
 }
 
 @media (max-width: 1000.98px) {
+  .interest{
+    display: none;
+  }
 
   .interest__man-fly-bag,
   .interest__man-fly-bag-fire {

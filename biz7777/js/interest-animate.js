@@ -527,37 +527,41 @@ function interestBlockAnimate(elemClass) {
 
 
       } 
-      if (unLockedDocumentWidth <= 1000) {
 
 
-                // ЕСЛИ ЗАГРУКА ДО НАЧАЛА БЛОКА
-                if (isBeforeIntAction()) {
-                  window.addEventListener("scroll", () => {
-                    if (intTpCloud4Top < intLandingPoint - intScene.clientHeight) {
-                      blockFadeIn();
-                    }
-                  });
-                }
+
+
+      // if (unLockedDocumentWidth <= 1000) {
+
+
+      //           // ЕСЛИ ЗАГРУКА ДО НАЧАЛА БЛОКА
+      //           if (isBeforeIntAction()) {
+      //             window.addEventListener("scroll", () => {
+      //               if (intTpCloud4Top < intLandingPoint - intScene.clientHeight) {
+      //                 blockFadeIn();
+      //               }
+      //             });
+      //           }
         
-                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ПРИЗЕМЛЕНИЯ
-                if (isInIntLandingRange()) {
-                  blockFadeIn();
-                }
+      //           // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ПРИЗЕМЛЕНИЯ
+      //           if (isInIntLandingRange()) {
+      //             blockFadeIn();
+      //           }
         
-                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ВСТРЕЧИ
-                if (isInIntMeetingRange()) {
-                  blockFadeIn();
-                }
+      //           // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ ВСТРЕЧИ
+      //           if (isInIntMeetingRange()) {
+      //             blockFadeIn();
+      //           }
         
-                // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ РУКОПОЖАТИЯ
-                if (isInIntHandShakingRange()) {
-                  blockFadeIn();
-                }
+      //           // ЕСЛИ ЗАГРУКА В ПРЕДЕЛАХ РУКОПОЖАТИЯ
+      //           if (isInIntHandShakingRange()) {
+      //             blockFadeIn();
+      //           }
         
-                // ЕСЛИ ЗАГРУКА ПОСЛЕ ДЕЙТВИЙ БЛОКА
-                if (isAfterIntAction()) {
-                  blockFadeIn();
-                }
+      //           // ЕСЛИ ЗАГРУКА ПОСЛЕ ДЕЙТВИЙ БЛОКА
+      //           if (isAfterIntAction()) {
+      //             blockFadeIn();
+      //           }
 
 
 
@@ -575,9 +579,9 @@ function interestBlockAnimate(elemClass) {
 
 
 
-      //   canHandShake = true
-      //   animateHandShake(animateHandShakeOptions)
-      }
+      // //   canHandShake = true
+      // //   animateHandShake(animateHandShakeOptions)
+      // }
 
 
 
