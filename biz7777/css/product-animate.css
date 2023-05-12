@@ -21,7 +21,7 @@
   top: 31%;
   left: 39.5%;
   z-index: 15;
-  transition: opacity ease-out 1500ms;
+  transition: opacity ease-in-out 1500ms;
 }
 
 .prod-check.check-hidden {
@@ -33,7 +33,7 @@
   top: 4%;
   left: 16%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 .prod-star-left-lg.star-hidden {
@@ -112,7 +112,7 @@
   top: 20%;
   left: 18%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 .prod-star-left-md.star-hidden {
@@ -189,7 +189,7 @@
   top: 3.5%;
   left: 30%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 .prod-star-left-sm.star-hidden {
@@ -266,7 +266,7 @@
   top: 5%;
   left: 74%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 
@@ -344,7 +344,7 @@
   top: -2%;
   left: 66.5%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 
@@ -422,7 +422,7 @@
   top: 28.5%;
   left: 74.5%;
   z-index: 5;
-  transition: transform ease-out 1500ms;
+  transition: transform ease-in-out 1500ms;
 }
 
 
@@ -498,13 +498,13 @@
 .prod-anim {
   opacity: 0;
   animation-duration: 1000ms;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .prod-anim-text {
   color: #fff;
-  transition: color ease-out 1500ms;
+  transition: color ease-in-out 1500ms;
 }
 
 .prod-anim-text.text_blue {
