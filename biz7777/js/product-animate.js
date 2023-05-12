@@ -19,7 +19,7 @@ function prodBlockAnimate(elemClass) {
       const prodAnimText = block.querySelectorAll(".prod-anim-text");
       const prodCheck = block.querySelector(".prod-check");
       const prodStars = block.querySelectorAll(".js-prod-star");
-      const prodEntryDuration = 1000;
+      let showStarsDelay;
       prodAnimItems.forEach((item) => {
         item.style.visibility = `hidden`;
         item.style.animationName = `none`;
@@ -37,16 +37,16 @@ function prodBlockAnimate(elemClass) {
             prodAnimText.forEach((item) => {
               item.classList.add("text_blue");
             });
-          }, prodEntryDuration);
+          }, showStarsDelay);
         }
 
-        function showStars() {
+        function showStars(showStarsDelay) {
           setTimeout(() => {
             prodCheck.classList.remove("check-hidden");
             prodStars.forEach((star) => {
               star.classList.remove("star-hidden");
             });
-          }, prodEntryDuration);
+          }, showStarsDelay);
         }
 
         function moveStars() {
@@ -54,10 +54,11 @@ function prodBlockAnimate(elemClass) {
             prodStars.forEach((star) => {
               star.classList.add("star-moving");
             });
-          }, prodEntryDuration + 1500);
+          }, showStarsDelay + 1500);
         }
 
         if (unLockedDocumentWidth > 1000) {
+          showStarsDelay = 500;
           if (
             (currentBlockTop <= prodAnimStartPoint &&
               currentBlockBottom > prodAnimStartPoint &&
@@ -71,7 +72,7 @@ function prodBlockAnimate(elemClass) {
               item.style.animationName = ``;
             });
             prodFillText();
-            showStars();
+            showStars(showStarsDelay);
             moveStars();
 
             window.removeEventListener("scroll", prodAnimate);
@@ -79,6 +80,7 @@ function prodBlockAnimate(elemClass) {
         }
 
         if (unLockedDocumentWidth <= 1000) {
+          showStarsDelay = 0;
           prodAnimItems.forEach((item) => {
             if (
               (item.getBoundingClientRect().top <=
@@ -98,7 +100,7 @@ function prodBlockAnimate(elemClass) {
               }
 
               if (item.querySelector(".prod__scene")) {
-                showStars();
+                showStars(showStarsDelay);
                 moveStars();
               }
             }
