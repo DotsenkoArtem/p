@@ -533,6 +533,7 @@
     <link rel="stylesheet" href="css/business-animate.css" />
     <link rel="stylesheet" href="css/interest-animate.css" />
     <link rel="stylesheet" href="css/profit-animate.css" />
+    <link rel="stylesheet" href="css/product-animate.css" />
 
     <!-- END of TEST FILES -->
   </head>
@@ -1689,7 +1690,12 @@
             </div>
           </div>
 
-          <img src="img/block8-img-mob-x2.png" class="block8-img mob img-mob animate__animated animate__fadeInLeft wow" alt="img" style="visibility: visible; animation-name: fadeInLeft;">
+          <img
+            src="img/block8-img-mob-x2.png"
+            class="block8-img mob img-mob animate__animated animate__fadeInLeft wow"
+            alt="img"
+            style="visibility: visible; animation-name: fadeInLeft"
+          />
 
           <div
             class="block8__info animate__animated animate__fadeIn wow"
@@ -2025,16 +2031,16 @@
               class="block10__flex-right-stiky animate__animated animate__fadeIn wow"
               style="visibility: hidden; animation-name: none"
             >
-              <!-- <img
-                src="https://biz-vip.ru/wp-content/uploads/2023/03/block11-img.png"
+              <img
+                src="img/block11-img-1.png"
                 class="pc block10-img-right"
                 alt="img"
-              /> -->
-              <!-- <img
-                src="https://biz-vip.ru/wp-content/uploads/2023/03/block11_img-mob-x2.png"
+              />
+              <img
+                src="img/block11-img-1.png"
                 class="mob block10-img-right"
                 alt="img"
-              /> -->
+              />
             </div>
           </div>
 
@@ -2258,38 +2264,78 @@
           </div>
         </section>
 
-        <section class="block12">
-          <div class="block12__container">
-            <div
-              class="block12__info animate__animated animate__fadeIn wow"
-              style="visibility: hidden; animation-name: none"
-            >
+        <section class="block12 js-prod">
+          <div class="block12__container prod-anim prod__fadeIn">
+            <div class="block12__info">
               <hr class="hers2" />
               <div class="selection-text">
                 Вы&nbsp;получите <br />
                 качественный продукт <br /><br />
                 В&nbsp;который вложена <br class="mob" />
                 душа<br class="pc" />
-                и&nbsp;который <br class="mob" /><span>будет приносить</span>
+                и&nbsp;который <br class="mob" /><span class="prod-anim-text"
+                  >будет приносить</span
+                >
                 <br class="mob" />
                 нам&nbsp;с&nbsp;вами<br />
-                <span>стабильную прибыль</span>
+                <span class="prod-anim-text">стабильную прибыль</span>
               </div>
               <hr class="hers22" />
             </div>
           </div>
-          <img
-            src="https://biz-vip.ru/wp-content/uploads/2022/12/amicow.png"
-            alt="img"
-            class="pc block12__img animate__animated animate__fadeInRight wow"
-            style="visibility: hidden; animation-name: none"
-          />
-          <img
-            src="https://biz-vip.ru/wp-content/uploads/2022/12/block12_img-mob-x2.png"
-            alt="img"
-            class="mob block12__img animate__ animate__fadeInRight wow animated"
-            style="visibility: visible; animation-name: fadeInRight"
-          />
+
+          <div class="prod prod-anim prod__slideInRight">
+            <div class="prod__scene">
+              <!-- Scene -->
+              <img
+                src="img/prod-scene.svg"
+                alt="img"
+                class="prod__item prod-scene"
+              />
+              <!-- Check -->
+              <img
+                src="img/prod-check.svg"
+                alt="img"
+                class="prod__item prod-check check-hidden"
+              />
+              <!-- Star Left Lg -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-left-lg js-prod-star star-hidden"
+              />
+              <!-- Star Left Md -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-left-md js-prod-star star-hidden"
+              />
+              <!-- Star Left Sm -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-left-sm js-prod-star star-hidden"
+              />
+              <!-- Star Right Lg -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-right-lg js-prod-star star-hidden"
+              />
+              <!-- Star Right Md -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-right-md js-prod-star star-hidden"
+              />
+              <!-- Star Right Sm -->
+              <img
+                src="img/prod-star.svg"
+                alt="img"
+                class="prod__item prod-star-right-sm js-prod-star star-hidden"
+              />
+            </div>
+          </div>
         </section>
 
         <section class="block13">
@@ -3633,5 +3679,6 @@
     <script src="js/experience-animate.js"></script>
     <script src="js/business-animate.js"></script>
     <script src="js/interest-animate.js"></script>
+    <script src="js/product-animate.js"></script>
   </body>
 </html>
