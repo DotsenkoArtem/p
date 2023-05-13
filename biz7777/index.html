@@ -534,6 +534,7 @@
     <link rel="stylesheet" href="css/interest-animate.css" />
     <link rel="stylesheet" href="css/profit-animate.css" />
     <link rel="stylesheet" href="css/product-animate.css" />
+    <link rel="stylesheet" href="css/funnel-animate.css" />
 
     <!-- END of TEST FILES -->
   </head>
@@ -2338,8 +2339,9 @@
           </div>
         </section>
 
-        <section class="block13">
-          <div class="pc block13__img-animation">
+        <section class="block13 js-funnel">
+          <!-- OLD -->
+          <!-- <div class="pc block13__img-animation">
             <img
               src="https://biz-vip.ru/wp-content/uploads/2022/12/block15-img-icons.png"
               class="block15-img-icons"
@@ -2352,49 +2354,112 @@
               src="https://biz-vip.ru/wp-content/uploads/2022/12/block15-img-bg-x2-1.png"
               class="block15-img-bg"
             />
-          </div>
-          <img
+          </div> -->
+          <!-- <img
             src="https://biz-vip.ru/wp-content/uploads/2022/12/block13_img-mob-x2.png"
             alt="img"
             class="mob block13__img animate__ animate__fadeInLeft wow animated"
             style="visibility: visible; animation-name: fadeInLeft"
-          />
+          /> -->
+
+
+          <div class="funnel-media funnel-anim fMedia__slideInLeft">
+            <div class="funnel-media__scene">
+
+              <!-- Scene -->
+              <img
+                src="img/fun-scene.svg"
+                alt="img"
+                class="funnel-media__item funnel-scene"/>
+
+              <!-- Gear -->
+              <img
+                src="img/fun-gear.svg"
+                alt="img"
+                class="funnel-media__item funnel-gear"/>
+
+              <!-- Gear-sm -->
+              <img
+                src="img/fun-gear.svg"
+                alt="img"
+                class="funnel-media__item funnel-gear-sm"/>
+
+              <!-- User -->
+              <img
+                src="img/fun-user.svg"
+                alt="img"
+                class="funnel-media__item funnel-user"/>
+
+              <!-- User-sm -->
+              <img
+                src="img/fun-user.svg"
+                alt="img"
+                class="funnel-media__item funnel-user-sm"/>
+
+              <!-- Message -->
+              <img
+                src="img/fun-message.svg"
+                alt="img"
+                class="funnel-media__item funnel-message"/>
+
+              <!-- Coin -->
+              <img
+                src="img/fun-coin.svg"
+                alt="img"
+                class="funnel-media__item funnel-coin"/>
+
+              <!-- Funnel -->
+              <img
+                src="img/fun-funnel.svg"
+                alt="img"
+                class="funnel-media__item funnel-funnel"/>
+
+
+
+            </div>
+          </div>
 
           <div
-            class="block13__info animate__animated animate__fadeIn wow"
-            style="visibility: hidden; animation-name: none"
+            class="block13__info js-funnel-text-block funnel-anim funnel-text-entry-animation"
           >
             <div class="selection-text">Немного вас расcтрою</div>
-            <div class="selection-title">Важно понимать</div>
+            <div class="selection-title funnel-subtitle">Важно понимать</div>
 
             <div class="block13__info-flex">
               <div class="block13__info-flex-text">
-                Сначала ваш<br class="pc" />
-                доход будет<br />
-                от 30 до 50<br class="pc" />
-                тысяч<br class="pc" />
-                рублей
+                <p>
+                  Сначала ваш<br class="pc" />
+                  доход будет<br />
+                  от 30 до 50<br class="pc" />
+                  тысяч<br class="pc" />
+                  рублей
+                </p>
               </div>
 
               <div class="block13__info-flex-text">
-                За счёт SEO продвижения, <br class="pc" />улучшения магазина<br
-                  class="pc"
-                />
-                и рекламных компаний,<br class="pc" />
-                доход будет расти <br class="mob" />
-                на 30–40%<br class="pc" />
-                в месяц
+                <p>
+                  За счёт SEO продвижения, <br class="pc" />улучшения магазина<br
+                    class="pc"
+                  />
+                  и рекламных компаний,<br class="pc" />
+                  доход будет расти <br class="mob" />
+                  на 30–40%<br class="pc" />
+                  в месяц
+                </p>
               </div>
 
               <div class="block13__info-flex-text">
-                Стабильная прибыль будет <br class="pc" />каждый месяц, но до
-                100-200<br class="pc" />
-                тысяч рублей ваш доход<br class="pc" />
-                дойдет примерно через 3-5<br class="pc" />
-                месяцев
+                <p>
+                  Стабильная прибыль будет <br class="pc" />каждый месяц, но до
+                  100-200<br class="pc" />
+                  тысяч рублей ваш доход<br class="pc" />
+                  дойдет примерно через 3-5<br class="pc" />
+                  месяцев
+                </p>
               </div>
             </div>
           </div>
+
         </section>
 
         <section class="block14">
@@ -3680,5 +3745,6 @@
     <script src="js/business-animate.js"></script>
     <script src="js/interest-animate.js"></script>
     <script src="js/product-animate.js"></script>
+    <script src="js/funnel-animate.js"></script>
   </body>
 </html>

@@ -1,0 +1,133 @@
+.block13 {
+  max-width: 1500px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Блок с картинками */
+.funnel-anim {
+  opacity: 0;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.funnel-media {
+  width: 610px;
+  flex: none;
+}
+
+.fMedia__slideInLeft {
+  animation-name: slideInLeft;
+}
+
+/* Анимацию беру в main.css */
+
+.funnel-media__item {
+  position: absolute;
+}
+
+.funnel-media__scene {
+  position: relative;
+  padding-bottom: 75%;
+}
+
+.funnel-scene {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.funnel-funnel {
+  width: 20%;
+  top: 50.5%;
+  left: 36%;
+  z-index: 50;
+}
+
+.funnel-gear {
+  width: 5.5%;
+  top: 44%;
+  left: 38%;
+  z-index: 10;
+}
+
+.funnel-gear-sm {
+  width: 2.5%;
+  top: 48%;
+  left: 44%;
+  z-index: 10;
+}
+
+.funnel-user {
+  width: 5%;
+  top: 37%;
+  left: 42%;
+  z-index: 10;
+}
+
+.funnel-user-sm {
+  width: 2.5%;
+  top: 41%;
+  left: 49%;
+  z-index: 10;
+  transform: rotate(45deg);
+}
+
+.funnel-message {
+  width: 5%;
+  top: 46%;
+  left: 49%;
+  z-index: 10;
+}
+
+.funnel-coin {
+  width: 4%;
+  top: 68%;
+  left: 44.1%;
+  z-index: 10;
+}
+
+/* Текстовый блок */
+.block13__info {
+  margin-top: -30px;
+  width: 100%;
+  min-width: unset;
+}
+
+.block13__info-flex {
+  gap: 10px;
+}
+
+.block13__info-flex-text>p {
+  margin: 0;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.funnel-text-entry-animation {
+  animation-name: slideInRightFadeIn;
+  animation-timing-function: ease-out;
+}
+
+.text-items-rotate .block13__info-flex-text {
+  animation: textItemRotate 1000ms ease-out;
+}
+
+@keyframes textItemRotate {
+  0% {
+    transform: rotate(135deg);
+  }
+
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+.funnel-subtitle.text-blue {
+  color: #00b2e8;
+  transition: color;
+}
