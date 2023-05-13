@@ -18,3 +18,41 @@
 .animation-delay-200{
   animation-delay: 200ms!important;
 }
+
+
+/* KeyFrames */
+@keyframes slideInLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(-500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 1;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideInRightFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
