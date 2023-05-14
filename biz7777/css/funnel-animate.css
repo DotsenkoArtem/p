@@ -186,6 +186,12 @@ section.block13 {
   .funnel-media{
     width: 100%;
   }
+
+
+  .funnel-text-entry-animation,
+  .fMedia__slideInLeft {
+    animation-name: fadeIn;
+  }
 }
 
 @media (max-width: 767.98px) {}

@@ -17,6 +17,11 @@ function funnelBlockAnimate(elemClass) {
 
       const funnelAnimItems = block.querySelectorAll(".funnel-anim");
       const funnelTextBLock = block.querySelector(".js-funnel-text-block");
+      let currentFunnelTextBLockTop =
+        funnelTextBLock.getBoundingClientRect().top;
+      let currentFunnelTextBLockBottom =
+        funnelTextBLock.getBoundingClientRect().bottom;
+
       const funnelTextBLockSubtitle =
         funnelTextBLock.querySelector(".funnel-subtitle");
       const funnelCards = funnelTextBLock.querySelectorAll(
@@ -28,21 +33,15 @@ function funnelBlockAnimate(elemClass) {
       let funnelCardsSizes = [];
       const funnelTextBLockItemMaxSize = 100;
 
-      // Запись начальных размеров текстовых карточек
-      funnelCards.forEach((item) => {
-        funnelCardsSizes.push({
-          offsetWidth: item.offsetWidth,
-          offsetHeight: item.offsetHeight,
-        });
-        item.style.maxWidth = `${funnelTextBLockItemMaxSize}px`;
-        item.style.maxHeight = `${funnelTextBLockItemMaxSize}px`;
-      });
-
       const funnelEntryDuration = 1000;
       let animateTextCardsDuration;
       if (unLockedDocumentWidth > 1000) {
         animateTextCardsDuration = 1000;
       }
+      if (unLockedDocumentWidth <= 1000) {
+        animateTextCardsDuration = 0;
+      }
+
       funnelAnimItems.forEach((item) => {
         item.style.visibility = `hidden`;
         item.style.animationName = `none`;
@@ -116,11 +115,15 @@ function funnelBlockAnimate(elemClass) {
 
       function fillText(elem) {
         elem.classList.add("text-blue");
-        elem.style.transition = `opacity ${animateTextCardsDuration}ms`;
+        elem.style.transition = `color ${1000}ms`;
       }
 
       // ЭЛЕМЕНТЫ ВОРОНКИ
       const funnelMedia = block.querySelector(".funnel-media");
+      const funnelMediaScene = block.querySelector(".funnel-media__scene");
+
+      let currentFunnelMediaTop = funnelMedia.getBoundingClientRect().top;
+      let currentFunnelMediaBottom = funnelMedia.getBoundingClientRect().bottom;
       const funnelCoin = funnelMedia.querySelector(".funnel-coin");
       const funnelGear = funnelMedia.querySelector(".funnel-gear");
       const funnelGearsm = funnelMedia.querySelector(".funnel-gear-sm");
@@ -129,6 +132,7 @@ function funnelBlockAnimate(elemClass) {
       const funnelMessage = funnelMedia.querySelector(".funnel-message");
       // ФУНКЦИЯ АНИМАЦИИ ВОРОНКИ
 
+      let funnelIsAnimated = false;
       let animateFunnelMediaId;
       const funnelMediaOptions = {
         timing(timeFraction) {
@@ -213,30 +217,31 @@ function funnelBlockAnimate(elemClass) {
         });
       }
 
+      // ПОКАЗАТЬ ТЕКСТОВЫЕ КАРТОЧКИ
+      function showTextItems() {
+        setTimeout(function () {
+          funnelTextBLock.classList.remove("text-items-rotate");
+          animateTextCards(textCardOptions);
+          fillText(funnelTextBLockSubtitle);
+        }, funnelEntryDuration);
+      }
+
+      // АНИМАЦИЯ ВОРОНКИ
+      function startFunnelMedia() {
+        setTimeout(function () {
+          animateFunnelMedia(funnelMediaOptions);
+        }, funnelEntryDuration + animateTextCardsDuration);
+      }
+
       window.addEventListener("scroll", funnelAnimate);
+      window.addEventListener("scroll", funnelTextAnimate);
+      window.addEventListener("scroll", funnelMediaAnimate);
 
       // FUNCTIONS
       function funnelAnimate() {
-        currentBlockTop = block.getBoundingClientRect().top;
-        currentBlockBottom = block.getBoundingClientRect().bottom;
-
-        // ПОКАЗАТЬ ТЕКСТОВЫЕ КАРТОЧКИ
-        function showTextItems() {
-          setTimeout(function () {
-            funnelTextBLock.classList.remove("text-items-rotate");
-            animateTextCards(textCardOptions);
-            fillText(funnelTextBLockSubtitle);
-          }, funnelEntryDuration);
-        }
-
-        // АНИМАЦИЯ ВОРОНКИ
-        function startFunnelMedia() {
-          setTimeout(function () {
-            animateFunnelMedia(funnelMediaOptions);
-          }, funnelEntryDuration + animateTextCardsDuration);
-        }
-
         if (unLockedDocumentWidth > 1000) {
+          currentBlockTop = block.getBoundingClientRect().top;
+          currentBlockBottom = block.getBoundingClientRect().bottom;
           if (
             (currentBlockTop <= funnelAnimStartPoint &&
               currentBlockBottom > funnelAnimStartPoint &&
@@ -245,6 +250,15 @@ function funnelBlockAnimate(elemClass) {
               currentBlockTop < funnelAnimStopPoint &&
               scrollDirection > 0)
           ) {
+            // Запись начальных размеров текстовых карточек
+            funnelCards.forEach((item) => {
+              funnelCardsSizes.push({
+                offsetWidth: item.offsetWidth,
+                offsetHeight: item.offsetHeight,
+              });
+              item.style.maxWidth = `${funnelTextBLockItemMaxSize}px`;
+              item.style.maxHeight = `${funnelTextBLockItemMaxSize}px`;
+            });
             funnelTextBLock.classList.add("text-items-rotate");
             funnelAnimItems.forEach((item) => {
               item.style.visibility = ``;
@@ -256,33 +270,80 @@ function funnelBlockAnimate(elemClass) {
             window.removeEventListener("scroll", funnelAnimate);
           }
         }
+      }
+      function funnelTextAnimate() {
+        if (unLockedDocumentWidth <= 1000) {
+          currentFunnelTextBLockTop =
+            funnelTextBLock.getBoundingClientRect().top;
+          currentFunnelTextBLockBottom =
+            funnelTextBLock.getBoundingClientRect().bottom;
 
-        // if (unLockedDocumentWidth <= 1000) {
-        //   prodAnimItems.forEach((item) => {
-        //     if (
-        //       (item.getBoundingClientRect().top <=
-        //         document.documentElement.clientHeight - item.clientHeight &&
-        //         item.getBoundingClientRect().bottom >
-        //           document.documentElement.clientHeight - item.clientHeight &&
-        //         scrollDirection < 0) ||
-        //       (item.getBoundingClientRect().bottom >= item.clientHeight + 100 &&
-        //         item.getBoundingClientRect().top < item.clientHeight + 100 &&
-        //         scrollDirection > 0)
-        //     ) {
-        //       item.style.visibility = ``;
-        //       item.style.animationName = ``;
+          if (
+            (currentFunnelTextBLockTop <=
+              window.innerHeight -
+                funnelTextBLock.getBoundingClientRect().height &&
+              currentFunnelTextBLockBottom >
+                window.innerHeight -
+                  funnelTextBLock.getBoundingClientRect().height &&
+              scrollDirection < 0) ||
+            (currentFunnelTextBLockBottom >=
+              funnelTextBLock.getBoundingClientRect().height + 100 &&
+              currentFunnelTextBLockTop <
+                funnelTextBLock.getBoundingClientRect().height + 100 &&
+              scrollDirection > 0)
+          ) {
+            funnelTextBLock.style.visibility = ``;
+            funnelTextBLock.style.animationName = ``;
 
-        //       if (item.querySelectorAll(".prod-anim-text").length) {
-        //         prodFillText();
-        //       }
+            setTimeout(function () {
+              fillText(funnelTextBLockSubtitle);
+            }, funnelEntryDuration);
 
-        //       if (item.querySelector(".prod__scene")) {
-        //         showStars();
-        //         moveStars();
-        //       }
-        //     }
-        //   });
-        // }
+            window.removeEventListener("scroll", funnelTextAnimate);
+          }
+        }
+      }
+      function funnelMediaAnimate() {
+        if (unLockedDocumentWidth <= 1000) {
+          currentFunnelMediaTop = funnelMedia.getBoundingClientRect().top;
+          currentFunnelMediaBottom = funnelMedia.getBoundingClientRect().bottom;
+
+          if (
+            (currentFunnelMediaTop <=
+              window.innerHeight - funnelMedia.getBoundingClientRect().height &&
+              currentFunnelMediaBottom >
+                window.innerHeight -
+                  funnelMedia.getBoundingClientRect().height &&
+              scrollDirection < 0) ||
+            (currentFunnelMediaBottom >=
+              funnelMedia.getBoundingClientRect().height + 100 &&
+              currentFunnelMediaTop <
+                funnelMedia.getBoundingClientRect().height + 100 &&
+              scrollDirection > 0)
+          ) {
+            funnelMedia.style.visibility = ``;
+            funnelMedia.style.animationName = ``;
+
+            if (!funnelIsAnimated) {
+              funnelIsAnimated = true;
+              startFunnelMedia();
+            }
+
+            // Не удаляю слушатель, так как ниже отменяю анимацию, если блок вне экрана.
+            // window.removeEventListener("scroll", funnelMediaAnimate);
+          }
+          if (
+            currentFunnelMediaTop > window.innerHeight ||
+            currentFunnelMediaBottom < 0
+          ) {
+            cancelAnimationFrame(animateFunnelMediaId);
+            // Обнуляю стили элементов анимации, чтобы анимация начиналась сначала.
+            for (let i = 0; funnelMediaScene.children.length > i; i++) {
+              funnelMediaScene.children[i].style.transform = ``;
+            }
+            funnelIsAnimated = false;
+          }
+        }
       }
     }, 0);
   } else {

@@ -437,10 +437,10 @@
 
 @media (max-width: 1000.98px) {
   .prod__animate {
-    animation-name: d-fadeIn;
+    animation-name: fadeIn;
   }
   
-  @keyframes d-fadeIn {
+  /* @keyframes d-fadeIn {
     0% {
       opacity: 0;
     }
@@ -448,5 +448,5 @@
     100% {
       opacity: 1;
     }
-  }
+  } */
 }
