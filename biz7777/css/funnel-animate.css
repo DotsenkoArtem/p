@@ -1,7 +1,8 @@
-.block13 {
+section.block13 {
   max-width: 1500px;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
 /* Блок с картинками */
@@ -13,7 +14,7 @@
 }
 
 .funnel-media {
-  width: 610px;
+  width: 40%;
   flex: none;
 }
 
@@ -94,7 +95,8 @@
 /* Текстовый блок */
 .block13__info {
   margin-top: -30px;
-  width: 100%;
+  width: auto;
+  flex: 1;
   min-width: unset;
 }
 
@@ -131,3 +133,63 @@
   color: #00b2e8;
   transition: color;
 }
+
+@media (max-width: 1529.98px) {
+  section.block13 {
+    max-width: 1300px;
+    gap: 20px;
+  }
+
+  .funnel-media {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1399.98px) {
+  .funnel-media {
+    width: 30%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .block13__info {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1249.98px) {
+  .block13__info-flex-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1099.98px) {
+  .block13__info-flex-text {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1000.98px) {
+  section.block13{
+    max-width: 540px;
+    gap: 50px;
+  }
+  .block13__info {
+    margin-top: 0px;
+    width: 100%;
+  }
+  .block13__info-flex-text>p{
+    opacity: 1;
+    white-space: normal;
+  }
+  .funnel-media{
+    width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {}
+
+@media (max-width: 414.98px) {}
+
+@media (max-width: 359.98px) {}
