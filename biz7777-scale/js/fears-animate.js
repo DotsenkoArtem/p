@@ -193,7 +193,7 @@ function fearBlockAnimate(elemClass) {
             })`;
           }
         },
-        duration: 10000,
+        duration: 5000,
       };
 
       function switchFrame({ timing, draw, duration }) {
