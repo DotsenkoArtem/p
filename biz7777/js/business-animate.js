@@ -13,7 +13,7 @@ function initBusSlider() {
       slidesPerView: 2,
       loop: true,
       pagination: {
-        el: ".swiper-pagination",
+        el: ".swiper-pagination.bus-slider__pagination",
         clickable: true,
       },
       // navigation: {

@@ -13,7 +13,7 @@ function initSectorSlider() {
       slidesPerView: 2,
       loop: true,
       pagination: {
-        el: ".swiper-pagination2",
+        el: ".swiper-pagination.sector-slider__pagination",
         clickable: true,
       },
       // navigation: {
