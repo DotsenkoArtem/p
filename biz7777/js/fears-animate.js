@@ -26,6 +26,7 @@ function fearBlockAnimate(elemClass) {
       let currentFearTextBottom = fearText.getBoundingClientRect().bottom;
 
       const fearHero = block.querySelector(".fear-hero");
+      const fearHeroMirrored = block.querySelector(".fear-hero.mirrored-x");
       const fearFears = block.querySelector(".fear-fears");
       const firstMsgs = block.querySelectorAll(
         ".block14__img-text.first-frame"
@@ -134,46 +135,81 @@ function fearBlockAnimate(elemClass) {
         },
         draw(progress) {
           // Анимация Челика
-          if (progress <= 0.3) {
+          if (progress <= 0.35) {
             fearHero.style.opacity = `${1}`;
-            fearHero.style.transform = `scaleX(1)`;
+            fearHeroMirrored.style.opacity = `${0}`;
+            firstMsgs.forEach((item) => {
+              item.style.opacity = `${1}`;
+            });
+            secondMsgs.forEach((item) => {
+              item.style.opacity = `${0}`;
+            });
           }
-          // Исчезаем
-          if (progress > 0.3 && progress <= 0.4) {
-            fearHero.style.opacity = `${1 - (progress - 0.3) / 0.1}`;
+          /*           // Исчезаем
+          if (progress > 0.35 && progress <= 0.4) {
+            fearHero.style.opacity = `${1 - (progress - 0.35) / 0.05}`;
             fearHero.style.transform = `scaleX(1)`;
             firstMsgs.forEach((item) => {
-              item.style.opacity = `${1 - (progress - 0.3) / 0.1}`;
+              item.style.opacity = `${1 - (progress - 0.35) / 0.05}`;
             });
           }
           // Появляемся
-          if (progress > 0.4 && progress <= 0.5) {
-            fearHero.style.opacity = `${(progress - 0.4) / 0.1}`;
+          if (progress > 0.4 && progress <= 0.45) {
+            fearHero.style.opacity = `${(progress - 0.4) / 0.05}`;
             fearHero.style.transform = `scaleX(-1)`;
             secondMsgs.forEach((item) => {
-              item.style.opacity = `${(progress - 0.4) / 0.1}`;
+              item.style.opacity = `${(progress - 0.4) / 0.05}`;
+            });
+          } */
+          // Исчезаем-Появляемя
+          if (progress < 0.45 && progress >= 0.35) {
+            fearHero.style.opacity = `${1 - (progress - 0.35) / 0.1}`;
+            fearHeroMirrored.style.opacity = `${(progress - 0.35) / 0.1}`;
+            firstMsgs.forEach((item) => {
+              item.style.opacity = `${1 - (progress - 0.35) / 0.1}`;
+            });
+            secondMsgs.forEach((item) => {
+              item.style.opacity = `${(progress - 0.35) / 0.1}`;
             });
           }
-          if (progress > 5 && progress <= 0.8) {
-            fearHero.style.opacity = `${1}`;
-            fearHero.style.transform = `scaleX(-1)`;
+          if (progress > 0.45 && progress <= 0.9) {
+            fearHero.style.opacity = `${0}`;
+            fearHeroMirrored.style.opacity = `${1}`;
+            firstMsgs.forEach((item) => {
+              item.style.opacity = `${0}`;
+            });
+            secondMsgs.forEach((item) => {
+              item.style.opacity = `${1}`;
+            });
           }
-          // Исчезаем
-          if (progress > 0.8 && progress <= 0.9) {
-            fearHero.style.opacity = `${1 - (progress - 0.8) / 0.1}`;
+          /*           // Исчезаем
+          if (progress > 0.9 && progress <= 0.95) {
+            fearHero.style.opacity = `${1 - (progress - 0.9) / 0.05}`;
             fearHero.style.transform = `scaleX(-1)`;
             secondMsgs.forEach((item) => {
-              item.style.opacity = `${1 - (progress - 0.3) / 0.1}`;
+              item.style.opacity = `${1 - (progress - 0.9) / 0.05}`;
             });
           }
           // Появляемся
+          if (progress > 0.95 && progress <= 1) {
+            fearHero.style.opacity = `${(progress - 0.95) / 0.05}`;
+            fearHero.style.transform = `scaleX(1)`;
+            firstMsgs.forEach((item) => {
+              item.style.opacity = `${(progress - 0.95) / 0.05}`;
+            });
+          } */
+          // Исчезаем-Появляемся
           if (progress > 0.9 && progress <= 1) {
+            fearHeroMirrored.style.opacity = `${1 - (progress - 0.9) / 0.1}`;
             fearHero.style.opacity = `${(progress - 0.9) / 0.1}`;
-            fearHero.style.transform = `scaleX(1)`;
             firstMsgs.forEach((item) => {
-              item.style.opacity = `${(progress - 0.4) / 0.1}`;
+              item.style.opacity = `${(progress - 0.9) / 0.1}`;
+            });
+            secondMsgs.forEach((item) => {
+              item.style.opacity = `${1 - (progress - 0.9) / 0.1}`;
             });
           }
+
           // Страшилищя
           if (progress <= 0.4) {
             fearFears.style.transform = `scale(${1 + (progress * 0.08) / 0.4})`;

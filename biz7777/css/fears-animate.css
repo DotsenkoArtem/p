@@ -36,9 +36,8 @@
   opacity: 1;
 }
 
-.fear-hero.hidden {
+.fear-hero.mirrored-x {
   opacity: 0;
-  z-index: -1;
 }
 
 .fear-msg {
