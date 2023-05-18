@@ -162,17 +162,17 @@ function fearBlockAnimate(elemClass) {
             });
           } */
           // Исчезаем-Появляемя
-          if (progress < 0.45 && progress >= 0.35) {
-            fearHero.style.opacity = `${1 - (progress - 0.35) / 0.1}`;
-            fearHeroMirrored.style.opacity = `${(progress - 0.35) / 0.1}`;
+          if (progress < 0.5 && progress >= 0.35) {
+            fearHero.style.opacity = `${1 - (progress - 0.35) / 0.15}`;
+            fearHeroMirrored.style.opacity = `${(progress - 0.35) / 0.15}`;
             firstMsgs.forEach((item) => {
-              item.style.opacity = `${1 - (progress - 0.35) / 0.1}`;
+              item.style.opacity = `${1 - (progress - 0.35) / 0.15}`;
             });
             secondMsgs.forEach((item) => {
-              item.style.opacity = `${(progress - 0.35) / 0.1}`;
+              item.style.opacity = `${(progress - 0.35) / 0.15}`;
             });
           }
-          if (progress > 0.45 && progress <= 0.9) {
+          if (progress > 0.5 && progress <= 0.85) {
             fearHero.style.opacity = `${0}`;
             fearHeroMirrored.style.opacity = `${1}`;
             firstMsgs.forEach((item) => {
@@ -199,28 +199,34 @@ function fearBlockAnimate(elemClass) {
             });
           } */
           // Исчезаем-Появляемся
-          if (progress > 0.9 && progress <= 1) {
-            fearHeroMirrored.style.opacity = `${1 - (progress - 0.9) / 0.1}`;
-            fearHero.style.opacity = `${(progress - 0.9) / 0.1}`;
+          if (progress > 0.85 && progress <= 1) {
+            fearHeroMirrored.style.opacity = `${1 - (progress - 0.85) / .15}`;
+            fearHero.style.opacity = `${(progress - 0.85) / .15}`;
             firstMsgs.forEach((item) => {
-              item.style.opacity = `${(progress - 0.9) / 0.1}`;
+              item.style.opacity = `${(progress - 0.85) / .15}`;
             });
             secondMsgs.forEach((item) => {
-              item.style.opacity = `${1 - (progress - 0.9) / 0.1}`;
+              item.style.opacity = `${1 - (progress - 0.85) / .15}`;
             });
           }
 
           // Страшилищя
-          if (progress <= 0.4) {
-            fearFears.style.transform = `scale(${1 + (progress * 0.08) / 0.4})`;
+          if (progress <= 0.35) {
+            fearFears.style.transform = `scale(${1})`;
           }
-          if (progress > 0.5 && progress <= 0.9) {
+          if (progress > 0.35 && progress <= .5) {
+            fearFears.style.transform = `scale(${1 + ((progress - .35) * 0.08) / 0.15})`;
+          }
+          if (progress > 0.5 && progress <= .85) {
+            fearFears.style.transform = `scale(${1.08})`;
+          }
+          if (progress > 0.85 && progress <= 1) {
             fearFears.style.transform = `scale(${
-              1 + (0.08 - ((progress - 0.5) * 0.08) / 0.4)
+              1 + (0.08 - ((progress - 0.85) * 0.08) / 0.15)
             })`;
           }
         },
-        duration: 6000,
+        duration: 10000,
       };
 
       function switchFrame({ timing, draw, duration }) {
