@@ -1,0 +1,189 @@
+.fear {
+  width: 50%;
+  flex: none;
+}
+
+.fear__scene {
+  position: relative;
+
+  padding-bottom: 75%;
+}
+
+.fear__item {
+  position: absolute;
+}
+
+.fear-scene {
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.fear-fears {
+  width: 44%;
+  top: 1%;
+  left: 28%;
+  z-index: 5;
+  transform-origin: center bottom;
+}
+
+.fear-hero {
+  width: 29%;
+  top: 6%;
+  left: 31%;
+  z-index: 10;
+  opacity: 1;
+}
+
+.fear-hero.mirrored-x {
+  opacity: 0;
+}
+
+.fear-msg {
+  font-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 15;
+  opacity: 1;
+}
+
+.fear-msg_top-left {
+  padding: 2.8em;
+  top: -3%;
+  left: 8%;
+  background-image: url('../img/fear-msg-top-left.svg');
+}
+
+.fear-msg_bottom-left {
+  padding: 2.6em;
+  top: 19.5%;
+  left: 8%;
+  background-image: url('../img/fear-msg-bottom-left.svg');
+}
+
+.fear-msg_top-right {
+  padding: 2.6em;
+  top: -4%;
+  right: 11%;
+  background-image: url('../img/fear-msg-top-right.svg');
+}
+
+.fear-msg_bottom-right {
+  padding: 2.5em 4em 2.5em 3em;
+  top: 20%;
+  right: 8%;
+  background-image: url('../img/fear-msg-bottom-right.svg');
+}
+
+.fear-msg__inner {
+  position: relative;
+}
+
+.block14__img-text.first-frame {
+  opacity: 1;
+}
+
+.block14__img-text.second-frame {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
+
+.fear-msg_bottom-right .second-frame {
+  white-space: nowrap;
+}
+
+.fear-anim-item {
+  animation-duration: 1000ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.fear {
+  animation-name: slideInRight;
+}
+
+.block14__info {
+  animation-name: fadeIn;
+}
+
+@media (max-width: 1000.98px) {
+  .block14 {
+    max-width: 540px;
+  }
+
+  .fear {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .fear {
+    animation-name: fadeIn;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .fear {
+    max-width: 400px;
+  }
+
+  .fear-msg {
+    font-size: 11px;
+  }
+
+  .block14__img-text {
+    font-size: inherit;
+  }
+
+  .fear-msg_top-left {
+    top: -6%;
+    left: 4%;
+  }
+
+  .fear-msg_bottom-left {
+    top: 19%;
+    left: 4%;
+  }
+
+  .fear-msg_top-right {
+    top: -9%;
+    right: 6%;
+  }
+
+  .fear-msg_bottom-right {
+    top: 17%;
+    right: 4%;
+  }
+}
+
+@media (max-width: 414.98px) {
+
+  .fear-msg {
+    font-size: 10px;
+  }
+
+  .block14__img-text {
+    font-size: inherit;
+  }
+}
+
+@media (max-width: 359.98px) {
+
+  .fear-msg {
+    font-size: 9px;
+  }
+
+  .block14__img-text {
+    font-size: inherit;
+  }
+
+  .fear-msg_bottom-left {
+    top: 20%;
+  }
+
+  .fear-msg_bottom-right {
+    top: 18%;
+  }
+}
