@@ -179,15 +179,12 @@ function fearBlockAnimate(elemClass) {
           }
 
           // Страшилищя
-          // if (progress <= 0.4) {
-          //   fearFears.style.transform = `scale(${1})`;
-          // }
-          if (progress < 0.4) {
-            fearFears.style.transform = `scale(${1 + ((progress) * 0.08) / 0.4})`;
+          if (progress < 0.5) {
+            fearFears.style.transform = `scale(${1 + ((progress) * 0.08) / 0.5})`;
           }
-          if (progress > 0.5 && progress <= .9) {
+          if (progress >= 0.5 && progress <= 1) {
             fearFears.style.transform = `scale(${
-              1 + (0.08 - ((progress - 0.5) * 0.08) / 0.4)
+              1 + (0.08 - ((progress - 0.5) * 0.08) / 0.5)
             })`;
           }
           // if (progress <= 0.4) {
