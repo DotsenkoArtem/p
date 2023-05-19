@@ -127,6 +127,7 @@ function fearBlockAnimate(elemClass) {
 
       let switchInterval = 2000;
       let switchFrameId;
+      let heroOffsetX = 25;
 
       const switchFrameOptions = {
         timing(timeFraction) {
@@ -136,7 +137,7 @@ function fearBlockAnimate(elemClass) {
         draw(progress) {
           // Анимация Челика
           if (progress <= 0.4) {
-            fearHero.style.transform = `scaleX(${1})`;
+            fearHero.style.transform = `translateX(${0}%) scaleX(${1})`;
             firstMsgs.forEach((item) => {
               item.style.opacity = `${1}`;
             });
@@ -146,8 +147,8 @@ function fearBlockAnimate(elemClass) {
           }
 
           // Исчезаем-Появляемя
-          if (progress < 0.5 && progress >= 0.4) {
-            fearHero.style.transform = `scaleX(${1 - (progress - 0.4)/.05})`;
+          if (progress > 0.4 && progress <= 0.5) {
+            fearHero.style.transform = `translateX(${(heroOffsetX * (progress - 0.4)/.1)}%) scaleX(${1 - (progress - 0.4)/.05})`;
             firstMsgs.forEach((item) => {
               item.style.opacity = `${1 - (progress - 0.4) / 0.1}`;
             });
@@ -157,7 +158,7 @@ function fearBlockAnimate(elemClass) {
           }
 
           if (progress > 0.5 && progress <= 0.9) {
-            fearHero.style.transform = `scaleX(${-1})`;
+            fearHero.style.transform = `translateX(${heroOffsetX}%) scaleX(${-1})`;
             firstMsgs.forEach((item) => {
               item.style.opacity = `${0}`;
             });
@@ -168,7 +169,7 @@ function fearBlockAnimate(elemClass) {
 
           // Исчезаем-Появляемся
           if (progress > 0.9 && progress <= 1) {
-            fearHero.style.transform = `scaleX(${-1 + (progress - 0.9)/.05})`;
+            fearHero.style.transform = `translateX(${(heroOffsetX - heroOffsetX * (progress - 0.9)/.1)}%) scaleX(${-1 + (progress - 0.9)/.05})`;
             firstMsgs.forEach((item) => {
               item.style.opacity = `${(progress - 0.9) / .1}`;
             });
@@ -178,20 +179,31 @@ function fearBlockAnimate(elemClass) {
           }
 
           // Страшилищя
-          if (progress <= 0.4) {
-            fearFears.style.transform = `scale(${1})`;
-          }
-          if (progress > 0.4 && progress <= .5) {
-            fearFears.style.transform = `scale(${1 + ((progress - .4) * 0.08) / 0.1})`;
+          // if (progress <= 0.4) {
+          //   fearFears.style.transform = `scale(${1})`;
+          // }
+          if (progress < 0.4) {
+            fearFears.style.transform = `scale(${1 + ((progress) * 0.08) / 0.4})`;
           }
           if (progress > 0.5 && progress <= .9) {
-            fearFears.style.transform = `scale(${1.08})`;
-          }
-          if (progress > 0.9 && progress <= 1) {
             fearFears.style.transform = `scale(${
-              1 + (0.08 - ((progress - 0.9) * 0.08) / 0.1)
+              1 + (0.08 - ((progress - 0.5) * 0.08) / 0.4)
             })`;
           }
+          // if (progress <= 0.4) {
+          //   fearFears.style.transform = `scale(${1})`;
+          // }
+          // if (progress > 0.4 && progress <= .5) {
+          //   fearFears.style.transform = `scale(${1 + ((progress - .4) * 0.08) / 0.1})`;
+          // }
+          // if (progress > 0.5 && progress <= .9) {
+          //   fearFears.style.transform = `scale(${1.08})`;
+          // }
+          // if (progress > 0.9 && progress <= 1) {
+          //   fearFears.style.transform = `scale(${
+          //     1 + (0.08 - ((progress - 0.9) * 0.08) / 0.1)
+          //   })`;
+          // }
         },
         duration: 5000,
       };
