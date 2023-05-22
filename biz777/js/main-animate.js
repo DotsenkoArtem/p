@@ -94,4 +94,25 @@ window.addEventListener("load", function() {
   // А выше она определяется для того, чтобы перехватить при ресайзе окна
   // console.log('wsChatBtns.length: ', wsChatBtns.length);
   if(wsChatBtns.length > 0) {initialWsChatBtnRightOffset = unLockedDocumentWidth - wsChatBtns[0].getBoundingClientRect().right}
+
+})
+
+
+let scrollDirection = 0;
+let startY = window.pageYOffset;
+let currentY = 0;
+
+function getScrollDirection() {
+  currentY = window.pageYOffset;
+  scrollDirection = startY - currentY;
+  startY = currentY;
+}
+
+let currentScroll = undefined;
+
+window.addEventListener('scroll', () => {
+  // Текущее направление скролла
+  getScrollDirection()
+  // Текущее значение прокрутки страницы
+  currentScroll = window.scrollY;
 })

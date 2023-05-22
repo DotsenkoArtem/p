@@ -117,7 +117,7 @@ function rocketBlockAnimate(elemClass) {
     В данном контексте значениями начала и окончания являются отступы от верхней границы окна браузера
     */
     let ROCKET_MAIN_ANIM_ENTRY_POINT = window.innerHeight * 1;
-    console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
+    // console.log('ROCKET_MAIN_ANIM_ENTRY_POINT: ', ROCKET_MAIN_ANIM_ENTRY_POINT);
       // // Диапазон работы анимации "при скролле"
       // const SCROLL_ANIM_RANGE = 120;
       const SCROLL_ANIM_RANGE = window.innerHeight * .85
@@ -125,7 +125,7 @@ function rocketBlockAnimate(elemClass) {
 
       let SCROLL_ANIM_ENTRY_POINT =
         ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
-      console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);;
+      // console.log('SCROLL_ANIM_ENTRY_POINT: ', SCROLL_ANIM_ENTRY_POINT);
 
       // Точка окончания анимации при скролле
       const SCROLL_ANIM_EXIT_POINT = 0;
@@ -329,7 +329,7 @@ function rocketBlockAnimate(elemClass) {
       setTimeout(function () {
         // Текущее значение отступа блока анимации по оси Y от внерхней границы окна
         currentAnimationBlockTop = block.getBoundingClientRect().top;
-        console.log('currentAnimationBlockTop-до timeOut: ', currentAnimationBlockTop);
+        // console.log('currentAnimationBlockTop-до timeOut: ', currentAnimationBlockTop);
         // Прогресс анимации скролла - изначально был предназначен для вычисления положения ракеты и других элементов анимации в зависимости от величины прокрутки страницы
         let scrollProgress = 0;
         // Стили в момент остановки анимации
@@ -440,7 +440,7 @@ function rocketBlockAnimate(elemClass) {
 
           // ЕСЛИ В ПРЕДЕЛАХ ДИАПАЗОНА ОСНОВНОЙ АНИМАЦИИ (II ЭТАП)
           if (isInRocketMainAnimRange(block)) {
-            console.log('В ределах анимирования!');
+            // console.log('В ределах анимирования!');
             if (!isTransitioned) {
               // Для каждого блока устанавливается время перехода
               movingBlockItems.forEach(function (item) {
@@ -576,24 +576,6 @@ function rocketBlockAnimate(elemClass) {
 
         // End of Timeout
       }, 0);
-
-
-
-
-
-
-
-
-      // window.addEventListener('resize', function(){
-      //   // Переопределение переменных для адекватной работы анимации при ресайзе
-      //   ROCKET_MAIN_ANIM_ENTRY_POINT = block.getBoundingClientRect().top;
-      //   SCROLL_ANIM_ENTRY_POINT =
-      //   ROCKET_MAIN_ANIM_ENTRY_POINT - SCROLL_ANIM_RANGE;
-
-      //   rocketBlockAnimate("js-rocket")
-      // })
-
-    // });
   } else {
     console.log(
       `HTML-элемент с классом "${elemClass}" не найден. Пожалуйста убедитель в правильности написания класса элемента.`
